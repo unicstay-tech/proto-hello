@@ -47,4 +47,14 @@ Un dossier `idee-cadeau-abcd/` contenant :
 10. FAQ accordéon (7 questions, Bootstrap Collapse)
 11. Bloc SEO éditorial
 
+## Méthode de travail obligatoire
+
+Procède de manière incrémentale. C'est non négociable.
+
+1. Etape 1 : Lis les deux fichiers de référence. Ne code rien encore.
+2. Etape 2 : Crée le squelette du projet (dossier, README.md, index.html avec head/CDN/styles globaux/body vide). Commit.
+3. Etape 3 : Ajoute les blocs UN PAR UN dans index.html. Maximum 2 blocs par réponse. Commit après chaque ajout.
+4. Etape 4 : Après chaque bloc ajouté, montre-moi un résumé de ce qui a été fait et attends mon "ok" avant de continuer.
+5. Ne génère JAMAIS le fichier HTML complet en une seule passe.
+
 Initialise un repo git, commit, et push sur `unicstay-tech/idee-cadeau-abcd`.
