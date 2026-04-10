@@ -231,6 +231,133 @@
       }
     }
 
+    /* ===== BLOC 7 : EXPERIENCES A OFFRIR ===== */
+    .abcd-exp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .abcd-exp-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .abcd-exp-card:hover { transform: scale(1.02); text-decoration: none; }
+    .abcd-exp-card--large {
+      grid-row: span 2;
+      min-height: 580px;
+    }
+    .abcd-exp-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .abcd-exp-card:hover img { transform: scale(1.08); }
+    .abcd-exp-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.05) 60%);
+    }
+    .abcd-exp-card__content {
+      position: relative;
+      z-index: 2;
+      padding: 24px;
+      color: #fff;
+      width: 100%;
+    }
+    .abcd-exp-card__count {
+      font-size: 0.75rem;
+      font-weight: 500;
+      opacity: 0.85;
+      margin-bottom: 4px;
+    }
+    .abcd-exp-card__title {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+    .abcd-exp-card--large .abcd-exp-card__title {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .abcd-exp-grid { grid-template-columns: 1fr 1fr; }
+      .abcd-exp-card--large { grid-column: span 2; grid-row: span 1; min-height: 250px; }
+      .abcd-exp-card { min-height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .abcd-exp-grid { grid-template-columns: 1fr; }
+      .abcd-exp-card--large { grid-column: span 1; }
+    }
+
+    /* ===== BLOC 8 : 1000 RAISONS D'OFFRIR ===== */
+    .abcd-reasons-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 16px;
+    }
+    .abcd-reasons-scroll::-webkit-scrollbar {
+      height: 6px;
+    }
+    .abcd-reasons-scroll::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 3px;
+    }
+    .abcd-reason-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      transition: transform 0.3s ease;
+    }
+    .abcd-reason-card:hover { transform: scale(1.03); text-decoration: none; }
+    .abcd-reason-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .abcd-reason-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 50%);
+    }
+    .abcd-reason-card__content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      color: #fff;
+      width: 100%;
+    }
+    .abcd-reason-card__title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    .abcd-reasons-link {
+      color: var(--abcd-turquoise);
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    .abcd-reasons-link:hover {
+      color: var(--abcd-turquoise-dark);
+    }
+
   </style>
 </head>
 <body>
@@ -461,6 +588,187 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 7 : NOS EXPERIENCES       -->
+  <!-- ============================== -->
+  <section class="abcd-experiences py-5">
+    <div class="container">
+      <h2 class="abcd-section-title text-center mb-2">Nos expériences à offrir...</h2>
+      <p class="text-center text-muted mb-5">Plus qu'un cadeau, offrez un souvenir inoubliable</p>
+      <div class="abcd-exp-grid">
+
+        <!-- Spa privatif (LARGE) -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-spa-et-bien-etre/" class="abcd-exp-card abcd-exp-card--large">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbec6d?w=800&q=80" alt="Séjour spa privatif">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">1104 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée séjour avec spa privatif</h3>
+          </div>
+        </a>
+
+        <!-- Montagne -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-a-la-montagne/" class="abcd-exp-card">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80" alt="Séjour montagne">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">445 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau à la montagne</h3>
+          </div>
+        </a>
+
+        <!-- Romantique -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-romantique/" class="abcd-exp-card">
+          <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=800&q=80" alt="Séjour romantique">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">2026 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau romantique</h3>
+          </div>
+        </a>
+
+        <!-- Noël -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/noel/" class="abcd-exp-card">
+          <img src="https://images.unsplash.com/photo-1482003297000-b7f3a8b0bc4a?w=800&q=80" alt="Cadeau Noël">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">2944 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau Noël</h3>
+          </div>
+        </a>
+
+        <!-- Famille -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-en-famille/" class="abcd-exp-card">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" alt="Séjour en famille">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">2000 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau en famille</h3>
+          </div>
+        </a>
+
+        <!-- Bulle -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/bulle/" class="abcd-exp-card">
+          <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80" alt="Dormir dans une bulle">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">126 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Dormir dans une bulle</h3>
+          </div>
+        </a>
+
+        <!-- Cabane dans les arbres -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/cabane-dans-les-arbres/" class="abcd-exp-card">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80" alt="Cabane dans les arbres">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">315 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Dormir dans une cabane dans les arbres</h3>
+          </div>
+        </a>
+
+        <!-- Cabane sur l'eau -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/cabane-sur-l-eau/" class="abcd-exp-card">
+          <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80" alt="Cabane sur l'eau">
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <p class="abcd-exp-card__count">69 bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Dormir dans une cabane sur l'eau</h3>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 8 : 1000 RAISONS D'OFFRIR -->
+  <!-- ============================== -->
+  <section class="abcd-reasons py-5 bg-light">
+    <div class="container">
+      <h2 class="abcd-section-title text-center mb-2">1000 raisons d'offrir un bon cadeau</h2>
+      <p class="text-center text-muted mb-5">Pour chaque occasion, un séjour insolite à offrir</p>
+      <div class="abcd-reasons-scroll">
+
+        <!-- Anniversaire -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/anniversaire/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&q=80" alt="Anniversaire">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Anniversaire</h3>
+          </div>
+        </a>
+
+        <!-- Saint-Valentin -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/saint-valentin/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&q=80" alt="Saint-Valentin">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Saint-Valentin</h3>
+          </div>
+        </a>
+
+        <!-- Fête des mères -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/fete-des-meres/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1462275646964-a0e3c11f18a6?w=500&q=80" alt="Fête des mères">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Fête des mères</h3>
+          </div>
+        </a>
+
+        <!-- Mariage -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/mariage/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="Mariage">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Mariage</h3>
+          </div>
+        </a>
+
+        <!-- Noël -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/noel/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1512389142860-9c449e58a814?w=500&q=80" alt="Noël">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Noël</h3>
+          </div>
+        </a>
+
+        <!-- Dernière minute -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/derniere-minute/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500&q=80" alt="Dernière minute">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Dernière minute</h3>
+          </div>
+        </a>
+
+        <!-- Anniversaire de mariage -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/anniversaire-de-mariage/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=500&q=80" alt="Anniversaire de mariage">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Anniversaire de mariage</h3>
+          </div>
+        </a>
+
+        <!-- Départ à la retraite -->
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/depart-retraite/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" alt="Départ à la retraite">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content">
+            <h3 class="abcd-reason-card__title">Départ à la retraite</h3>
+          </div>
+        </a>
+
+      </div>
+      <div class="text-center mt-4">
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/" class="abcd-reasons-link">Voir toutes les occasions &rarr;</a>
       </div>
     </div>
   </section>
