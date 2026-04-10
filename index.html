@@ -1,13 +1,451 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unic Stay - Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BKDO Déguisés — AbracadaRoom 2025</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
-    <h1>Unic Stay - Test</h1>
-    <p>Hello, le déploiement fonctionne !</p>
-    <p><a href="analyse-bkdo-abcd-2025/">Voir l'analyse BKDO ABCD 2025</a></p>
+
+  <div class="bg-decoration"></div>
+
+  <header class="header">
+    <div class="header-inner">
+      <div class="header-logo">
+        <span class="logo-abcd">ABCD</span>
+        <span class="logo-sep">·</span>
+        <span class="logo-label">AbracadaRoom</span>
+      </div>
+      <div class="header-title">
+        <h1>Bons Cadeaux Déguisés</h1>
+        <p class="header-sub">Analyse des ventes — Exercice 2025</p>
+      </div>
+      <div class="header-badge">Confidentiel</div>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- KPIs -->
+    <section class="section">
+      <h2 class="section-title">Vue d'ensemble</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card kpi-primary">
+          <div class="kpi-value">500 744 €</div>
+          <div class="kpi-label">Volume d'affaires total</div>
+          <div class="kpi-sub">Exercice 2025</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">2 135</div>
+          <div class="kpi-label">BKDO vendus</div>
+          <div class="kpi-sub">Toutes références</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">234,98 €</div>
+          <div class="kpi-label">Prix moyen global</div>
+          <div class="kpi-sub">Panier cadeau</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">~700</div>
+          <div class="kpi-label">Hébergements actifs</div>
+          <div class="kpi-sub">Au moins 1 vente</div>
+        </div>
+        <div class="kpi-card kpi-alert">
+          <div class="kpi-value">~57 %</div>
+          <div class="kpi-label">Hébergements à 1 seule vente</div>
+          <div class="kpi-sub">Long tail dormant</div>
+        </div>
+        <div class="kpi-card kpi-positive">
+          <div class="kpi-value">15,5 %</div>
+          <div class="kpi-label">Part CA — Top 20</div>
+          <div class="kpi-sub">Distribution relativement saine</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concentration -->
+    <section class="section">
+      <h2 class="section-title">Concentration des ventes</h2>
+      <div class="chart-row">
+        <div class="chart-card chart-large">
+          <h3 class="chart-title">Répartition du CA par segment de volume</h3>
+          <div class="chart-wrap">
+            <canvas id="chartConcentration"></canvas>
+          </div>
+          <div class="chart-legend-custom" id="legendConcentration"></div>
+        </div>
+        <div class="chart-card chart-small">
+          <h3 class="chart-title">Top 10 hébergements par VA</h3>
+          <div class="top10-list" id="top10List"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Types -->
+    <section class="section">
+      <h2 class="section-title">Analyse par type d'hébergement</h2>
+      <div class="chart-row">
+        <div class="chart-card chart-medium">
+          <h3 class="chart-title">Volume de ventes par catégorie</h3>
+          <div class="chart-wrap">
+            <canvas id="chartTypes"></canvas>
+          </div>
+        </div>
+        <div class="chart-card chart-medium">
+          <h3 class="chart-title">Prix moyen par catégorie</h3>
+          <div class="chart-wrap">
+            <canvas id="chartPrixTypes"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="insight-row">
+        <div class="insight-card insight-star">
+          <div class="insight-icon">★</div>
+          <div class="insight-content">
+            <strong>Bulle — Moteur absolu</strong>
+            <p>285 ventes · 65 341 € · 229 € moy. La bulle + spa privatif est le produit phare du BKDO déguisé sur ABCD. Elle concentre 47 % du volume des 60 premiers hébergements.</p>
+          </div>
+        </div>
+        <div class="insight-card insight-good">
+          <div class="insight-icon">▲</div>
+          <div class="insight-content">
+            <strong>Cabane — Meilleur prix moyen</strong>
+            <p>73 ventes · 18 749 € · 257 € moy. Deuxième moteur avec le meilleur prix moyen parmi les catégories à fort volume. Les cabanes spa privatif surperforment.</p>
+          </div>
+        </div>
+        <div class="insight-card insight-watch">
+          <div class="insight-icon">↗</div>
+          <div class="insight-content">
+            <strong>Dôme — Sous-représenté</strong>
+            <p>62 ventes · 14 566 € · 235 € moy. Prix cohérent mais volume en retrait par rapport au potentiel. Manque de visibilité ou de notoriété des hébergeurs référencés.</p>
+          </div>
+        </div>
+        <div class="insight-card insight-alert">
+          <div class="insight-icon">↓</div>
+          <div class="insight-content">
+            <strong>Roulotte — Format cadeau faible</strong>
+            <p>7 ventes · 790 € · 113 € moy. Prix trop bas pour fonctionner en cadeau premium. Ces hébergements convertissent mieux en réservation directe.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Prix / Volume -->
+    <section class="section">
+      <h2 class="section-title">Analyse prix / volume</h2>
+      <div class="chart-row">
+        <div class="chart-card chart-large">
+          <h3 class="chart-title">Ventes et VA par tranche de prix</h3>
+          <div class="chart-wrap">
+            <canvas id="chartPrix"></canvas>
+          </div>
+        </div>
+        <div class="chart-card chart-small">
+          <h3 class="chart-title">Sweet spot de conversion</h3>
+          <div class="sweetspot-visual">
+            <div class="price-band pb-low">
+              <span class="pb-range">&lt; 150 €</span>
+              <span class="pb-vol">65 ventes</span>
+              <div class="pb-bar" style="width:27%"></div>
+              <span class="pb-tag pb-weak">Faible</span>
+            </div>
+            <div class="price-band pb-medium">
+              <span class="pb-range">150–200 €</span>
+              <span class="pb-vol">111 ventes</span>
+              <div class="pb-bar" style="width:46%"></div>
+              <span class="pb-tag pb-ok">Correct</span>
+            </div>
+            <div class="price-band pb-hot">
+              <span class="pb-range">200–250 €</span>
+              <span class="pb-vol">241 ventes</span>
+              <div class="pb-bar pb-bar-hot" style="width:100%"></div>
+              <span class="pb-tag pb-best">Sweet spot ★</span>
+            </div>
+            <div class="price-band pb-good">
+              <span class="pb-range">250–300 €</span>
+              <span class="pb-vol">127 ventes</span>
+              <div class="pb-bar" style="width:53%"></div>
+              <span class="pb-tag pb-good-tag">Solide</span>
+            </div>
+            <div class="price-band pb-premium">
+              <span class="pb-range">300–350 €</span>
+              <span class="pb-vol">36 ventes</span>
+              <div class="pb-bar" style="width:15%"></div>
+              <span class="pb-tag pb-premium-tag">Premium</span>
+            </div>
+            <div class="price-band pb-ultra">
+              <span class="pb-range">&gt; 350 €</span>
+              <span class="pb-vol">10 ventes</span>
+              <div class="pb-bar" style="width:4%"></div>
+              <span class="pb-tag pb-ultra-tag">Ultra</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Spa vs Non-spa -->
+    <section class="section">
+      <h2 class="section-title">Analyse spa vs non-spa — Catalogue complet</h2>
+
+      <div class="spa-method-note">
+        Méthode : classification par mots-clés (spa, sauna, bain nordique, jacuzzi, balnéo) dans l'intitulé du BKDO. Analyse sur les 700 hébergements du catalogue. VA totale vérifiée à 500 744 €.
+      </div>
+
+      <div class="chart-row">
+        <div class="chart-card chart-medium">
+          <h3 class="chart-title">Catalogue complet — Part du CA</h3>
+          <div class="chart-wrap">
+            <canvas id="chartSpaCatalogue"></canvas>
+          </div>
+          <div class="spa-stats-row">
+            <div class="spa-stat spa-stat-with">
+              <div class="spa-stat-val">~380</div>
+              <div class="spa-stat-label">hébergements avec spa</div>
+              <div class="spa-stat-sub">54 % du catalogue</div>
+            </div>
+            <div class="spa-stat spa-stat-without">
+              <div class="spa-stat-val">~310</div>
+              <div class="spa-stat-label">hébergements sans spa</div>
+              <div class="spa-stat-sub">44 % du catalogue</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="chart-card chart-medium">
+          <h3 class="chart-title">Hébergements performants (6+ ventes) — Prix moyen</h3>
+          <div class="chart-wrap">
+            <canvas id="chartSpaPerf"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card chart-small">
+          <h3 class="chart-title">Les 3 ratios clés</h3>
+          <div class="spa-ratios">
+            <div class="spa-ratio-card">
+              <div class="spa-ratio-num">+34 %</div>
+              <div class="spa-ratio-label">de prix moyen</div>
+              <div class="spa-ratio-detail">124 € vs 93 € (catalogue complet)</div>
+            </div>
+            <div class="spa-ratio-card spa-ratio-highlight">
+              <div class="spa-ratio-num">+74 %</div>
+              <div class="spa-ratio-label">de VA par hébergement</div>
+              <div class="spa-ratio-detail">2 738 € vs 1 571 € (6+ ventes)</div>
+            </div>
+            <div class="spa-ratio-card">
+              <div class="spa-ratio-num">~60 %</div>
+              <div class="spa-ratio-label">du CA total</div>
+              <div class="spa-ratio-detail">générés par 54 % du catalogue</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="spa-comparison-tables">
+        <div class="chart-card" style="flex:1">
+          <h3 class="chart-title">Comparaison globale — Catalogue complet (700 hébergements)</h3>
+          <table class="data-table">
+            <thead>
+              <tr><th>Critère</th><th>Avec spa</th><th>Sans spa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Nb hébergements</td><td>~380 (54 %)</td><td>~310 (44 %)</td></tr>
+              <tr><td>Volume de ventes</td><td>~1 326</td><td>~902</td></tr>
+              <tr><td>VA totale</td><td>~300 800 €</td><td>~200 000 €</td></tr>
+              <tr class="highlight-row"><td><strong>Part du CA</strong></td><td><strong>~60 %</strong></td><td><strong>~40 %</strong></td></tr>
+              <tr><td>Prix moyen</td><td>124 €</td><td>93 €</td></tr>
+              <tr><td>VA moy/hébergement</td><td>~860 €</td><td>~518 €</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="chart-card" style="flex:1">
+          <h3 class="chart-title">Zoom sur les hébergements 6+ ventes (mesure directe)</h3>
+          <table class="data-table">
+            <thead>
+              <tr><th>Critère</th><th>Avec spa</th><th>Sans spa</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Nb hébergements</td><td>38</td><td>31</td></tr>
+              <tr><td>Ventes</td><td>402</td><td>242</td></tr>
+              <tr><td>VA</td><td>104 037 €</td><td>48 687 €</td></tr>
+              <tr class="highlight-row"><td><strong>Prix moyen</strong></td><td><strong>259 €</strong></td><td><strong>201 €</strong></td></tr>
+              <tr class="highlight-row"><td><strong>VA moy/hébergement</strong></td><td><strong>2 738 €</strong></td><td><strong>1 571 €</strong></td></tr>
+              <tr><td>Écart prix</td><td colspan="2" style="text-align:center;color:var(--turquoise);font-weight:700">+29 %</td></tr>
+              <tr><td>Écart VA/hébergement</td><td colspan="2" style="text-align:center;color:var(--turquoise);font-weight:700">+74 %</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="spa-insight">
+        <div class="spa-insight-icon">★</div>
+        <div class="spa-insight-text">
+          <strong>Le spa est le premier prédicteur de performance d'un BKDO déguisé sur ABCD.</strong>
+          54 % du catalogue génèrent 60 % du CA. Sur les hébergements qui vendent vraiment (6+ ventes),
+          l'écart atteint +74 % de VA par hébergement. Recommandation principale : prioriser systématiquement
+          les hébergements avec spa dans la politique de curation et s'assurer que le mot "spa" est explicitement
+          présent dans le titre du BKDO.
+        </div>
+      </div>
+
+      <div class="chart-card" style="margin-top:20px">
+        <h3 class="chart-title">Top hébergements sans spa — locomotives hors bien-être</h3>
+        <div id="noSpaList" class="top10-list"></div>
+      </div>
+    </section>
+
+    <!-- Géographie -->
+    <section class="section">
+      <h2 class="section-title">Analyse géographique — Top 15 départements</h2>
+      <div class="chart-card chart-full">
+        <h3 class="chart-title">VA générée par département (60 premiers hébergements)</h3>
+        <div class="chart-wrap chart-geo">
+          <canvas id="chartGeo"></canvas>
+        </div>
+      </div>
+      <div class="geo-alerts">
+        <div class="geo-alert geo-risk">
+          <strong>Risque de concentration</strong> — Maine-et-Loire (17 227 €, principalement TUFFALUN et Orée d'Anjou) représente une part disproportionnée. La perte d'un seul partenaire local aurait un impact immédiat.
+        </div>
+        <div class="geo-alert geo-opportunity">
+          <strong>Zones sous-exploitées</strong> — PACA, Occitanie intérieure, Pays Basque, Alsace : fort potentiel insolite, quasi-absentes du top. Levier de diversification prioritaire pour Laurine.
+        </div>
+      </div>
+    </section>
+
+    <!-- Segmentation portefeuille -->
+    <section class="section">
+      <h2 class="section-title">Segmentation du portefeuille</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-card p-stars">
+          <div class="p-header">
+            <div class="p-icon">⭐</div>
+            <div class="p-title">Stars</div>
+            <div class="p-count">~20 hébergements</div>
+          </div>
+          <div class="p-desc">10+ ventes · prix moy &gt; 200 €<br>Génèrent ~16 % du CA total.</div>
+          <div class="p-action">Action : Protéger, mettre en avant, auditer les fiches en priorité.</div>
+          <div class="p-examples">Ex : Vignabulle, Bulle Sterenn, Bulle du coq, Bulle de nature</div>
+        </div>
+        <div class="portfolio-card p-potential">
+          <div class="p-header">
+            <div class="p-icon">▲</div>
+            <div class="p-title">Potentiels</div>
+            <div class="p-count">~50 hébergements</div>
+          </div>
+          <div class="p-desc">4–10 ventes · prix moy &gt; 250 €<br>Volume en dessous du potentiel prix.</div>
+          <div class="p-action">Action : Activation commerciale, audit fiche, mise en avant éditoriale.</div>
+          <div class="p-examples">Ex : Coco bohème, Cabane l'Embène, Dôme des Songes, Lov'nid</div>
+        </div>
+        <div class="portfolio-card p-longtail">
+          <div class="p-header">
+            <div class="p-icon">≈</div>
+            <div class="p-title">Longue traîne active</div>
+            <div class="p-count">~240 hébergements</div>
+          </div>
+          <div class="p-desc">2–3 ventes<br>Contribuent ~19 % du CA collectivement.</div>
+          <div class="p-action">Action : Amélioration systémique (fiches, filtres, catégories). Pas d'action individuelle.</div>
+          <div class="p-examples">Actions transversales uniquement</div>
+        </div>
+        <div class="portfolio-card p-dormant">
+          <div class="p-header">
+            <div class="p-icon">○</div>
+            <div class="p-title">Dormants</div>
+            <div class="p-count">~400 hébergements</div>
+          </div>
+          <div class="p-desc">1 seule vente sur l'année<br>~94 000 € VA malgré le faible volume unitaire.</div>
+          <div class="p-action">Action : Communication commerciale groupée (Laurine). Activation par email.</div>
+          <div class="p-examples">Potentiel collectif significatif si 20 % passent à 2–3 ventes</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recommandations -->
+    <section class="section">
+      <h2 class="section-title">Recommandations — Priorités 2026</h2>
+      <div class="reco-list">
+        <div class="reco-item">
+          <div class="reco-num">01</div>
+          <div class="reco-content">
+            <div class="reco-title">Consolider et protéger les Stars</div>
+            <div class="reco-body">Audit des 20 meilleures fiches BKDO : photos, descriptions orientées cadeau, disponibilité calendaire. Mise en avant homepage et newsletter pour les 5 premiers. Zéro litige non résolu sur ce groupe.</div>
+            <div class="reco-tags">
+              <span class="tag">Gaëlle</span><span class="tag">Opérations</span><span class="tag">Impact : Protection CA existant</span>
+            </div>
+          </div>
+        </div>
+        <div class="reco-item">
+          <div class="reco-num">02</div>
+          <div class="reco-content">
+            <div class="reco-title">Activer les Potentiels — levier de croissance immédiat</div>
+            <div class="reco-body">40 à 60 hébergements entre 4 et 10 ventes avec un prix &gt; 280 €. Relance commerciale ciblée par Laurine, audit fiche, sélection éditoriale thématique sur Esprit-Insolite. Simulation : +4 ventes × 300 € × 20 hébergements = +24 000 € VA.</div>
+            <div class="reco-tags">
+              <span class="tag">Laurine</span><span class="tag">Gaëlle</span><span class="tag">Impact : +20 à +30 k€ VA</span>
+            </div>
+          </div>
+        </div>
+        <div class="reco-item">
+          <div class="reco-num">03</div>
+          <div class="reco-content">
+            <div class="reco-title">Développer le segment premium (&gt; 350 €)</div>
+            <div class="reco-body">La Bulle de Printemps (411 €, 10 ventes) prouve que le premium fonctionne. Identifier les hébergements ultra-premium sans BKDO déguisé actif. Créer une sélection éditoriale "expériences premium". Tester une campagne Meta Ads spécifique autour des marronniers (Noël, Saint-Valentin).</div>
+            <div class="reco-tags">
+              <span class="tag">Nicolas</span><span class="tag">Gaëlle</span><span class="tag">Impact : +5 à +10 k€ VA</span>
+            </div>
+          </div>
+        </div>
+        <div class="reco-item">
+          <div class="reco-num">04</div>
+          <div class="reco-content">
+            <div class="reco-title">Extraire les données temporelles 2025</div>
+            <div class="reco-body">Le fichier actuel ne contient pas le mois d'achat. C'est un angle mort critique pour piloter les campagnes 2026 sur les marronniers (Saint-Valentin, Fête des Mères, Noël). Demande à Michel : extraction BKDO déguisés par semaine ISO sur l'année 2025.</div>
+            <div class="reco-tags">
+              <span class="tag">Michel</span><span class="tag">Urgence : Avant campagnes 2026</span>
+            </div>
+          </div>
+        </div>
+        <div class="reco-item">
+          <div class="reco-num">05</div>
+          <div class="reco-content">
+            <div class="reco-title">Diversifier géographiquement — réduire le risque Maine-et-Loire</div>
+            <div class="reco-body">TUFFALUN et Orée d'Anjou concentrent un risque de dépendance. Prospection active en PACA, Occitanie intérieure, Pays Basque, Alsace. Ces zones combinent potentiel insolite fort et sous-représentation dans le top actuel.</div>
+            <div class="reco-tags">
+              <span class="tag">Laurine</span><span class="tag">Impact : Réduction risque + CA additionnel</span>
+            </div>
+          </div>
+        </div>
+        <div class="reco-item">
+          <div class="reco-num">06</div>
+          <div class="reco-content">
+            <div class="reco-title">Améliorer la navigation BKDO sur ABCD</div>
+            <div class="reco-body">Filtres par type d'hébergement, région, tranche de prix dans l'interface BKDO déguisé. Une meilleure navigation augmente la conversion de la longue traîne sans effort individuel hébergement par hébergement. Impact estimé non chiffrable mais systémique.</div>
+            <div class="reco-tags">
+              <span class="tag">Michel</span><span class="tag">Sylvain</span><span class="tag">Impact : Conversion longue traîne</span>
+            </div>
+          </div>
+        </div>
+        <div class="reco-item">
+          <div class="reco-num">07</div>
+          <div class="reco-content">
+            <div class="reco-title">Campagne d'activation des 400 hébergements dormants</div>
+            <div class="reco-body">Email commercial groupé expliquant comment optimiser sa visibilité BKDO, avec 3 actions concrètes (mise à jour photo, description cadeau, calendrier disponibilités). Si 20 % passent de 1 à 3 ventes : +80 hébergeurs × 2 ventes supplémentaires × 235 € = +37 600 € VA potentielle.</div>
+            <div class="reco-tags">
+              <span class="tag">Laurine</span><span class="tag">Gaëlle</span><span class="tag">Impact : +15 à +37 k€ VA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div>AbracadaRoom · Unic Stay · Analyse confidentielle 2025</div>
+    <div>Produit par Claude (Anthropic) · Données : export ventes BKDO déguisés</div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
