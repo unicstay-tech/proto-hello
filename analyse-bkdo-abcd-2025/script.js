@@ -56,6 +56,7 @@ const DATA = {
     ]
   },
 
+  geo: {
     labels: ["Maine-et-Loire", "Ardèche", "Isère", "Côtes-d'Armor", "Dordogne", "Cantal", "Loire", "Vosges", "Jura", "Savoie", "Drôme", "Loire-Atlantique", "Haute-Garonne", "Calvados", "Var"],
     va: [17227, 12222, 10926, 10474, 7409, 6047, 5956, 4373, 4184, 3800, 3784, 3687, 3512, 3063, 2847],
     ventes: [77, 45, 57, 53, 24, 16, 24, 18, 14, 18, 15, 21, 17, 13, 13]
