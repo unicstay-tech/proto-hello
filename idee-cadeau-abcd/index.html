@@ -135,6 +135,36 @@
       font-size: 1rem;
     }
 
+    /* ===== BLOC 3 : BANNIERE B2B ===== */
+    .abcd-b2b-banner {
+      background: linear-gradient(135deg, #7f204e 0%, #5e1839 100%);
+    }
+
+    /* ===== BLOC 4 : REASSURANCE ===== */
+    .abcd-reassurance__icon {
+      width: 56px;
+      height: 56px;
+      background: #e6f7f8;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .abcd-reassurance__icon svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: var(--abcd-turquoise);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .abcd-reassurance__label {
+      font-weight: 600;
+      font-size: 0.9375rem;
+      color: #333;
+    }
+
   </style>
 </head>
 <body>
@@ -204,6 +234,67 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 3 : BANNIERE B2B         -->
+  <!-- ============================== -->
+  <section class="py-4">
+    <div class="container">
+      <div class="abcd-b2b-banner rounded p-4 p-md-5 d-flex flex-column flex-md-row align-items-center justify-content-between text-white">
+        <div class="mb-3 mb-md-0">
+          <h3 class="h5 mb-1">Vous êtes une entreprise ?</h3>
+          <p class="mb-0" style="opacity:0.9;">Offrez un cadeau original à vos collaborateurs avec nos solutions CSE et corporate.</p>
+        </div>
+        <a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/" class="btn btn-outline-light text-nowrap">Découvrir nos offres</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 4 : REASSURANCE           -->
+  <!-- ============================== -->
+  <section class="abcd-reassurance py-5">
+    <div class="container">
+      <h2 class="abcd-section-title text-center mb-5">Les cadeaux AbracadaRoom c'est...</h2>
+      <div class="row text-center">
+        <!-- Valable 18 mois -->
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-reassurance__icon mx-auto mb-3">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <p class="abcd-reassurance__label">Valable 18 mois</p>
+        </div>
+        <!-- 100% insolite garanti -->
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-reassurance__icon mx-auto mb-3">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="abcd-reassurance__label">100% insolite garanti</p>
+        </div>
+        <!-- Paiement sécurisé -->
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-reassurance__icon mx-auto mb-3">
+            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <p class="abcd-reassurance__label">Paiement sécurisé</p>
+        </div>
+        <!-- Réception immédiate par email -->
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-reassurance__icon mx-auto mb-3">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <p class="abcd-reassurance__label">Réception immédiate par email</p>
+        </div>
+        <!-- A partir de 20€ -->
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-reassurance__icon mx-auto mb-3">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <p class="abcd-reassurance__label">A partir de 20 &euro;</p>
+        </div>
       </div>
     </div>
   </section>
