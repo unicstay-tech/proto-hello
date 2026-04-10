@@ -165,6 +165,72 @@
       color: #333;
     }
 
+    /* ===== BLOC 5 : AVIS CLIENTS ===== */
+    .abcd-reviews {
+      background: #fff;
+    }
+    .abcd-reviews__badge {
+      display: inline-flex;
+      align-items: center;
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 16px 24px;
+      gap: 12px;
+      transition: box-shadow 0.3s ease;
+    }
+    .abcd-reviews__badge:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+    .abcd-reviews__stars {
+      color: #f5c518;
+      font-size: 1.125rem;
+      letter-spacing: 2px;
+    }
+    .abcd-reviews__score {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--abcd-text);
+    }
+    .abcd-reviews__source {
+      font-size: 0.8125rem;
+      color: var(--abcd-text-muted);
+    }
+
+    /* ===== BLOC 6 : MOTEUR DE RECHERCHE ===== */
+    .abcd-search-select {
+      background: transparent;
+      font-size: 0.9375rem;
+      padding: 12px 0;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      color: #333;
+    }
+    .abcd-search-divider {
+      width: 1px;
+      height: 24px;
+      background: #e8e8e8;
+    }
+    @media (max-width: 768px) {
+      .abcd-search-bar {
+        flex-direction: column !important;
+        border-radius: 12px !important;
+        padding: 16px !important;
+      }
+      .abcd-search-select {
+        width: 100%;
+        padding: 12px 0;
+        border-bottom: 1px solid #e8e8e8;
+      }
+      .abcd-search-divider { display: none; }
+      .abcd-search-bar .btn {
+        width: 100%;
+        margin-top: 12px;
+        margin-left: 0 !important;
+        border-radius: 8px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -294,6 +360,106 @@
             <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
           </div>
           <p class="abcd-reassurance__label">A partir de 20 &euro;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 5 : AVIS CLIENTS         -->
+  <!-- ============================== -->
+  <section class="abcd-reviews py-4">
+    <div class="container">
+      <div class="d-flex flex-wrap justify-content-center align-items-center" style="gap: 24px;">
+
+        <!-- Badge Avis Verifies -->
+        <div class="abcd-reviews__badge">
+          <div>
+            <div class="abcd-reviews__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="abcd-reviews__score">4.6 / 5</div>
+          </div>
+          <div>
+            <div class="abcd-reviews__source">Avis Vérifiés</div>
+            <div class="text-muted small">+ de 3 000 avis</div>
+          </div>
+        </div>
+
+        <!-- Badge Google -->
+        <div class="abcd-reviews__badge">
+          <div>
+            <div class="abcd-reviews__stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+            <div class="abcd-reviews__score">4.4 / 5</div>
+          </div>
+          <div>
+            <div class="abcd-reviews__source">Google</div>
+            <div class="text-muted small">Avis Google</div>
+          </div>
+        </div>
+
+        <!-- Badge Trustpilot -->
+        <div class="abcd-reviews__badge">
+          <div>
+            <div class="abcd-reviews__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="abcd-reviews__score">5 / 5</div>
+          </div>
+          <div>
+            <div class="abcd-reviews__source">Trustpilot</div>
+            <div class="text-muted small">Note excellente</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 6 : MOTEUR DE RECHERCHE   -->
+  <!-- ============================== -->
+  <section class="abcd-search py-5 bg-light">
+    <div class="container">
+      <p class="text-center text-uppercase font-weight-bold mb-4" style="color:#7f204e; letter-spacing:1px; font-size:0.875rem;">
+        Rechercher une expérience insolite à offrir
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <form action="https://www.abracadaroom.com/fr/idee-cadeau/recherche/" method="get">
+            <div class="abcd-search-bar d-flex align-items-center bg-white rounded-pill shadow-sm p-1 pl-4">
+              <select class="abcd-search-select flex-fill border-0" name="region">
+                <option value="">Région</option>
+                <option value="auvergne-rhone-alpes">Auvergne-Rhône-Alpes</option>
+                <option value="bourgogne-franche-comte">Bourgogne-Franche-Comté</option>
+                <option value="bretagne">Bretagne</option>
+                <option value="centre-val-de-loire">Centre-Val de Loire</option>
+                <option value="corse">Corse</option>
+                <option value="grand-est">Grand Est</option>
+                <option value="hauts-de-france">Hauts-de-France</option>
+                <option value="ile-de-france">Île-de-France</option>
+                <option value="normandie">Normandie</option>
+                <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
+                <option value="occitanie">Occitanie</option>
+                <option value="pays-de-la-loire">Pays de la Loire</option>
+                <option value="provence-alpes-cote-d-azur">Provence-Alpes-Côte d'Azur</option>
+                <option value="belgique">Belgique</option>
+                <option value="suisse">Suisse</option>
+                <option value="espagne">Espagne</option>
+              </select>
+              <div class="abcd-search-divider mx-2"></div>
+              <select class="abcd-search-select flex-fill border-0" name="budget">
+                <option value="">Budget</option>
+                <option value="0-100">- de 100 &euro;</option>
+                <option value="100-250">100 à 250 &euro;</option>
+                <option value="250-500">250 à 500 &euro;</option>
+                <option value="500+">+ de 500 &euro;</option>
+              </select>
+              <div class="abcd-search-divider mx-2"></div>
+              <select class="abcd-search-select flex-fill border-0" name="occupants">
+                <option value="">Nb de personnes</option>
+                <option value="2">2 personnes</option>
+                <option value="3+">3 personnes et +</option>
+              </select>
+              <button class="btn abcd-btn-turquoise ml-2 text-nowrap" type="submit">Rechercher</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
