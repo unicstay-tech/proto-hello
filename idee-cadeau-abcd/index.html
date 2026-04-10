@@ -358,6 +358,42 @@
       color: var(--abcd-turquoise-dark);
     }
 
+    /* ===== BLOC 9 : ON MET LES BOXS ? ===== */
+    .abcd-box-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .abcd-box-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .abcd-box-card img {
+      transition: transform 0.4s ease;
+    }
+    .abcd-box-card:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ===== BLOC 10 : FAQ ===== */
+    .abcd-faq-btn {
+      font-size: 0.9375rem;
+      color: #333;
+      border: none;
+      transition: color 0.2s;
+    }
+    .abcd-faq-btn:hover { color: var(--abcd-turquoise); text-decoration: none; }
+    .abcd-faq-btn:focus { box-shadow: none; }
+    .abcd-faq-btn::after {
+      content: '+';
+      float: right;
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: var(--abcd-turquoise);
+      transition: transform 0.3s ease;
+    }
+    .abcd-faq-btn:not(.collapsed)::after {
+      transform: rotate(45deg);
+    }
+
   </style>
 </head>
 <body>
@@ -772,6 +808,262 @@
       </div>
     </div>
   </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 9 : ON MET LES BOXS ?    -->
+  <!-- ============================== -->
+  <section class="abcd-boxs py-5">
+    <div class="container">
+      <h2 class="abcd-section-title text-center mb-2">On met les boxs ?</h2>
+      <p class="text-center text-muted mb-5">Nos coffrets cadeaux physiques disponibles en boutique</p>
+      <div class="row justify-content-center">
+
+        <!-- Box Nuit Insolite -->
+        <div class="col-sm-6 col-md-4 mb-4">
+          <div class="abcd-box-card text-center p-4 rounded bg-light">
+            <div class="overflow-hidden rounded mb-3 mx-auto" style="width:180px;height:180px;">
+              <img src="https://images.unsplash.com/photo-1549465220-1a8b9238f45f?w=400&q=80" alt="Box Nuit Insolite" class="rounded" style="width:180px;height:180px;object-fit:cover;">
+            </div>
+            <h3 class="h6" style="color:#7f204e;">Box Nuit Insolite</h3>
+            <p class="text-muted small mb-2">Un coffret pour une nuit magique en hébergement insolite</p>
+            <p class="font-weight-bold" style="color:#1babb5;">A partir de 89 &euro;</p>
+          </div>
+        </div>
+
+        <!-- Box Aventure & Nature -->
+        <div class="col-sm-6 col-md-4 mb-4">
+          <div class="abcd-box-card text-center p-4 rounded bg-light">
+            <div class="overflow-hidden rounded mb-3 mx-auto" style="width:180px;height:180px;">
+              <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80" alt="Box Aventure & Nature" class="rounded" style="width:180px;height:180px;object-fit:cover;">
+            </div>
+            <h3 class="h6" style="color:#7f204e;">Box Aventure & Nature</h3>
+            <p class="text-muted small mb-2">Un coffret pour les amoureux de nature et de grands espaces</p>
+            <p class="font-weight-bold" style="color:#1babb5;">A partir de 119 &euro;</p>
+          </div>
+        </div>
+
+        <!-- Box Romantique -->
+        <div class="col-sm-6 col-md-4 mb-4">
+          <div class="abcd-box-card text-center p-4 rounded bg-light">
+            <div class="overflow-hidden rounded mb-3 mx-auto" style="width:180px;height:180px;">
+              <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&q=80" alt="Box Romantique" class="rounded" style="width:180px;height:180px;object-fit:cover;">
+            </div>
+            <h3 class="h6" style="color:#7f204e;">Box Romantique</h3>
+            <p class="text-muted small mb-2">Un coffret pour un week-end en amoureux inoubliable</p>
+            <p class="font-weight-bold" style="color:#1babb5;">A partir de 149 &euro;</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 10 : FAQ ACCORDEON        -->
+  <!-- ============================== -->
+  <section class="abcd-faq py-5 bg-light">
+    <div class="container">
+      <h2 class="abcd-section-title text-center mb-2">Questions fréquentes</h2>
+      <p class="text-center text-muted mb-5">Tout ce qu'il faut savoir avant d'offrir</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div id="abcd-faq-accordion">
+
+            <!-- Q1 -->
+            <div class="card border-0 mb-2 rounded">
+              <div class="card-header bg-white border-0 p-0" id="faq-h-1">
+                <button class="btn btn-block text-left font-weight-bold p-3 abcd-faq-btn collapsed"
+                        data-toggle="collapse" data-target="#faq-1" aria-expanded="false" aria-controls="faq-1">
+                  Quelle est la différence entre une carte cadeau et un bon cadeau ?
+                </button>
+              </div>
+              <div id="faq-1" class="collapse" data-parent="#abcd-faq-accordion" aria-labelledby="faq-h-1">
+                <div class="card-body text-muted pt-0">
+                  La carte cadeau est un montant libre utilisable en plusieurs fois
+                  sur tous les hébergements du site. Le bon cadeau (e-coffret) est lié
+                  à un hébergement spécifique, avec la possibilité de commander les options
+                  disponibles. Les deux sont valables 18 mois.
+                </div>
+              </div>
+            </div>
+
+            <!-- Q2 -->
+            <div class="card border-0 mb-2 rounded">
+              <div class="card-header bg-white border-0 p-0" id="faq-h-2">
+                <button class="btn btn-block text-left font-weight-bold p-3 abcd-faq-btn collapsed"
+                        data-toggle="collapse" data-target="#faq-2" aria-expanded="false" aria-controls="faq-2">
+                  Quelles sont les conditions d'achat d'une carte cadeau ?
+                </button>
+              </div>
+              <div id="faq-2" class="collapse" data-parent="#abcd-faq-accordion" aria-labelledby="faq-h-2">
+                <div class="card-body text-muted pt-0">
+                  La carte cadeau est disponible à partir de 20&euro; et sans montant maximum.
+                  Elle est envoyée instantanément par email au format PDF, ou par courrier postal
+                  sous 2 à 5 jours ouvrés. Le paiement se fait par carte bancaire de manière sécurisée.
+                </div>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="card border-0 mb-2 rounded">
+              <div class="card-header bg-white border-0 p-0" id="faq-h-3">
+                <button class="btn btn-block text-left font-weight-bold p-3 abcd-faq-btn collapsed"
+                        data-toggle="collapse" data-target="#faq-3" aria-expanded="false" aria-controls="faq-3">
+                  Quelle est la durée de validité d'une carte cadeau ?
+                </button>
+              </div>
+              <div id="faq-3" class="collapse" data-parent="#abcd-faq-accordion" aria-labelledby="faq-h-3">
+                <div class="card-body text-muted pt-0">
+                  La carte cadeau AbracadaRoom est valable 18 mois à compter de la date d'achat.
+                  Passé ce délai, le solde restant n'est plus utilisable. Nous vous conseillons
+                  de réserver votre séjour bien en avance pour profiter du meilleur choix de dates.
+                </div>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="card border-0 mb-2 rounded">
+              <div class="card-header bg-white border-0 p-0" id="faq-h-4">
+                <button class="btn btn-block text-left font-weight-bold p-3 abcd-faq-btn collapsed"
+                        data-toggle="collapse" data-target="#faq-4" aria-expanded="false" aria-controls="faq-4">
+                  Quels sont les délais et les modes de livraison ?
+                </button>
+              </div>
+              <div id="faq-4" class="collapse" data-parent="#abcd-faq-accordion" aria-labelledby="faq-h-4">
+                <div class="card-body text-muted pt-0">
+                  La carte cadeau ou le bon cadeau au format électronique (PDF) est envoyé
+                  instantanément par email après le paiement. Pour un envoi postal, comptez
+                  2 à 5 jours ouvrés. Vous pouvez également choisir de recevoir le cadeau
+                  vous-même pour le remettre en main propre.
+                </div>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="card border-0 mb-2 rounded">
+              <div class="card-header bg-white border-0 p-0" id="faq-h-5">
+                <button class="btn btn-block text-left font-weight-bold p-3 abcd-faq-btn collapsed"
+                        data-toggle="collapse" data-target="#faq-5" aria-expanded="false" aria-controls="faq-5">
+                  Je n'ai pas reçu la carte cadeau, comment faire ?
+                </button>
+              </div>
+              <div id="faq-5" class="collapse" data-parent="#abcd-faq-accordion" aria-labelledby="faq-h-5">
+                <div class="card-body text-muted pt-0">
+                  Vérifiez vos courriers indésirables (spam). Si vous ne trouvez pas l'email,
+                  contactez notre service client à l'adresse
+                  <a href="mailto:contact@abracadaroom.com">contact@abracadaroom.com</a>
+                  ou via notre chat en ligne. Nous vous renverrons votre carte cadeau dans les plus brefs délais.
+                </div>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="card border-0 mb-2 rounded">
+              <div class="card-header bg-white border-0 p-0" id="faq-h-6">
+                <button class="btn btn-block text-left font-weight-bold p-3 abcd-faq-btn collapsed"
+                        data-toggle="collapse" data-target="#faq-6" aria-expanded="false" aria-controls="faq-6">
+                  Comment utiliser la carte cadeau ?
+                </button>
+              </div>
+              <div id="faq-6" class="collapse" data-parent="#abcd-faq-accordion" aria-labelledby="faq-h-6">
+                <div class="card-body text-muted pt-0">
+                  Rendez-vous sur <a href="https://www.abracadaroom.com">abracadaroom.com</a>,
+                  choisissez votre hébergement et vos dates, puis saisissez le code de votre
+                  carte cadeau au moment du paiement. Le montant sera automatiquement déduit
+                  de votre commande. Si le montant de votre séjour est inférieur à la carte,
+                  le solde reste utilisable pour une prochaine réservation.
+                </div>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="card border-0 mb-2 rounded">
+              <div class="card-header bg-white border-0 p-0" id="faq-h-7">
+                <button class="btn btn-block text-left font-weight-bold p-3 abcd-faq-btn collapsed"
+                        data-toggle="collapse" data-target="#faq-7" aria-expanded="false" aria-controls="faq-7">
+                  Comment faire si le montant de l'achat est supérieur à la carte cadeau ?
+                </button>
+              </div>
+              <div id="faq-7" class="collapse" data-parent="#abcd-faq-accordion" aria-labelledby="faq-h-7">
+                <div class="card-body text-muted pt-0">
+                  Si le montant de votre réservation dépasse le solde de votre carte cadeau,
+                  vous pouvez régler la différence par carte bancaire au moment du paiement.
+                  Il est également possible de combiner plusieurs cartes cadeaux sur une même commande.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JSON-LD FAQPage Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quelle est la différence entre une carte cadeau et un bon cadeau ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La carte cadeau est un montant libre utilisable en plusieurs fois sur tous les hébergements du site. Le bon cadeau (e-coffret) est lié à un hébergement spécifique, avec la possibilité de commander les options disponibles. Les deux sont valables 18 mois."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelles sont les conditions d'achat d'une carte cadeau ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La carte cadeau est disponible à partir de 20€ et sans montant maximum. Elle est envoyée instantanément par email au format PDF, ou par courrier postal sous 2 à 5 jours ouvrés. Le paiement se fait par carte bancaire de manière sécurisée."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle est la durée de validité d'une carte cadeau ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La carte cadeau AbracadaRoom est valable 18 mois à compter de la date d'achat. Passé ce délai, le solde restant n'est plus utilisable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quels sont les délais et les modes de livraison ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La carte cadeau ou le bon cadeau au format électronique (PDF) est envoyé instantanément par email après le paiement. Pour un envoi postal, comptez 2 à 5 jours ouvrés."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Je n'ai pas reçu la carte cadeau, comment faire ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vérifiez vos courriers indésirables (spam). Si vous ne trouvez pas l'email, contactez notre service client à l'adresse contact@abracadaroom.com ou via notre chat en ligne."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment utiliser la carte cadeau ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Rendez-vous sur abracadaroom.com, choisissez votre hébergement et vos dates, puis saisissez le code de votre carte cadeau au moment du paiement. Le montant sera automatiquement déduit de votre commande."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment faire si le montant de l'achat est supérieur à la carte cadeau ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Si le montant de votre réservation dépasse le solde de votre carte cadeau, vous pouvez régler la différence par carte bancaire au moment du paiement. Il est également possible de combiner plusieurs cartes cadeaux sur une même commande."
+        }
+      }
+    ]
+  }
+  </script>
 
   <!-- jQuery + Popper + Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
