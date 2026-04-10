@@ -33,7 +33,29 @@ const DATA = {
     va: [8794, 19673, 53789, 36120, 11567, 4108]
   },
 
-  geo: {
+  spa: {
+    catalogue: {
+      labels: ["Avec spa (~60 % CA)", "Sans spa (~40 % CA)"],
+      va: [300800, 200000],
+      colors: ["#1babb5", "#ddd8ce"]
+    },
+    perf: {
+      labels: ["Avec spa", "Sans spa"],
+      prix: [259, 201],
+      va_par_heb: [2738, 1571]
+    },
+    noSpa: [
+      { name: "La Bulle sur Rouvres", loc: "Calvados", ventes: 13, prix: 236, va: 3063 },
+      { name: "Dôme au milieu des Alpagas", loc: "Vosges", ventes: 12, prix: 232, va: 2780 },
+      { name: "Dôme étoilé", loc: "Maine-et-Loire", ventes: 11, prix: 237, va: 2602 },
+      { name: "Bulle suspendue — Royaume des Gourmets", loc: "Isère", ventes: 17, prix: 148, va: 2520 },
+      { name: "Dôme les 3 Flocons", loc: "Alpes-Maritimes", ventes: 11, prix: 223, va: 2452 },
+      { name: "Aurore Boréale", loc: "Haute-Saône", ventes: 9, prix: 216, va: 1943 },
+      { name: "EntreNous — La Toue Père et Fils", loc: "Maine-et-Loire", ventes: 7, prix: 262, va: 1832 },
+      { name: "La Palombière", loc: "Gers", ventes: 5, prix: 356, va: 1780 },
+    ]
+  },
+
     labels: ["Maine-et-Loire", "Ardèche", "Isère", "Côtes-d'Armor", "Dordogne", "Cantal", "Loire", "Vosges", "Jura", "Savoie", "Drôme", "Loire-Atlantique", "Haute-Garonne", "Calvados", "Var"],
     va: [17227, 12222, 10926, 10474, 7409, 6047, 5956, 4373, 4184, 3800, 3784, 3687, 3512, 3063, 2847],
     ventes: [77, 45, 57, 53, 24, 16, 24, 18, 14, 18, 15, 21, 17, 13, 13]
@@ -290,6 +312,116 @@ function renderChartPrix() {
   });
 }
 
+// === CHART SPA CATALOGUE ===
+function renderChartSpaCatalogue() {
+  const ctx = document.getElementById("chartSpaCatalogue").getContext("2d");
+  new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels: DATA.spa.catalogue.labels,
+      datasets: [{
+        data: DATA.spa.catalogue.va,
+        backgroundColor: DATA.spa.catalogue.colors,
+        borderWidth: 2,
+        borderColor: "#faf8f4"
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: "65%",
+      plugins: {
+        legend: { position: "bottom", labels: { font: { size: 11 }, boxWidth: 12 } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => ` ${ctx.raw.toLocaleString("fr-FR")} € VA estimée`
+          }
+        }
+      }
+    }
+  });
+}
+
+// === CHART SPA PERFORMANCE ===
+function renderChartSpaPerf() {
+  const ctx = document.getElementById("chartSpaPerf").getContext("2d");
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: DATA.spa.perf.labels,
+      datasets: [
+        {
+          label: "Prix moyen (€)",
+          data: DATA.spa.perf.prix,
+          backgroundColor: [COLORS.turquoise, COLORS.border],
+          borderRadius: 6,
+          borderSkipped: false,
+          yAxisID: "yPrix"
+        },
+        {
+          label: "VA moy/hébergement (€)",
+          data: DATA.spa.perf.va_par_heb,
+          type: "line",
+          borderColor: COLORS.gold,
+          backgroundColor: "rgba(201,146,42,0.1)",
+          pointBackgroundColor: COLORS.gold,
+          pointRadius: 6,
+          fill: false,
+          yAxisID: "yVA"
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { position: "top", labels: { font: { size: 11 }, boxWidth: 12 } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              if (ctx.datasetIndex === 0) return ` ${ctx.raw} € prix moyen`;
+              return ` ${ctx.raw.toLocaleString("fr-FR")} € VA/hébergement`;
+            }
+          }
+        }
+      },
+      scales: {
+        yPrix: {
+          type: "linear", position: "left",
+          grid: { color: "rgba(0,0,0,0.04)" },
+          ticks: { font: { size: 10 }, callback: v => v + " €" },
+          title: { display: true, text: "Prix moyen", font: { size: 10 } }
+        },
+        yVA: {
+          type: "linear", position: "right",
+          grid: { display: false },
+          ticks: { font: { size: 10 }, callback: v => v.toLocaleString("fr-FR") + " €" },
+          title: { display: true, text: "VA/hébergement", font: { size: 10 } }
+        },
+        x: { grid: { display: false }, ticks: { font: { size: 12 } } }
+      }
+    }
+  });
+}
+
+// === NO SPA LIST ===
+function renderNoSpaList() {
+  const container = document.getElementById("noSpaList");
+  DATA.spa.noSpa.forEach((h, i) => {
+    const el = document.createElement("div");
+    el.className = "top10-item";
+    el.innerHTML = `
+      <div class="top10-rank">${i + 1}</div>
+      <div class="top10-info">
+        <div class="top10-name">${h.name}</div>
+        <div class="top10-meta">${h.loc} · ${h.ventes} ventes · ${h.prix} € moy · USP non-spa</div>
+      </div>
+      <div class="top10-va">${h.va.toLocaleString("fr-FR")} €</div>
+    `;
+    container.appendChild(el);
+  });
+}
+
 // === CHART GEO ===
 function renderChartGeo() {
   const ctx = document.getElementById("chartGeo").getContext("2d");
@@ -374,5 +506,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderChartTypes();
   renderChartPrixTypes();
   renderChartPrix();
+  renderChartSpaCatalogue();
+  renderChartSpaPerf();
+  renderNoSpaList();
   renderChartGeo();
 });
