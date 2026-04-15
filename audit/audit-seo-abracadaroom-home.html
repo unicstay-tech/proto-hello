@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audit SEO — AbracadaRoom.com (Home)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #181b24;
+    --surface-2: #1e2230;
+    --border: #2a2e3b;
+    --text: #e4e6ed;
+    --text-muted: #8b90a0;
+    --accent: #6c8cff;
+    --accent-dim: rgba(108,140,255,0.12);
+    --critical: #ff5c5c;
+    --critical-bg: rgba(255,92,92,0.1);
+    --warning: #ffb347;
+    --warning-bg: rgba(255,179,71,0.1);
+    --pass: #4ecb71;
+    --pass-bg: rgba(78,203,113,0.1);
+    --info: #6c8cff;
+    --info-bg: rgba(108,140,255,0.1);
+    --radius: 10px;
+    --font: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    padding: 2rem 1rem;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .header-meta {
+    display: flex; flex-wrap: wrap; gap: 1.5rem;
+    font-size: 0.82rem; color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+  .header-meta span { display: flex; align-items: center; gap: 0.4rem; }
+  .header h1 {
+    font-size: 1.75rem; font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+  }
+  .header h1 span { color: var(--accent); }
+  .header .url {
+    font-family: var(--mono); font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* Score card */
+  .score-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .score-ring {
+    width: 100px; height: 100px; position: relative; flex-shrink: 0;
+  }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring .track { fill: none; stroke: var(--border); stroke-width: 8; }
+  .score-ring .value { fill: none; stroke: var(--warning); stroke-width: 8; stroke-linecap: round;
+    stroke-dasharray: 264; stroke-dashoffset: calc(264 - 264 * 0.57); transition: stroke-dashoffset 1s ease; }
+  .score-number {
+    position: absolute; inset: 0; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.6rem; line-height: 1;
+  }
+  .score-number small { font-size: 0.65rem; font-weight: 500; color: var(--text-muted); margin-top: 4px; }
+  .score-breakdown { flex: 1; min-width: 280px; }
+  .score-row {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.4rem 0; font-size: 0.82rem;
+  }
+  .score-row .label { flex: 1; color: var(--text-muted); }
+  .score-row .bar-wrap { width: 120px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .score-row .bar { height: 100%; border-radius: 3px; }
+  .score-row .pts { width: 36px; text-align: right; font-family: var(--mono); font-weight: 600; font-size: 0.78rem; }
+
+  /* Section */
+  section { margin-bottom: 2.5rem; }
+  section > h2 {
+    font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  section > h2 .num {
+    font-family: var(--mono); font-size: 0.72rem; font-weight: 500;
+    background: var(--accent-dim); color: var(--accent);
+    padding: 0.15rem 0.5rem; border-radius: 4px;
+  }
+
+  /* Finding cards */
+  .finding {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--border);
+  }
+  .finding.critical { border-left-color: var(--critical); }
+  .finding.warning { border-left-color: var(--warning); }
+  .finding.pass { border-left-color: var(--pass); }
+  .finding.info { border-left-color: var(--info); }
+
+  .finding-header {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+  .badge {
+    font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+    padding: 0.15rem 0.45rem; border-radius: 4px;
+    flex-shrink: 0; letter-spacing: 0.04em; margin-top: 2px;
+  }
+  .badge.critical { background: var(--critical-bg); color: var(--critical); }
+  .badge.warning { background: var(--warning-bg); color: var(--warning); }
+  .badge.pass { background: var(--pass-bg); color: var(--pass); }
+  .badge.info { background: var(--info-bg); color: var(--info); }
+
+  .finding-title { font-weight: 600; font-size: 0.9rem; line-height: 1.35; }
+  .finding-id { font-family: var(--mono); font-size: 0.72rem; color: var(--text-muted); margin-left: auto; flex-shrink: 0; }
+
+  .finding-body { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+  .finding-body strong { color: var(--text); font-weight: 500; }
+  .finding-body code {
+    font-family: var(--mono); font-size: 0.78rem;
+    background: var(--surface-2); padding: 0.12rem 0.35rem;
+    border-radius: 3px; color: var(--accent);
+  }
+
+  .evidence, .fix {
+    margin-top: 0.5rem; padding: 0.6rem 0.8rem;
+    border-radius: 6px; font-size: 0.78rem; line-height: 1.55;
+  }
+  .evidence { background: var(--surface-2); color: var(--text-muted); }
+  .fix { background: rgba(78,203,113,0.06); border: 1px solid rgba(78,203,113,0.15); color: var(--text); }
+  .fix::before { content: 'Fix →  '; font-weight: 600; color: var(--pass); }
+
+  /* Pass items compact */
+  .pass-list {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.5rem;
+  }
+  .pass-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--pass);
+    border-radius: var(--radius);
+    padding: 0.65rem 1rem;
+    font-size: 0.82rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .pass-item .check { color: var(--pass); font-weight: 700; }
+
+  /* Env limitation */
+  .env-notice {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.82rem; color: var(--text-muted);
+  }
+  .env-notice strong { color: var(--warning); }
+
+  /* Summary stats */
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.75rem; margin-bottom: 2.5rem;
+  }
+  .stat {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 1rem; text-align: center;
+  }
+  .stat .n { font-size: 1.6rem; font-weight: 700; }
+  .stat .n.red { color: var(--critical); }
+  .stat .n.orange { color: var(--warning); }
+  .stat .n.green { color: var(--pass); }
+  .stat .n.blue { color: var(--info); }
+  .stat .lbl { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+
+  @media (max-width: 600px) {
+    .score-card { flex-direction: column; align-items: stretch; }
+    .score-ring { margin: 0 auto; }
+    .header h1 { font-size: 1.35rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-meta">
+      <span>14 avril 2026</span>
+      <span>Scope : Home only</span>
+      <span>Mobile + Desktop</span>
+    </div>
+    <h1>Audit SEO <span>AbracadaRoom.com</span></h1>
+    <div class="url">https://www.abracadaroom.com/ → redirige vers /en/</div>
+  </div>
+
+  <!-- SCORE -->
+  <div class="score-card">
+    <div class="score-ring">
+      <svg viewBox="0 0 100 100">
+        <circle class="track" cx="50" cy="50" r="42"/>
+        <circle class="value" cx="50" cy="50" r="42"/>
+      </svg>
+      <div class="score-number">57<small>/100</small></div>
+    </div>
+    <div class="score-breakdown">
+      <div class="score-row"><span class="label">Technical SEO</span><div class="bar-wrap"><div class="bar" style="width:60%;background:var(--warning)"></div></div><span class="pts">60</span></div>
+      <div class="score-row"><span class="label">Content Quality</span><div class="bar-wrap"><div class="bar" style="width:65%;background:var(--warning)"></div></div><span class="pts">65</span></div>
+      <div class="score-row"><span class="label">On-Page SEO</span><div class="bar-wrap"><div class="bar" style="width:70%;background:var(--pass)"></div></div><span class="pts">70</span></div>
+      <div class="score-row"><span class="label">Schema / Structured Data</span><div class="bar-wrap"><div class="bar" style="width:40%;background:var(--critical)"></div></div><span class="pts">40</span></div>
+      <div class="score-row"><span class="label">Image Optimization</span><div class="bar-wrap"><div class="bar" style="width:50%;background:var(--warning)"></div></div><span class="pts">50</span></div>
+      <div class="score-row"><span class="label">AI Search Readiness (GEO)</span><div class="bar-wrap"><div class="bar" style="width:30%;background:var(--critical)"></div></div><span class="pts">30</span></div>
+      <div class="score-row"><span class="label">Performance (CWV)</span><div class="bar-wrap"><div class="bar" style="width:0%;background:var(--border)"></div></div><span class="pts" style="color:var(--text-muted)">N/A</span></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="n red">6</div><div class="lbl">Critical</div></div>
+    <div class="stat"><div class="n orange">16</div><div class="lbl">Warning</div></div>
+    <div class="stat"><div class="n green">8</div><div class="lbl">Pass</div></div>
+    <div class="stat"><div class="n blue">4</div><div class="lbl">Info</div></div>
+  </div>
+
+  <!-- ENV NOTICE -->
+  <div class="env-notice">
+    <strong>Limitations d'environnement :</strong> PageSpeed Insights API bloquee (HTTP 403). Aucune donnee Core Web Vitals chiffree disponible. Pas de crawl (home uniquement). Pas d'analyse visuelle Playwright.
+  </div>
+
+  <!-- ================================================ -->
+  <!-- SECTION 1 : TECHNICAL SEO -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">01</span> Technical SEO — 60/100</h2>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">Content-Security-Policy absente</span>
+        <span class="finding-id">T1</span>
+      </div>
+      <div class="finding-body">Header <code>Content-Security-Policy</code> non renvoye. Risque XSS/clickjacking et signal de qualite degrade.</div>
+      <div class="fix">Definir une CSP adaptee aux tiers integres (GTM, Avis Verifies, etc.).</div>
+    </div>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">X-Frame-Options absente</span>
+        <span class="finding-id">T2</span>
+      </div>
+      <div class="finding-body">Risque de clickjacking. Le header n'est pas renvoye.</div>
+      <div class="fix">Ajouter <code>X-Frame-Options: SAMEORIGIN</code>.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Referrer-Policy absente</span>
+        <span class="finding-id">T3</span>
+      </div>
+      <div class="finding-body">Fuite potentielle de referrer vers les domaines tiers.</div>
+      <div class="fix">Ajouter <code>Referrer-Policy: strict-origin-when-cross-origin</code>.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Permissions-Policy absente</span>
+        <span class="finding-id">T4</span>
+      </div>
+      <div class="finding-body">Acces aux API navigateur (camera, micro, geoloc) non restreint.</div>
+      <div class="fix">Ajouter <code>Permissions-Policy: camera=(), microphone=(), geolocation=()</code>.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Redirection racine en 302 au lieu de 301</span>
+        <span class="finding-id">T5</span>
+      </div>
+      <div class="finding-body"><code>abracadaroom.com → 302 → /en/</code> (1455 ms). Link equity non transmise. De plus, un visiteur FR est redirige vers <code>/en/</code> au lieu de <code>/fr/</code>.</div>
+      <div class="fix">Passer en 301. Idealement, detecter <code>Accept-Language</code> et rediriger vers <code>/fr/</code> par defaut pour les francophones, avec un <code>x-default</code> en fallback.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Pas de Sitemap dans robots.txt</span>
+        <span class="finding-id">T6</span>
+      </div>
+      <div class="finding-body">La decouverte du sitemap depend uniquement de GSC.</div>
+      <div class="fix">Ajouter <code>Sitemap: https://www.abracadaroom.com/sitemap.xml</code> dans <code>robots.txt</code>.</div>
+    </div>
+
+    <div class="finding info">
+      <div class="finding-header">
+        <span class="badge info">Info</span>
+        <span class="finding-title">AI crawlers non geres dans robots.txt</span>
+        <span class="finding-id">T7</span>
+      </div>
+      <div class="finding-body">11 user-agents IA (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, CCBot...) sans politique explicite. Pour un site qui veut apparaitre dans les reponses IA, il est recommande de les <strong>autoriser explicitement</strong>.</div>
+    </div>
+
+    <div class="pass-list" style="margin-top:0.75rem">
+      <div class="pass-item"><span class="check">&#10003;</span> HTTPS + HSTS (max-age=31536000; includeSubDomains)</div>
+      <div class="pass-item"><span class="check">&#10003;</span> X-Content-Type-Options: nosniff</div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 2 : ON-PAGE SEO -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">02</span> On-Page SEO — 70/100</h2>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">H2 mal structures (texte decoartif fusionne)</span>
+        <span class="finding-id">O4</span>
+      </div>
+      <div class="finding-body">Les H2 concatenent le texte CSS <code>::before</code>/<code>::after</code> avec le titre. Ex : <code>"The icing on the cake1 booking = 1 good deed"</code>. Bots et lecteurs d'ecran confus.</div>
+      <div class="fix">Separer le label decoratif (CSS) du texte semantique. Le H2 ne doit contenir que le titre reel.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Aucun H3 sur la page</span>
+        <span class="finding-id">O5</span>
+      </div>
+      <div class="finding-body">Hierarchie plate, sections non scannables par les bots et les utilisateurs.</div>
+      <div class="fix">Ajouter des H3 pour les cards de destinations et categories d'hebergements.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Hreflang sans x-default</span>
+        <span class="finding-id">O6</span>
+      </div>
+      <div class="finding-body">5 langues declarees (en/de/fr/es/nl) mais aucun fallback pour les langues hors perimetre.</div>
+      <div class="fix">Ajouter <code>&lt;link rel="alternate" hreflang="x-default" href="https://www.abracadaroom.com/"&gt;</code>.</div>
+    </div>
+
+    <div class="finding info">
+      <div class="finding-header">
+        <span class="badge info">Info</span>
+        <span class="finding-title">Hreflang /de/wishlist/ non exclue dans robots.txt</span>
+        <span class="finding-id">O7</span>
+      </div>
+      <div class="finding-body">Les wishlist sont exclues en es, en, fr, nl mais pas en de. Verifier si <code>/de/</code> est pleinement deployee.</div>
+    </div>
+
+    <div class="pass-list" style="margin-top:0.75rem">
+      <div class="pass-item"><span class="check">&#10003;</span> Title 54 car. (bien calibre)</div>
+      <div class="pass-item"><span class="check">&#10003;</span> Meta description 157 car.</div>
+      <div class="pass-item"><span class="check">&#10003;</span> Canonical self-referentielle correcte</div>
+      <div class="pass-item"><span class="check">&#10003;</span> H1 unique et pertinent</div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 3 : CONTENT QUALITY -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">03</span> Content Quality — 65/100</h2>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Phrases trop longues (28.4 mots/phrase)</span>
+        <span class="finding-id">C1</span>
+      </div>
+      <div class="finding-body">Cible : 15-20 mots/phrase. Une phrase atteint 43 mots. Faible eligibilite aux featured snippets.</div>
+      <div class="fix">Decouper les phrases longues, viser 15-20 mots maximum.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Paragraphes tres longs / mal balises</span>
+        <span class="finding-id">C2</span>
+      </div>
+      <div class="finding-body">32 phrases par paragraphe moyen (probable artefact de blocs sans <code>&lt;p&gt;</code>).</div>
+      <div class="fix">Utiliser des <code>&lt;p&gt;</code> explicites pour chaque paragraphe narratif.</div>
+    </div>
+
+    <div class="finding info">
+      <div class="finding-header">
+        <span class="badge info">Info</span>
+        <span class="finding-title">Lisibilite Flesch 41.9 "Difficult"</span>
+        <span class="finding-id">C3</span>
+      </div>
+      <div class="finding-body">Grade 14.5 (niveau universitaire). Audience grand public : viser Flesch 60+ (grade 8-10) pour ameliorer la conversion.</div>
+    </div>
+
+    <div class="pass-list" style="margin-top:0.75rem">
+      <div class="pass-item"><span class="check">&#10003;</span> 1342 mots sur la home (largement suffisant)</div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 4 : SCHEMA / STRUCTURED DATA -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">04</span> Schema / Structured Data — 40/100</h2>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">Schema WebSite absent (pas de SearchAction)</span>
+        <span class="finding-id">S1</span>
+      </div>
+      <div class="finding-body">Seule une <code>Organization</code> est declaree. Pas de sitelinks searchbox possible.</div>
+      <div class="fix">Ajouter <code>WebSite</code> avec <code>potentialAction: SearchAction</code> pointant sur l'URL de recherche interne.</div>
+    </div>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">BreadcrumbList absent</span>
+        <span class="finding-id">S2</span>
+      </div>
+      <div class="finding-body">Aucun fil d'Ariane dans les SERP. Impact sur toutes les pages internes.</div>
+      <div class="fix">Implementer <code>BreadcrumbList</code> sur la home (1 niveau) et toutes les pages internes.</div>
+    </div>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">Pas de schema metier (LodgingBusiness / TravelAgency)</span>
+        <span class="finding-id">S3</span>
+      </div>
+      <div class="finding-body">Pour une marketplace d'hebergements insolites, c'est une perte massive de rich results dans la verticale voyage.</div>
+      <div class="fix">Ajouter <code>TravelAgency</code> avec <code>areaServed</code>, <code>knowsAbout</code>, <code>offers</code>.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Organization tres allegee</span>
+        <span class="finding-id">S4</span>
+      </div>
+      <div class="finding-body">Seulement <code>name</code>, <code>legalName</code>, <code>url</code>, <code>aggregateRating</code>. Faible E-E-A-T.</div>
+      <div class="fix">Ajouter <code>logo</code>, <code>sameAs</code> (reseaux sociaux), <code>contactPoint</code>, <code>address</code>, <code>foundingDate</code>, <code>founder</code>.</div>
+    </div>
+
+    <div class="pass-list" style="margin-top:0.75rem">
+      <div class="pass-item"><span class="check">&#10003;</span> AggregateRating 4.6/5 (479 avis)</div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 5 : IMAGE OPTIMIZATION -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">05</span> Image Optimization — 50/100</h2>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">Images avec src="" (elements casses)</span>
+        <span class="finding-id">I1</span>
+      </div>
+      <div class="finding-body">Logo et badge Avis Verifies ont un <code>src</code> vide. Elements casses pour les user-agents sans JS, LCP degrade.</div>
+      <div class="fix">Servir le <code>src</code> en HTML natif (utiliser <code>data-src</code> pour le lazy-load JS si besoin, mais fournir un fallback).</div>
+    </div>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">Aucune image avec width/height</span>
+        <span class="finding-id">I2</span>
+      </div>
+      <div class="finding-body">25 images parsees, toutes sans dimensions. <strong>CLS degrade</strong> (Core Web Vital direct).</div>
+      <div class="fix">Ajouter <code>width</code> et <code>height</code> explicites sur chaque <code>&lt;img&gt;</code>.</div>
+    </div>
+
+    <div class="finding critical">
+      <div class="finding-header">
+        <span class="badge critical">Critical</span>
+        <span class="finding-title">Aucune image avec loading="lazy"</span>
+        <span class="finding-id">I3</span>
+      </div>
+      <div class="finding-body">25/25 images sans <code>loading</code> specifie. LCP et bande passante impactes.</div>
+      <div class="fix"><code>loading="lazy"</code> sur les images sous le fold, <code>fetchpriority="high"</code> sur l'image LCP.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Alt text logo avec typo "Abracadroom"</span>
+        <span class="finding-id">I4</span>
+      </div>
+      <div class="finding-body">Le logo footer a un alt <code>"Abracadroom"</code> au lieu de <code>"AbracadaRoom"</code>. Mot-cle brand manque.</div>
+      <div class="fix">Corriger en <code>"AbracadaRoom"</code>.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Formats .jpg/.png uniquement</span>
+        <span class="finding-id">I5</span>
+      </div>
+      <div class="finding-body">Poids 2 a 5x superieur vs AVIF/WebP.</div>
+      <div class="fix">Servir en AVIF/WebP via <code>&lt;picture&gt;</code>.</div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 6 : SOCIAL / OPEN GRAPH -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">06</span> Social / Open Graph — 54/100</h2>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">og:image en URL relative</span>
+        <span class="finding-id">SO1</span>
+      </div>
+      <div class="finding-body"><code>/assets/img/slider/slider.jpg?v=1</code> casse sur les scrapers stricts.</div>
+      <div class="fix">Passer en URL absolue : <code>https://www.abracadaroom.com/assets/img/slider/slider.jpg</code>.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">og:description trop longue (325 car.)</span>
+        <span class="finding-id">SO2</span>
+      </div>
+      <div class="finding-body">Au-dessus des 200 caracteres recommandes. Troncation sur les previews.</div>
+      <div class="fix">Reduire a 150-200 caracteres.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">og:image dimensions vides</span>
+        <span class="finding-id">SO3</span>
+      </div>
+      <div class="finding-body"><code>og:image:width</code> et <code>og:image:height</code> non renseignes. Rendu degrade.</div>
+      <div class="fix">Renseigner 1200x630.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Twitter Card totalement absente</span>
+        <span class="finding-id">SO4</span>
+      </div>
+      <div class="finding-body">Aucun tag <code>twitter:card</code> detecte. Pas de rich preview sur X.</div>
+      <div class="fix">Ajouter <code>twitter:card=summary_large_image</code>, <code>twitter:title</code>, <code>twitter:description</code>, <code>twitter:image</code>.</div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 7 : AI SEARCH READINESS / GEO -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">07</span> AI Search Readiness (GEO) — 30/100</h2>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">llms.txt absent</span>
+        <span class="finding-id">G1</span>
+      </div>
+      <div class="finding-body">Aucun fichier <code>/llms.txt</code> ni <code>/llms-full.txt</code>. Pas d'entree dediee aux LLM.</div>
+      <div class="fix">Creer <code>/llms.txt</code> avec titre, description, liens vers categories (destinations, types d'hebergement, gift card).</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">AI crawlers sans politique</span>
+        <span class="finding-id">G2</span>
+      </div>
+      <div class="finding-body">Indexation IA aleatoire. Pour maximiser la visibilite dans Perplexity/ChatGPT : autoriser explicitement.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">Contenu peu scannable pour les LLM</span>
+        <span class="finding-id">G3</span>
+      </div>
+      <div class="finding-body">Aucun H3, paragraphes fusionnes. Faible citabilite par les moteurs de reponse IA.</div>
+      <div class="fix">Ajouter des sections FAQ-style, listes a puces, definitions courtes.</div>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 8 : PERFORMANCE -->
+  <!-- ================================================ -->
+  <section>
+    <h2><span class="num">08</span> Performance / Core Web Vitals — N/A</h2>
+
+    <div class="finding info">
+      <div class="finding-header">
+        <span class="badge info">Info</span>
+        <span class="finding-title">PSI API bloquee (HTTP 403)</span>
+        <span class="finding-id">P1</span>
+      </div>
+      <div class="finding-body">Pas de score chiffre disponible. Utiliser directement <strong>pagespeed.web.dev</strong> pour obtenir les metriques.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">CLS probablement degrade (hypothese)</span>
+        <span class="finding-id">P2</span>
+      </div>
+      <div class="finding-body">Aucune image avec dimensions definies = reflow au chargement. Cf. findings I2.</div>
+    </div>
+
+    <div class="finding warning">
+      <div class="finding-header">
+        <span class="badge warning">Warning</span>
+        <span class="finding-title">LCP potentiellement lent (hypothese)</span>
+        <span class="finding-id">P3</span>
+      </div>
+      <div class="finding-body">TTFB observe a 1455 ms + images non optimisees. Cf. findings I3, I5, T5.</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

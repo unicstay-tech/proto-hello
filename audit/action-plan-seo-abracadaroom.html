@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Action Plan SEO — AbracadaRoom.com (Home)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #181b24;
+    --surface-2: #1e2230;
+    --border: #2a2e3b;
+    --text: #e4e6ed;
+    --text-muted: #8b90a0;
+    --accent: #6c8cff;
+    --accent-dim: rgba(108,140,255,0.12);
+    --critical: #ff5c5c;
+    --critical-bg: rgba(255,92,92,0.1);
+    --warning: #ffb347;
+    --warning-bg: rgba(255,179,71,0.1);
+    --pass: #4ecb71;
+    --pass-bg: rgba(78,203,113,0.1);
+    --info: #6c8cff;
+    --info-bg: rgba(108,140,255,0.1);
+    --purple: #b48cff;
+    --purple-bg: rgba(180,140,255,0.1);
+    --cyan: #4ecbd6;
+    --cyan-bg: rgba(78,203,214,0.1);
+    --radius: 10px;
+    --font: 'DM Sans', -apple-system, sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    padding: 2rem 1rem;
+  }
+
+  .container { max-width: 960px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .header h1 {
+    font-size: 1.75rem; font-weight: 700;
+    letter-spacing: -0.03em; margin-bottom: 0.3rem;
+  }
+  .header h1 span { color: var(--accent); }
+  .header .sub {
+    font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;
+  }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 1rem;
+    font-size: 0.78rem; color: var(--text-muted);
+  }
+  .legend .chip {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    background: var(--surface); border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem; border-radius: 5px;
+  }
+  .legend .chip strong {
+    font-family: var(--mono); font-weight: 600; color: var(--text);
+  }
+
+  /* Sprint banner */
+  .sprint-banner {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .sprint-box {
+    background: var(--surface-2);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+  }
+  .sprint-box .sprint-label {
+    font-family: var(--mono); font-size: 0.7rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent); margin-bottom: 0.4rem;
+  }
+  .sprint-box h3 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .sprint-box p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+  .sprint-box .gain {
+    margin-top: 0.5rem;
+    font-family: var(--mono); font-size: 0.82rem; font-weight: 600;
+    color: var(--pass);
+  }
+  @media (max-width: 600px) {
+    .sprint-banner { grid-template-columns: 1fr; }
+  }
+
+  /* Section */
+  section { margin-bottom: 2.5rem; }
+  section > h2 {
+    font-size: 1.05rem; font-weight: 700; letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-icon {
+    width: 28px; height: 28px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; flex-shrink: 0;
+  }
+  .icon-quick { background: var(--pass-bg); color: var(--pass); }
+  .icon-secu { background: var(--critical-bg); color: var(--critical); }
+  .icon-schema { background: var(--purple-bg); color: var(--purple); }
+  .icon-image { background: var(--warning-bg); color: var(--warning); }
+  .icon-content { background: var(--info-bg); color: var(--info); }
+  .icon-routing { background: var(--cyan-bg); color: var(--cyan); }
+  .icon-geo { background: var(--accent-dim); color: var(--accent); }
+
+  /* Action row */
+  .action {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0.9rem 1.15rem;
+    margin-bottom: 0.6rem;
+    display: grid;
+    grid-template-columns: 32px 1fr auto auto;
+    align-items: start;
+    gap: 0.75rem;
+  }
+  .action-num {
+    font-family: var(--mono); font-size: 0.78rem; font-weight: 600;
+    color: var(--text-muted);
+    background: var(--surface-2);
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 6px; flex-shrink: 0;
+  }
+  .action-body { min-width: 0; }
+  .action-title {
+    font-size: 0.88rem; font-weight: 600; line-height: 1.4;
+    margin-bottom: 0.2rem;
+  }
+  .action-title code {
+    font-family: var(--mono); font-size: 0.78rem;
+    background: var(--surface-2); padding: 0.1rem 0.3rem;
+    border-radius: 3px; color: var(--accent); font-weight: 400;
+  }
+  .action-detail {
+    font-size: 0.78rem; color: var(--text-muted); line-height: 1.5;
+  }
+  .action-detail code {
+    font-family: var(--mono); font-size: 0.74rem;
+    background: var(--surface-2); padding: 0.1rem 0.3rem;
+    border-radius: 3px; color: var(--accent);
+  }
+  .tag {
+    font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.15rem 0.5rem; border-radius: 4px;
+    white-space: nowrap; align-self: center;
+  }
+  .tag-impact {
+    background: var(--pass-bg); color: var(--pass);
+  }
+  .tag-effort {
+    font-family: var(--mono);
+    background: var(--surface-2); color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  @media (max-width: 600px) {
+    .action {
+      grid-template-columns: 28px 1fr;
+      gap: 0.5rem;
+    }
+    .tag { grid-column: 2; justify-self: start; }
+  }
+
+  /* Not audited */
+  .not-audited {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .not-audited h3 {
+    font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem;
+    color: var(--text-muted);
+  }
+  .not-audited ul {
+    list-style: none; columns: 2; column-gap: 2rem;
+  }
+  .not-audited li {
+    font-size: 0.78rem; color: var(--text-muted); line-height: 1.5;
+    padding: 0.2rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .not-audited li::before {
+    content: ''; position: absolute; left: 0; top: 0.55rem;
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--border);
+  }
+  @media (max-width: 600px) {
+    .not-audited ul { columns: 1; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Action Plan <span>AbracadaRoom.com</span></h1>
+    <div class="sub">Priorise par Impact / Effort. A executer de haut en bas.</div>
+    <div class="legend">
+      <span class="chip"><strong>S</strong> &lt;1h</span>
+      <span class="chip"><strong>M</strong> 1-4h</span>
+      <span class="chip"><strong>L</strong> 1-5j</span>
+      <span class="chip"><strong>XL</strong> sprint</span>
+    </div>
+  </div>
+
+  <!-- SPRINT BANNER -->
+  <div class="sprint-banner">
+    <div class="sprint-box">
+      <div class="sprint-label">Sprint 1 — ~1 semaine</div>
+      <h3>Quick wins + securite + schema de base</h3>
+      <p>Taches 1 a 16 + 19, 22, 29, 30</p>
+      <div class="gain">+15 pts → score ~72</div>
+    </div>
+    <div class="sprint-box">
+      <div class="sprint-label">Sprint 2 — ~2 semaines</div>
+      <h3>Schema metier + CWV + contenu</h3>
+      <p>Taches 17, 18, 20, 21, 23 a 28, 31</p>
+      <div class="gain">+10-15 pts → score ~85</div>
+    </div>
+  </div>
+
+  <!-- ========== QUICK WINS ========== -->
+  <section>
+    <h2><div class="section-icon icon-quick">&#9889;</div> Quick wins (S, fort impact)</h2>
+
+    <div class="action">
+      <div class="action-num">1</div>
+      <div class="action-body">
+        <div class="action-title">Passer la redirection racine de 302 en 301</div>
+        <div class="action-detail"><code>/</code> → <code>/en/</code> actuellement en 302. Link equity non transmise.</div>
+      </div>
+      <span class="tag tag-impact">Link equity</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">2</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter Sitemap dans <code>robots.txt</code></div>
+        <div class="action-detail"><code>Sitemap: https://www.abracadaroom.com/sitemap.xml</code></div>
+      </div>
+      <span class="tag tag-impact">Decouverte</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">3</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>x-default</code> aux hreflang</div>
+        <div class="action-detail"><code>&lt;link rel="alternate" hreflang="x-default" href="https://www.abracadaroom.com/"&gt;</code></div>
+      </div>
+      <span class="tag tag-impact">i18n SEO</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">4</div>
+      <div class="action-body">
+        <div class="action-title">Corriger <code>og:image</code> en URL absolue + dimensions</div>
+        <div class="action-detail">Renseigner <code>og:image:width=1200</code> et <code>og:image:height=630</code>.</div>
+      </div>
+      <span class="tag tag-impact">Social CTR</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">5</div>
+      <div class="action-body">
+        <div class="action-title">Raccourcir <code>og:description</code> a 180 caracteres</div>
+        <div class="action-detail">Actuellement 325 car. Troncation sur les previews sociaux.</div>
+      </div>
+      <span class="tag tag-impact">Social CTR</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">6</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter Twitter Card</div>
+        <div class="action-detail"><code>summary_large_image</code> + <code>twitter:title</code>, <code>twitter:description</code>, <code>twitter:image</code>.</div>
+      </div>
+      <span class="tag tag-impact">Social CTR</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">7</div>
+      <div class="action-body">
+        <div class="action-title">Corriger la typo alt logo : "Abracadroom" → "AbracadaRoom"</div>
+        <div class="action-detail">Footer logo. Mot-cle brand manque.</div>
+      </div>
+      <span class="tag tag-impact">Brand</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">8</div>
+      <div class="action-body">
+        <div class="action-title">Reparer les <code>&lt;img src=""&gt;</code> vides</div>
+        <div class="action-detail">Logo et badge Avis Verifies. Fournir un src HTML par defaut.</div>
+      </div>
+      <span class="tag tag-impact">LCP</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+  </section>
+
+  <!-- ========== SECURITE ========== -->
+  <section>
+    <h2><div class="section-icon icon-secu">&#128274;</div> Securite</h2>
+
+    <div class="action">
+      <div class="action-num">9</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>X-Frame-Options: SAMEORIGIN</code></div>
+        <div class="action-detail">Anti-clickjacking.</div>
+      </div>
+      <span class="tag tag-impact">Securite</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">10</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>Referrer-Policy: strict-origin-when-cross-origin</code></div>
+        <div class="action-detail">Eviter les fuites de referrer.</div>
+      </div>
+      <span class="tag tag-impact">Privacy</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">11</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>Permissions-Policy</code></div>
+        <div class="action-detail"><code>camera=(), microphone=(), geolocation=()</code></div>
+      </div>
+      <span class="tag tag-impact">Privacy</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">12</div>
+      <div class="action-body">
+        <div class="action-title">Deployer une Content-Security-Policy</div>
+        <div class="action-detail">Commencer en <code>report-only</code> pour auditer les tiers (GTM, Avis Verifies, Safebooking).</div>
+      </div>
+      <span class="tag tag-impact">Securite</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+  </section>
+
+  <!-- ========== SCHEMA ========== -->
+  <section>
+    <h2><div class="section-icon icon-schema">&#123;&#125;</div> Schema / Structured Data</h2>
+
+    <div class="action">
+      <div class="action-num">13</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>WebSite</code> avec <code>SearchAction</code></div>
+        <div class="action-detail">Active le sitelinks searchbox dans les SERP.</div>
+      </div>
+      <span class="tag tag-impact">SERP features</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">14</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>BreadcrumbList</code> sur toutes les pages</div>
+        <div class="action-detail">Rich result breadcrumb dans Google.</div>
+      </div>
+      <span class="tag tag-impact">Rich results</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">15</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>TravelAgency</code></div>
+        <div class="action-detail">Avec <code>areaServed</code>, <code>knowsAbout</code>, <code>sameAs</code>, <code>logo</code>, <code>contactPoint</code>. Gros levier E-E-A-T + verticale voyage.</div>
+      </div>
+      <span class="tag tag-impact">E-E-A-T</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">16</div>
+      <div class="action-body">
+        <div class="action-title">Enrichir <code>Organization</code> existante</div>
+        <div class="action-detail">Ajouter <code>logo</code>, <code>sameAs</code> (FB/IG/Pinterest), <code>address</code>, <code>foundingDate</code>.</div>
+      </div>
+      <span class="tag tag-impact">E-E-A-T</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">17</div>
+      <div class="action-body">
+        <div class="action-title">Pages hebergement : <code>LodgingBusiness</code> + <code>Product/Offer</code> + <code>AggregateRating</code></div>
+        <div class="action-detail">Hors scope de cet audit home. Rich cards voyage par bien.</div>
+      </div>
+      <span class="tag tag-impact">Rich cards</span>
+      <span class="tag tag-effort">L</span>
+    </div>
+  </section>
+
+  <!-- ========== IMAGES & CWV ========== -->
+  <section>
+    <h2><div class="section-icon icon-image">&#9881;</div> Images & Core Web Vitals</h2>
+
+    <div class="action">
+      <div class="action-num">18</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>width</code> et <code>height</code> sur toutes les images</div>
+        <div class="action-detail">25 images sans dimensions. Impact direct sur le CLS.</div>
+      </div>
+      <span class="tag tag-impact">CLS</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">19</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter <code>loading="lazy"</code> + <code>fetchpriority="high"</code></div>
+        <div class="action-detail">Lazy sur images sous le fold, fetchpriority sur le slider (LCP).</div>
+      </div>
+      <span class="tag tag-impact">LCP</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">20</div>
+      <div class="action-body">
+        <div class="action-title">Servir les images en AVIF/WebP via <code>&lt;picture&gt;</code></div>
+        <div class="action-detail">Slider, logo, badges. Gain poids 2 a 5x.</div>
+      </div>
+      <span class="tag tag-impact">LCP + bande passante</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">21</div>
+      <div class="action-body">
+        <div class="action-title">Pre-connecter les domaines tiers</div>
+        <div class="action-detail"><code>&lt;link rel="preconnect"&gt;</code> pour avis-verifies.com, GTM, etc.</div>
+      </div>
+      <span class="tag tag-impact">LCP</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">22</div>
+      <div class="action-body">
+        <div class="action-title">Mesurer CWV reels via pagespeed.web.dev</div>
+        <div class="action-detail">Etablir une baseline chiffree et iterer.</div>
+      </div>
+      <span class="tag tag-impact">Tracking</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+  </section>
+
+  <!-- ========== CONTENU ========== -->
+  <section>
+    <h2><div class="section-icon icon-content">&#9998;</div> Contenu & semantique</h2>
+
+    <div class="action">
+      <div class="action-num">23</div>
+      <div class="action-body">
+        <div class="action-title">Nettoyer la hierarchie H2</div>
+        <div class="action-detail">Separer le label decoratif CSS (<code>::before</code>) du texte semantique. Le H2 ne doit contenir que le titre reel.</div>
+      </div>
+      <span class="tag tag-impact">Structure SEO</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">24</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter des H3 sur les cards destinations/types</div>
+        <div class="action-detail">Rendre la page scannable pour les bots et les utilisateurs.</div>
+      </div>
+      <span class="tag tag-impact">Scannabilite</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">25</div>
+      <div class="action-body">
+        <div class="action-title">Decouper les phrases &gt;20 mots</div>
+        <div class="action-detail">Flesch actuel 41.9 "Difficult". Cible : 60+ (grade 8-10).</div>
+      </div>
+      <span class="tag tag-impact">Readability + AEO</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">26</div>
+      <div class="action-body">
+        <div class="action-title">Baliser les paragraphes en <code>&lt;p&gt;</code> explicites</div>
+        <div class="action-detail">Structure HTML mal decoupee actuellement.</div>
+      </div>
+      <span class="tag tag-impact">Structure</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+  </section>
+
+  <!-- ========== ROUTING ========== -->
+  <section>
+    <h2><div class="section-icon icon-routing">&#127760;</div> Routing & internationalisation</h2>
+
+    <div class="action">
+      <div class="action-num">27</div>
+      <div class="action-body">
+        <div class="action-title">Rediriger la racine selon Accept-Language</div>
+        <div class="action-detail">Default = <code>/fr/</code> pour les francophones. Ou servir une landing neutre en <code>x-default</code>.</div>
+      </div>
+      <span class="tag tag-impact">UX + bounce</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">28</div>
+      <div class="action-body">
+        <div class="action-title">Verifier que <code>/de/</code> est bien deployee</div>
+        <div class="action-detail">Sinon retirer des hreflang et de la liste de wishlist.</div>
+      </div>
+      <span class="tag tag-impact">Coherence hreflang</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+  </section>
+
+  <!-- ========== GEO ========== -->
+  <section>
+    <h2><div class="section-icon icon-geo">&#129302;</div> AI Search Readiness (GEO)</h2>
+
+    <div class="action">
+      <div class="action-num">29</div>
+      <div class="action-body">
+        <div class="action-title">Creer <code>/llms.txt</code></div>
+        <div class="action-detail">Titre, description courte, liens vers pages cles : destinations, types, gift card, qui-sommes-nous.</div>
+      </div>
+      <span class="tag tag-impact">Visibilite IA</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">30</div>
+      <div class="action-body">
+        <div class="action-title">Politique AI crawlers dans <code>robots.txt</code></div>
+        <div class="action-detail">Autoriser explicitement GPTBot, ClaudeBot, PerplexityBot, Google-Extended.</div>
+      </div>
+      <span class="tag tag-impact">GEO</span>
+      <span class="tag tag-effort">S</span>
+    </div>
+
+    <div class="action">
+      <div class="action-num">31</div>
+      <div class="action-body">
+        <div class="action-title">Ajouter des blocs Q/R courts pour AEO</div>
+        <div class="action-detail">100-200 car. Ex : "Qu'est-ce que le glamping ?", "Combien coute une nuit en cabane dans les arbres ?"</div>
+      </div>
+      <span class="tag tag-impact">Featured snippets</span>
+      <span class="tag tag-effort">M</span>
+    </div>
+  </section>
+
+  <!-- ========== NOT AUDITED ========== -->
+  <div class="not-audited">
+    <h3>Hors perimetre de cet audit</h3>
+    <ul>
+      <li>Autres pages (destinations, fiches hebergement, panier, gift card, blog)</li>
+      <li>Sitemaps XML</li>
+      <li>Backlinks / link profile externe</li>
+      <li>Concurrence</li>
+      <li>Donnees CWV reelles (PSI bloque)</li>
+      <li>Analyse visuelle (screenshots, above-the-fold, responsiveness)</li>
+      <li>Crawl des liens internes casses</li>
+      <li>Duplicate content entre versions linguistiques</li>
+      <li>GSC / Search Console data</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>
