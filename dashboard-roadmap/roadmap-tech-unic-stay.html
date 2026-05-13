@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap tech Unic Stay — 13 mai au 31 décembre 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF8F4;
+    --surface: #FFFFFF;
+    --ink: #1A1814;
+    --ink-soft: #5C574E;
+    --ink-mute: #8F8A7E;
+    --line: #E6E1D5;
+    --line-strong: #D4CDBC;
+    --accent: #2C5F4F;
+
+    --c-skeepers: #B8456E;
+    --c-skeepers-bg: #FBEAF0;
+    --c-v2: #534AB7;
+    --c-v2-bg: #EEEDFE;
+    --c-crm: #1D7A5A;
+    --c-crm-bg: #E1F5EE;
+    --c-obs: #2D6FB8;
+    --c-obs-bg: #E6F1FB;
+    --c-booking: #B84A24;
+    --c-booking-bg: #FAECE7;
+    --c-perf: #9A5F0F;
+    --c-perf-bg: #FAEEDA;
+    --c-hr: #5C4A9E;
+    --c-hr-bg: #EEEDFE;
+    --c-misc: #6B6961;
+    --c-misc-bg: #F1EFE8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 48px 96px;
+  }
+
+  /* ===== HEADER ===== */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 32px;
+    margin-bottom: 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 32px;
+  }
+
+  .masthead-left {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--ink-soft);
+    max-width: 540px;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: right;
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+
+  .meta strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ===== METRICS ===== */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 64px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .metric {
+    padding: 24px 0;
+    padding-right: 24px;
+    border-right: 1px solid var(--line);
+  }
+  .metric:last-child { border-right: none; padding-right: 0; }
+  .metric:not(:first-child) { padding-left: 24px; }
+
+  .metric-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+
+  .metric-value {
+    font-family: 'Fraunces', serif;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 56px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 1px;
+  }
+
+  .nav a {
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-bottom: 12px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+    font-weight: 500;
+  }
+
+  .nav a:hover { color: var(--ink); }
+
+  .nav a.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ===== SECTION ===== */
+  section {
+    margin-bottom: 80px;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-number {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-mute);
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .section-tag {
+    margin-left: auto;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-mute);
+  }
+
+  /* ===== LEGEND ===== */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+
+  /* ===== GANTT ===== */
+  .gantt-wrap {
+    overflow-x: auto;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px;
+  }
+
+  .gantt {
+    min-width: 920px;
+  }
+
+  .gantt-header {
+    display: flex;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 12px;
+  }
+
+  .gantt-label-col {
+    width: 220px;
+    flex-shrink: 0;
+  }
+
+  .gantt-months {
+    display: flex;
+    flex: 1;
+  }
+
+  .gantt-month {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    padding: 10px 0;
+    text-align: center;
+    border-left: 1px solid var(--line);
+    font-weight: 500;
+  }
+
+  .gantt-row {
+    display: flex;
+    align-items: center;
+    height: 36px;
+  }
+
+  .gantt-row:hover { background: rgba(0,0,0,0.015); }
+
+  .gantt-label {
+    width: 220px;
+    flex-shrink: 0;
+    font-size: 13px;
+    padding-right: 16px;
+    color: var(--ink);
+  }
+
+  .gantt-track {
+    position: relative;
+    flex: 1;
+    height: 100%;
+  }
+
+  .gantt-grid {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .gantt-bar {
+    position: absolute;
+    top: 8px;
+    height: 20px;
+    border-radius: 3px;
+    border-left: 3px solid;
+  }
+
+  .gantt-milestone {
+    position: absolute;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg);
+    border-radius: 2px;
+  }
+
+  /* ===== CHANTIER CARDS ===== */
+  .chantier-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .chantier {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 3px solid;
+    border-radius: 4px;
+    padding: 28px 32px;
+  }
+
+  .chantier-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .chantier-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .chantier-title {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .chantier-summary {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .chantier-period {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .phases {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .phase {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .phase-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-mute);
+    line-height: 1.3;
+  }
+
+  .phase-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .phase-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .phase-detail {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* ===== MONTH ===== */
+  .month {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-bottom: 16px;
+  }
+
+  .month-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .month-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .month-name {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  .month-subtitle {
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .month-stats {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-align: right;
+  }
+
+  .month-stat strong {
+    display: block;
+    color: var(--ink);
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Fraunces', serif;
+    margin-bottom: 2px;
+  }
+
+  .month-objective {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--ink-soft);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .month-chantiers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .month-chantier {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .month-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 500;
+    text-align: center;
+    height: fit-content;
+    margin-top: 2px;
+  }
+
+  .month-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+
+  /* ===== POINTS ATTENTION ===== */
+  .attention {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin-top: 24px;
+  }
+
+  .attention-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  .attention ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .attention li {
+    padding-left: 20px;
+    position: relative;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .attention li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+    font-size: 12px;
+    color: var(--ink-mute);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { background: white; }
+    .nav { display: none; }
+    section { page-break-inside: avoid; }
+    .month, .chantier { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 768px) {
+    .page { padding: 32px 20px; }
+    .masthead { grid-template-columns: 1fr; }
+    h1 { font-size: 32px; }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .metric { border-right: none; border-bottom: 1px solid var(--line); padding: 16px 0 !important; }
+    .month-head { grid-template-columns: 1fr; }
+    .month-stats { text-align: left; }
+    .month-chantier { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead-left">
+      <span class="eyebrow">Roadmap tech · Unic Stay</span>
+      <h1>Du 13 mai au 31 décembre 2026</h1>
+      <p class="subtitle">Plan technique sur 7 mois et demi : Skeepers, Vacation V2, CRM Brevo, observabilité, workflow booking, perf ABCD et préparation 2027.</p>
+    </div>
+    <div class="meta">
+      <span>Version <strong>1.0</strong></span>
+      <span>13 mai 2026</span>
+    </div>
+  </header>
+
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-label">Budget restant</div>
+      <div class="metric-value">51 000 €</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Total 2026 prévu</div>
+      <div class="metric-value">73 375 €</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Michel · jours max</div>
+      <div class="metric-value">93 j</div>
+    </div>
+    <div class="metric">
+      <div class="metric-label">Sylvain · jours max</div>
+      <div class="metric-value">21,5 j</div>
+    </div>
+  </div>
+
+  <nav class="nav">
+    <a href="#gantt" class="active">Timeline</a>
+    <a href="#chantiers">Par chantier</a>
+    <a href="#mensuel">Vue mensuelle</a>
+    <a href="#attention">Points d'attention</a>
+  </nav>
+
+  <!-- ============ GANTT ============ -->
+  <section id="gantt">
+    <div class="section-head">
+      <span class="section-number">i.</span>
+      <h2>Timeline gantt</h2>
+      <span class="section-tag">Vue parallèle</span>
+    </div>
+
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-skeepers)"></span>Skeepers</span>
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-v2)"></span>Vacation V2</span>
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-crm)"></span>CRM Brevo</span>
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-obs)"></span>Observabilité</span>
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-booking)"></span>Workflow booking</span>
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-perf)"></span>Perf ABCD</span>
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-hr)"></span>Host Rider</span>
+      <span class="legend-item"><span class="legend-dot" style="background: var(--c-misc)"></span>Autres</span>
+    </div>
+
+    <div class="gantt-wrap">
+      <div class="gantt" id="gantt-content"></div>
+    </div>
+  </section>
+
+  <!-- ============ CHANTIERS ============ -->
+  <section id="chantiers">
+    <div class="section-head">
+      <span class="section-number">ii.</span>
+      <h2>Vue par chantier</h2>
+      <span class="section-tag">Phases internes</span>
+    </div>
+    <div class="chantier-grid" id="chantiers-content"></div>
+  </section>
+
+  <!-- ============ MENSUEL ============ -->
+  <section id="mensuel">
+    <div class="section-head">
+      <span class="section-number">iii.</span>
+      <h2>Vue mensuelle détaillée</h2>
+      <span class="section-tag">Mois par mois</span>
+    </div>
+    <div id="mensuel-content"></div>
+  </section>
+
+  <!-- ============ ATTENTION ============ -->
+  <section id="attention">
+    <div class="section-head">
+      <span class="section-number">iv.</span>
+      <h2>Points d'attention</h2>
+      <span class="section-tag">À surveiller</span>
+    </div>
+    <div class="attention">
+      <ul>
+        <li><strong>Skeepers en prod début juin</strong> : deadline serrée, tout glissement décale toute la suite du plan.</li>
+        <li><strong>CRM Brevo démarre mi-juin maximum</strong>, dépendance amont marketing (Gaëlle, Juliana) sur les scénarios et attributs.</li>
+        <li><strong>Tests Vacation V2 répartis juillet à octobre</strong> : bande passante équipe à libérer, sujet de délégation non tranché.</li>
+        <li><strong>Tests upgrade PHP 8 + Laravel ABCD concentrés en novembre</strong>, en parallèle de la mise en prod V2 (mois chargé).</li>
+        <li><strong>Septembre-octobre chargés côté HR</strong> : traductions automatiques + photos en parallèle du workflow booking et démarrage upgrade ABCD.</li>
+        <li><strong>Module carte cadeau reporté à 2027</strong>, lié à la brique paiement à spécifier sur octobre-décembre.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <span>Roadmap tech Unic Stay · 13 mai 2026</span>
+    <span>Document interne</span>
+  </footer>
+
+</div>
+
+<script>
+  // ============ GANTT ============
+  const totalWeeks = 33;
+  const monthWeeks = [
+    { name: 'Mai', start: 0, weeks: 3 },
+    { name: 'Juin', start: 3, weeks: 4 },
+    { name: 'Juil.', start: 7, weeks: 4 },
+    { name: 'Août', start: 11, weeks: 4 },
+    { name: 'Sept.', start: 15, weeks: 5 },
+    { name: 'Oct.', start: 20, weeks: 4 },
+    { name: 'Nov.', start: 24, weeks: 5 },
+    { name: 'Déc.', start: 29, weeks: 4 }
+  ];
+
+  const ganttChantiers = [
+    { label: 'Skeepers', color: 'var(--c-skeepers)', bg: 'var(--c-skeepers-bg)', startWeek: 0, endWeek: 4, milestone: { week: 4 } },
+    { label: 'Audits Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', startWeek: 0, endWeek: 7 },
+    { label: 'Préprod Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', startWeek: 7, endWeek: 11 },
+    { label: 'Tests Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', startWeek: 7, endWeek: 24 },
+    { label: 'Mise en prod Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', startWeek: 24, endWeek: 29, milestone: { week: 29 } },
+    { label: 'CRM Brevo', color: 'var(--c-crm)', bg: 'var(--c-crm-bg)', startWeek: 5, endWeek: 15 },
+    { label: 'Observabilité logs', color: 'var(--c-obs)', bg: 'var(--c-obs-bg)', startWeek: 7, endWeek: 11 },
+    { label: 'Observabilité tracing', color: 'var(--c-obs)', bg: 'var(--c-obs-bg)', startWeek: 11, endWeek: 17 },
+    { label: 'Workflow booking', color: 'var(--c-booking)', bg: 'var(--c-booking-bg)', startWeek: 11, endWeek: 24 },
+    { label: 'Perf ABCD (requêtes)', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', startWeek: 7, endWeek: 15 },
+    { label: 'Upgrade PHP 8 + Laravel ABCD', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', startWeek: 20, endWeek: 24 },
+    { label: 'Tests upgrade PHP 8 + Laravel', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', startWeek: 24, endWeek: 29 },
+    { label: 'Traduction auto HR + CG', color: 'var(--c-hr)', bg: 'var(--c-hr-bg)', startWeek: 15, endWeek: 20 },
+    { label: 'Optimisation HR photos', color: 'var(--c-hr)', bg: 'var(--c-hr-bg)', startWeek: 20, endWeek: 24 },
+    { label: 'Specs paiement + gifts 2027', color: 'var(--c-misc)', bg: 'var(--c-misc-bg)', startWeek: 20, endWeek: 33 }
+  ];
+
+  const weekWidth = 22;
+  const ganttEl = document.getElementById('gantt-content');
+
+  let html = '<div class="gantt-header"><div class="gantt-label-col"></div><div class="gantt-months">';
+  monthWeeks.forEach(m => {
+    html += `<div class="gantt-month" style="width: ${m.weeks * weekWidth}px">${m.name}</div>`;
+  });
+  html += '</div></div>';
+
+  ganttChantiers.forEach(c => {
+    html += '<div class="gantt-row">';
+    html += `<div class="gantt-label">${c.label}</div>`;
+    html += '<div class="gantt-track">';
+    monthWeeks.forEach(m => {
+      html += `<div class="gantt-grid" style="left: ${m.start * weekWidth}px"></div>`;
+    });
+    html += `<div class="gantt-bar" style="left: ${c.startWeek * weekWidth}px; width: ${(c.endWeek - c.startWeek) * weekWidth}px; background: ${c.bg}; border-left-color: ${c.color}"></div>`;
+    if (c.milestone) {
+      html += `<div class="gantt-milestone" style="left: ${c.milestone.week * weekWidth - 6}px; background: ${c.color}"></div>`;
+    }
+    html += '</div></div>';
+  });
+
+  ganttEl.innerHTML = html;
+
+  // ============ CHANTIERS ============
+  const chantiersData = [
+    {
+      title: 'Skeepers',
+      color: 'var(--c-skeepers)', bg: 'var(--c-skeepers-bg)',
+      period: 'Mai → début juin',
+      summary: 'Migration finale avant décommissionnement Genesis API',
+      phases: [
+        { name: 'Finition implémentation', detail: '2-3h restantes, coordination Hanane' },
+        { name: 'Mise en préprod', detail: 'Tests internes, déduplication côté Vacation' },
+        { name: 'Mise en prod', detail: 'Début juin, suppression de 4 crons ABCD' }
+      ]
+    },
+    {
+      title: 'Vacation V2',
+      color: 'var(--c-v2)', bg: 'var(--c-v2-bg)',
+      period: 'Mai → novembre',
+      summary: 'API plus robuste en cohabitation V1/V2',
+      phases: [
+        { name: 'Audits en continu', detail: 'Mai et juin, robustification, jusqu\'à la préprod' },
+        { name: 'Mise en préprod', detail: 'Juillet, identification des sujets critiques' },
+        { name: 'Tests', detail: 'Juillet à octobre, pricing, synchro ical, onboarding' },
+        { name: 'Mise en prod', detail: 'Novembre, coexistence V1/V2 maintenue' }
+      ]
+    },
+    {
+      title: 'CRM Brevo',
+      color: 'var(--c-crm)', bg: 'var(--c-crm-bg)',
+      period: 'Mi-juin → août',
+      summary: 'Glu de départ et branchement events de réservation',
+      phases: [
+        { name: 'Glu de départ', detail: 'Alimentation initiale Vacation vers Brevo' },
+        { name: 'Branchement events résa', detail: 'Triggers automatisés sur les scénarios' },
+        { name: 'Attributs Vacation', detail: 'Total spend cumulé, reset après email, segmentation' }
+      ]
+    },
+    {
+      title: 'Observabilité et monitoring',
+      color: 'var(--c-obs)', bg: 'var(--c-obs-bg)',
+      period: 'Juillet → septembre',
+      summary: 'Prérequis non négociable avant le workflow booking',
+      phases: [
+        { name: 'Phase 1 : logs centralisés', detail: 'Victoria Logs, agrégation Vacation, Vallée, BFF, Host Rider' },
+        { name: 'Phase 2 : tracing', detail: 'Data flow complet d\'une résa, traçabilité MBB' }
+      ]
+    },
+    {
+      title: 'Workflow booking',
+      color: 'var(--c-booking)', bg: 'var(--c-booking-bg)',
+      period: 'Août → octobre',
+      summary: 'Refonte sur Vacation V2, fin du blocage 30 minutes',
+      phases: [
+        { name: 'Refonte sur V2', detail: 'Sortir du blocage 30 min remonté par les clients' },
+        { name: 'Tests intensifs', detail: 'Vérification absence de régression sur le paiement' }
+      ]
+    },
+    {
+      title: 'Perf ABCD',
+      color: 'var(--c-perf)', bg: 'var(--c-perf-bg)',
+      period: 'Juillet → novembre',
+      summary: 'Réorientation assumée pour ROI court terme',
+      phases: [
+        { name: 'Optim requêtes SQL et cache', detail: 'Juillet et août, pages hébergement et accueil' },
+        { name: 'Upgrade PHP 8 et Laravel', detail: 'Octobre, bump de performance x1,5 mécanique' },
+        { name: 'Tests upgrade', detail: 'Novembre, ouvre la voie à Kafka et Meilisearch' }
+      ]
+    },
+    {
+      title: 'Host Rider (HR)',
+      color: 'var(--c-hr)', bg: 'var(--c-hr-bg)',
+      period: 'Septembre → octobre',
+      summary: 'Améliorations front partenaires',
+      phases: [
+        { name: 'Traduction automatique HR et CG', detail: 'Septembre, automatisation multilingue' },
+        { name: 'Optimisation HR photos', detail: 'Octobre, gestion et performance des médias' }
+      ]
+    },
+    {
+      title: 'Specs paiement et gifts 2027',
+      color: 'var(--c-misc)', bg: 'var(--c-misc-bg)',
+      period: 'Octobre → décembre',
+      summary: 'Préparation de la brique paiement pour la migration MBB',
+      phases: [
+        { name: 'Spécifications fonctionnelles', detail: 'Workflow paiement, carte cadeau' },
+        { name: 'Validation PSP', detail: 'Modèle 1PY ou 3PY, engagement écrit' },
+        { name: 'Préparation 2027', detail: 'Module carte cadeau Q1, migration booking Q2' }
+      ]
+    }
+  ];
+
+  const chantiersEl = document.getElementById('chantiers-content');
+  chantiersEl.innerHTML = chantiersData.map(c => `
+    <div class="chantier" style="border-left-color: ${c.color}">
+      <div class="chantier-head">
+        <div class="chantier-title-block">
+          <div class="chantier-title">${c.title}</div>
+          <div class="chantier-summary">${c.summary}</div>
+        </div>
+        <span class="chantier-period" style="background: ${c.bg}; color: ${c.color}">${c.period}</span>
+      </div>
+      <div class="phases">
+        ${c.phases.map((p, i) => `
+          <div class="phase">
+            <div class="phase-num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="phase-content">
+              <div class="phase-name">${p.name}</div>
+              <div class="phase-detail">${p.detail}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  // ============ MENSUEL ============
+  const moisData = [
+    {
+      nom: 'Mai',
+      sousTitre: 'du 13 au 31, demi-mois',
+      michel: 6, sylvain: 1.5, cost: 3225,
+      objectif: 'Finaliser Skeepers et préparer la suite',
+      chantiers: [
+        { tag: 'Skeepers', color: 'var(--c-skeepers)', bg: 'var(--c-skeepers-bg)', items: ['Finalisation implémentation (2-3h)', 'Coordination Hanane : mail cette semaine, call S+1'] },
+        { tag: 'Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', items: ['Lancement audits en routine'] },
+        { tag: 'Perf ABCD', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', items: ['2h d\'analyse Codex/Claude Code sur les pages lentes'] },
+        { tag: 'Divers', color: 'var(--c-misc)', bg: 'var(--c-misc-bg)', items: ['Nettoyage statuts ClickUp (templates spec/kanban)'] }
+      ]
+    },
+    {
+      nom: 'Juin',
+      sousTitre: 'Skeepers en prod début juin',
+      michel: 13, sylvain: 3, cost: 6900,
+      objectif: 'Livrer Skeepers, démarrer CRM et estimer observabilité',
+      chantiers: [
+        { tag: 'Skeepers', color: 'var(--c-skeepers)', bg: 'var(--c-skeepers-bg)', items: ['Mise en préprod', 'Tests', 'Mise en prod début juin', 'Suppression de 4 crons ABCD'] },
+        { tag: 'CRM Brevo', color: 'var(--c-crm)', bg: 'var(--c-crm-bg)', items: ['Démarrage mi-juin : glu de départ', 'Branchement events de résa'] },
+        { tag: 'Observabilité', color: 'var(--c-obs)', bg: 'var(--c-obs-bg)', items: ['Estimation détaillée (2h interactives avec Claude)'] },
+        { tag: 'Divers', color: 'var(--c-misc)', bg: 'var(--c-misc-bg)', items: ['Export mensuel paiements via queue + email (US-9107)'] }
+      ]
+    },
+    {
+      nom: 'Juillet',
+      sousTitre: 'Pivot vers Vacation V2',
+      michel: 13, sylvain: 3, cost: 6900,
+      objectif: 'Mettre V2 en préprod, démarrer perf ABCD et observabilité',
+      chantiers: [
+        { tag: 'Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', items: ['Mise en préprod', 'Tests : pricing, synchro ical, onboarding'] },
+        { tag: 'CRM Brevo', color: 'var(--c-crm)', bg: 'var(--c-crm-bg)', items: ['Suite : attributs Vacation, triggers'] },
+        { tag: 'Observabilité', color: 'var(--c-obs)', bg: 'var(--c-obs-bg)', items: ['Phase 1 : logs centralisés Victoria Logs (½ journée)'] },
+        { tag: 'Perf ABCD', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', items: ['Optim requêtes page hébergement (SQL et cache)'] }
+      ]
+    },
+    {
+      nom: 'Août',
+      sousTitre: 'CRM finalisé, perf en cours',
+      michel: 13, sylvain: 3, cost: 6900,
+      objectif: 'Finir CRM, démarrer workflow booking et tracing',
+      chantiers: [
+        { tag: 'CRM Brevo', color: 'var(--c-crm)', bg: 'var(--c-crm-bg)', items: ['Finition : tous les scénarios opérationnels'] },
+        { tag: 'Observabilité', color: 'var(--c-obs)', bg: 'var(--c-obs-bg)', items: ['Phase 2 : tracing complet d\'une résa'] },
+        { tag: 'Perf ABCD', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', items: ['Optim requêtes page accueil et résultats'] },
+        { tag: 'Workflow booking', color: 'var(--c-booking)', bg: 'var(--c-booking-bg)', items: ['Démarrage refonte sur V2 (sortie blocage 30 min)'] },
+        { tag: 'Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', items: ['Tests V2 en continu'] }
+      ]
+    },
+    {
+      nom: 'Septembre',
+      sousTitre: 'Workflow booking et traductions HR',
+      michel: 13, sylvain: 3, cost: 6900,
+      objectif: 'Finir observabilité, avancer booking, livrer traductions HR',
+      chantiers: [
+        { tag: 'Observabilité', color: 'var(--c-obs)', bg: 'var(--c-obs-bg)', items: ['Finalisation tracing'] },
+        { tag: 'Workflow booking', color: 'var(--c-booking)', bg: 'var(--c-booking-bg)', items: ['Suite refonte', 'Tests intensifs'] },
+        { tag: 'Host Rider', color: 'var(--c-hr)', bg: 'var(--c-hr-bg)', items: ['Traduction automatique HR et traduction CG'] },
+        { tag: 'Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', items: ['Tests V2 en continu'] }
+      ]
+    },
+    {
+      nom: 'Octobre',
+      sousTitre: 'Upgrade ABCD et photos HR',
+      michel: 13, sylvain: 3, cost: 6900,
+      objectif: 'Upgrade PHP 8 + Laravel, finir booking, livrer photos HR',
+      chantiers: [
+        { tag: 'Perf ABCD', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', items: ['Upgrade PHP 8 + Laravel ABCD'] },
+        { tag: 'Workflow booking', color: 'var(--c-booking)', bg: 'var(--c-booking-bg)', items: ['Finalisation refonte'] },
+        { tag: 'Host Rider', color: 'var(--c-hr)', bg: 'var(--c-hr-bg)', items: ['Optimisation HR photos'] },
+        { tag: 'Specs 2027', color: 'var(--c-misc)', bg: 'var(--c-misc-bg)', items: ['Démarrage specs paiement et gifts'] },
+        { tag: 'Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', items: ['Tests V2 (dernier mois)'] }
+      ]
+    },
+    {
+      nom: 'Novembre',
+      sousTitre: 'Mise en prod Vacation V2',
+      michel: 13, sylvain: 3, cost: 6900,
+      objectif: 'Mettre V2 en prod et tester upgrade ABCD',
+      chantiers: [
+        { tag: 'Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', items: ['Mise en prod', 'Coexistence V1/V2 maintenue', 'Correctifs post-prod'] },
+        { tag: 'Perf ABCD', color: 'var(--c-perf)', bg: 'var(--c-perf-bg)', items: ['Tests upgrade PHP 8 + Laravel'] },
+        { tag: 'Specs 2027', color: 'var(--c-misc)', bg: 'var(--c-misc-bg)', items: ['Suite specs paiement et gifts'] }
+      ]
+    },
+    {
+      nom: 'Décembre',
+      sousTitre: 'Stabilisation et préparation 2027',
+      michel: 9, sylvain: 2, cost: 4750,
+      objectif: 'Stabiliser V2 en prod, finaliser specs 2027',
+      chantiers: [
+        { tag: 'Vacation V2', color: 'var(--c-v2)', bg: 'var(--c-v2-bg)', items: ['Stabilisation prod', 'Correctifs résiduels'] },
+        { tag: 'Specs 2027', color: 'var(--c-misc)', bg: 'var(--c-misc-bg)', items: ['Finalisation specs paiement et gifts', 'Validation PSP, 1PY ou 3PY'] },
+        { tag: 'Divers', color: 'var(--c-misc)', bg: 'var(--c-misc-bg)', items: ['Buffer / dette technique', 'Audits récurrents'] }
+      ]
+    }
+  ];
+
+  const mensuelEl = document.getElementById('mensuel-content');
+  mensuelEl.innerHTML = moisData.map(m => `
+    <div class="month">
+      <div class="month-head">
+        <div class="month-title-block">
+          <div class="month-name">${m.nom}</div>
+          <div class="month-subtitle">${m.sousTitre}</div>
+        </div>
+        <div class="month-stats">
+          <div class="month-stat"><strong>${m.michel}</strong>Michel · j</div>
+          <div class="month-stat"><strong>${m.sylvain}</strong>Sylvain · j</div>
+          <div class="month-stat"><strong>${m.cost.toLocaleString('fr-FR')} €</strong>Coût</div>
+        </div>
+      </div>
+      <div class="month-objective">${m.objectif}</div>
+      <div class="month-chantiers">
+        ${m.chantiers.map(c => `
+          <div class="month-chantier">
+            <div class="month-tag" style="background: ${c.bg}; color: ${c.color}">${c.tag}</div>
+            <div class="month-items">
+              ${c.items.map(it => `<div>${it}</div>`).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+
+  // ============ NAV ACTIVE ============
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('.nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      const rect = s.getBoundingClientRect();
+      if (rect.top <= 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
