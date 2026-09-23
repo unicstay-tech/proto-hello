@@ -547,43 +547,14 @@
     .abcd-carousel__btn[disabled] { opacity: 0; pointer-events: none; }
     @media (max-width: 767px) { .abcd-carousel__btn { display: none; } }
 
-    /* ===== BLOC 9 : COFFRETS EN MAGASIN ===== */
-    .abcd-coffrets {
+    /* ===== BLOC 9 : COFFRETS (bandeau discret) ===== */
+    .abcd-coffret-band {
+      border: 1px solid #e3e3e3;
+      border-radius: 12px;
+      padding: 20px 28px;
       background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-      overflow: hidden;
     }
-    .abcd-coffrets__visual { min-height: 320px; height: 100%; }
-    .abcd-stores {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-    }
-    @media (max-width: 575px) { .abcd-stores { grid-template-columns: repeat(3, 1fr); } }
-    .abcd-store-logo {
-      height: 64px;
-      padding: 4px;
-      border: 1px dashed #cfcfcf;
-      border-radius: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: var(--abcd-title);
-      font-size: 0.9375rem;
-      line-height: 1.1;
-      text-align: center;
-      background: #fafafa;
-    }
-    .abcd-store-logo small {
-      font-size: 0.625rem;
-      font-weight: 600;
-      color: var(--abcd-text-muted);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
+    .abcd-coffret-band__title { font-size: 1.125rem; font-weight: 700; color: var(--abcd-title); margin-bottom: 2px; }
 
     /* ===== BLOC 10 : FAQ ===== */
     .abcd-faq .card { border: 0; border-bottom: 1px solid #e3e3e3; border-radius: 0; background: transparent; }
@@ -769,77 +740,9 @@
   </section>
 
   <!-- ============================== -->
-  <!-- BLOC 3&nbsp;: LES FORMATS CADEAUX   -->
-  <!-- ============================== -->
-  <section class="abcd-formats py-5">
-    <div class="container py-md-4">
-      <div class="text-center mb-5">
-        <span class="abcd-eyebrow">Comme vous voulez</span>
-        <h2 class="abcd-section-title">Les formats <span>cadeaux</span></h2>
-      </div>
-      <div class="row">
-        <!-- Par e-mail -->
-        <div class="col-md-4 mb-4">
-          <div class="abcd-format">
-            <div class="abcd-icon">
-              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <h3 class="abcd-format__title">Par e-mail</h3>
-            <p>Carte ou bon en PDF, réception immédiate après paiement.</p>
-          </div>
-        </div>
-        <!-- Par courrier -->
-        <div class="col-md-4 mb-4">
-          <div class="abcd-format">
-            <div class="abcd-icon">
-              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-            </div>
-            <h3 class="abcd-format__title">Par courrier</h3>
-            <p>Carte cadeau en enveloppe, 5 à 7&nbsp;jours ouvrés en France métropolitaine.</p>
-          </div>
-        </div>
-        <!-- En coffret -->
-        <div class="col-md-4 mb-4">
-          <div class="abcd-format">
-            <div class="abcd-icon">
-              <svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
-            </div>
-            <h3 class="abcd-format__title">En coffret</h3>
-            <p>Box physique, disponible en ligne ou en magasin.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== -->
-  <!-- BLOC 4&nbsp;: ENTREPRISE (inchangé) -->
-  <!-- ============================== -->
-  <section class="pb-5">
-    <div class="container">
-      <div class="abcd-b2b">
-        <div class="row no-gutters">
-          <div class="col-md-5">
-            <!-- Visuel repris de la page carte cadeau en prod -->
-            <img class="abcd-b2b__img" src="https://www.abracadaroom.com/assets/img/ckdo/19-cadeau-collaborateur.jpg" alt="Collaborateurs réunis autour d'un cocktail d'entreprise" loading="lazy">
-          </div>
-          <div class="col-md-7 d-flex align-items-center">
-            <div class="p-4 p-md-5">
-              <span class="abcd-eyebrow">Cadeaux d'entreprise</span>
-              <h2 class="abcd-b2b__title">Vous êtes une entreprise&nbsp;?</h2>
-              <p class="mb-4" style="font-size:1.0625rem;">Offrez un cadeau original à vos collaborateurs avec nos solutions CSE et corporate.</p>
-              <a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos offres</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== -->
   <!-- BLOC 5&nbsp;: REASSURANCE           -->
   <!-- ============================== -->
-  <section class="abcd-reassurance py-5 bg-abcd-light">
+  <section class="abcd-reassurance pt-2 pb-5 bg-abcd-light">
     <div class="container py-md-3">
       <h2 class="abcd-section-title text-center mb-5">Les cadeaux AbracadaRoom, <span>c'est...</span></h2>
       <div class="row text-center justify-content-center">
@@ -868,9 +771,43 @@
   </section>
 
   <!-- ============================== -->
+  <!-- BLOC 3&nbsp;: LES FORMATS CADEAUX   -->
+  <!-- ============================== -->
+  <section class="abcd-formats py-5">
+    <div class="container py-md-4">
+      <div class="text-center mb-5">
+        <span class="abcd-eyebrow">Comme vous voulez</span>
+        <h2 class="abcd-section-title">Les formats <span>cadeaux</span></h2>
+      </div>
+      <div class="row justify-content-center">
+        <!-- Par e-mail -->
+        <div class="col-md-6 col-lg-5 mb-4">
+          <div class="abcd-format">
+            <div class="abcd-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3 class="abcd-format__title">Par e-mail</h3>
+            <p>Carte ou bon en PDF, réception immédiate après paiement.</p>
+          </div>
+        </div>
+        <!-- Par courrier -->
+        <div class="col-md-6 col-lg-5 mb-4">
+          <div class="abcd-format">
+            <div class="abcd-icon">
+              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3 class="abcd-format__title">Par courrier, à remettre en main propre</h3>
+            <p>Carte cadeau en enveloppe, 5 à 7&nbsp;jours ouvrés en France métropolitaine.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
   <!-- BLOC 6&nbsp;: RECHERCHE SIMPLIFIEE (inchangée, ancre du CTA header) -->
   <!-- ============================== -->
-  <section id="recherche-simplifiee" class="abcd-search py-5">
+  <section id="recherche-simplifiee" class="abcd-search py-5 bg-abcd-light">
     <div class="container py-md-3">
       <div class="text-center mb-4">
         <span class="abcd-eyebrow">Recherche simplifiée</span>
@@ -924,7 +861,7 @@
   <!-- ============================== -->
   <!-- BLOC 7&nbsp;: NOS EXPERIENCES       -->
   <!-- ============================== -->
-  <section class="abcd-experiences py-5 bg-abcd-light">
+  <section class="abcd-experiences py-5">
     <div class="container py-md-4">
       <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
         <div>
@@ -1023,7 +960,7 @@
   <!-- ============================== -->
   <!-- BLOC 8&nbsp;: 1000 RAISONS D'OFFRIR -->
   <!-- ============================== -->
-  <section class="abcd-reasons py-5">
+  <section class="abcd-reasons py-5 bg-abcd-light">
     <div class="container py-md-4">
       <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
         <div>
@@ -1091,35 +1028,40 @@
   </section>
 
   <!-- ============================== -->
-  <!-- BLOC 9&nbsp;: NOS COFFRETS, AUSSI EN MAGASIN -->
+  <!-- BLOC 4&nbsp;: ENTREPRISE (inchangé) -->
   <!-- ============================== -->
-  <section class="abcd-coffrets-section py-5 bg-abcd-light">
-    <div class="container py-md-4">
-      <div class="abcd-coffrets">
+  <section class="pt-5 pb-3">
+    <div class="container">
+      <div class="abcd-b2b">
         <div class="row no-gutters">
-          <div class="col-lg-5">
-            <div class="abcd-placeholder abcd-coffrets__visual">[VISUEL À FOURNIR]</div>
+          <div class="col-md-5">
+            <!-- Visuel repris de la page carte cadeau en prod -->
+            <img class="abcd-b2b__img" src="https://www.abracadaroom.com/assets/img/ckdo/19-cadeau-collaborateur.jpg" alt="Collaborateurs réunis autour d'un cocktail d'entreprise" loading="lazy">
           </div>
-          <div class="col-lg-7">
+          <div class="col-md-7 d-flex align-items-center">
             <div class="p-4 p-md-5">
-              <span class="abcd-eyebrow">À offrir en main propre</span>
-              <h2 class="abcd-section-title mb-3">Nos coffrets, <span>aussi en magasin</span></h2>
-              <p style="font-size:1.0625rem; line-height:1.6;" class="mb-4">
-                Les coffrets cadeaux physiques AbracadaRoom s'offrent en main propre. Ils sont valables 3&nbsp;ans et utilisables sur l'ensemble des hébergements du site.
-              </p>
-              <p class="font-weight-bold mb-3" style="color:var(--abcd-title);">Disponibles chez nos partenaires</p>
-              <!-- Logos magasins&nbsp;: placeholders, logos officiels à fournir -->
-              <div class="abcd-stores mb-4">
-                <div class="abcd-store-logo">Fnac<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Cultura<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Nature &amp; Découvertes<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Amazon<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Darty<small>Logo à fournir</small></div>
-              </div>
-              <a href="https://www.abracadaroom.com/fr/coffret-cadeau/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos coffrets</a>
+              <span class="abcd-eyebrow">Cadeaux d'entreprise</span>
+              <h2 class="abcd-b2b__title">Vous êtes une entreprise&nbsp;?</h2>
+              <p class="mb-4" style="font-size:1.0625rem;">Offrez un cadeau original à vos collaborateurs avec nos solutions CSE et corporate.</p>
+              <a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos offres</a>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 9 : COFFRETS (bandeau volontairement discret : produit moins rentable) -->
+  <!-- ============================== -->
+  <section class="py-4">
+    <div class="container">
+      <div class="abcd-coffret-band d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+        <div class="mb-2 mb-md-0 pr-md-4">
+          <h2 class="abcd-coffret-band__title">Vous préférez un coffret cadeau&nbsp;?</h2>
+          <p class="mb-0">Nos coffrets sont valables 3&nbsp;ans et utilisables sur l'ensemble des hébergements du site.</p>
+        </div>
+        <a href="https://www.abracadaroom.com/fr/coffret-cadeau/" class="abcd-link-arrow text-nowrap">Découvrir nos coffrets &rarr;</a>
       </div>
     </div>
   </section>
