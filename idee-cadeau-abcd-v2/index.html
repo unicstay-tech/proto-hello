@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idées cadeaux nuit et week end insolites : 3500 e-coffrets</title>
+  <meta name="description" content="À la recherche d’une idée cadeau originale ? Offrez une nuit ou un week-end insolite partout en France : cabanes, bulles, lodges et séjours d’exception.">
+
+  <!-- Image du header : préchargée, jamais en lazy-load (LCP) -->
+  <link rel="preload" as="image" href="img/header-cabane.webp">
+
+  <!-- Bootstrap 4.3.1 CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- Police Barlow : déjà chargée sur la boutique cadeau en prod (box.css), pas de nouvelle dépendance -->
+  <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,600,700,900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== VARIABLES & GLOBALS =====
+       Charte reprise de la boutique cadeau en prod (/assets/css/box.css) */
+    :root {
+      --abcd-yellow: #eac12d;
+      --abcd-yellow-dark: #d4ab17;
+      --abcd-yellow-soft: #fbf3d5;
+      --abcd-magenta: #9e3669;
+      --abcd-magenta-dark: #7f204e;
+      --abcd-magenta-soft: #f6e8ef;
+      --abcd-text: #4d4d4d;
+      --abcd-title: #2b2b2b;
+      --abcd-text-muted: #8e8b8b;
+      --abcd-light: #f3f3f3;
+    }
+
+    body {
+      color: var(--abcd-text);
+      font-family: 'Barlow', sans-serif;
+      font-size: 1rem;
+    }
+    a { color: var(--abcd-magenta); }
+    a:hover { color: var(--abcd-magenta-dark); }
+    .bg-abcd-light { background: var(--abcd-light); }
+
+    /* ===== SHARED COMPONENTS ===== */
+    .abcd-section-title {
+      color: var(--abcd-title);
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .abcd-section-title span { color: var(--abcd-magenta); }
+    .abcd-section-sub {
+      color: var(--abcd-text-muted);
+      font-size: 1.125rem;
+    }
+    .abcd-eyebrow {
+      display: inline-block;
+      color: var(--abcd-magenta);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .abcd-btn {
+      border-radius: 50px;
+      padding: 12px 32px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.9375rem;
+      transition: background-color .2s, border-color .2s, color .2s, transform .2s;
+    }
+    .abcd-btn:hover { transform: translateY(-1px); }
+    .abcd-btn-yellow {
+      background-color: var(--abcd-yellow);
+      border: 2px solid var(--abcd-yellow);
+      color: #2b2b2b;
+    }
+    .abcd-btn-yellow:hover {
+      background-color: var(--abcd-yellow-dark);
+      border-color: var(--abcd-yellow-dark);
+      color: #2b2b2b;
+    }
+    .abcd-btn-magenta {
+      background-color: var(--abcd-magenta);
+      border: 2px solid var(--abcd-magenta);
+      color: #fff;
+    }
+    .abcd-btn-magenta:hover {
+      background-color: var(--abcd-magenta-dark);
+      border-color: var(--abcd-magenta-dark);
+      color: #fff;
+    }
+    .abcd-btn-ghost {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.85);
+      color: #fff;
+    }
+    .abcd-btn-ghost:hover { background: #fff; color: var(--abcd-title); }
+
+    .abcd-link-arrow {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.875rem;
+      color: var(--abcd-magenta);
+    }
+    .abcd-link-arrow:hover { color: var(--abcd-magenta-dark); text-decoration: none; }
+
+    /* Placeholder visuel (photos à fournir) */
+    .abcd-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 12px, transparent 12px 24px),
+        linear-gradient(135deg, #6b5a63 0%, #3d3238 100%);
+      color: rgba(255,255,255,0.75);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    /* ===== BLOC 0 : SUR-HEADER + MENU (repris de la prod) ===== */
+    .abcd-topbar { background: #fff; }
+    .abcd-link-back {
+      color: var(--abcd-text-muted);
+      font-size: 0.8125rem;
+    }
+    .abcd-link-back::before { content: '\2190'; margin-right: 8px; }
+    .abcd-link-back:hover { color: var(--abcd-text); text-decoration: none; }
+    .abcd-btn-sm {
+      border-radius: 50px;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 6px 20px;
+    }
+    .abcd-btn-sm.abcd-btn-yellow { color: #fff; }
+    .abcd-btn-outline-yellow {
+      border: 2px solid var(--abcd-yellow);
+      color: var(--abcd-yellow-dark);
+      background: #fff;
+    }
+    .abcd-btn-outline-yellow:hover { background: var(--abcd-yellow); color: #fff; }
+    .abcd-navbar .navbar-brand img { height: 56px; width: auto; }
+    .abcd-navbar .nav-link {
+      color: var(--abcd-title) !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9375rem;
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+      white-space: nowrap;
+    }
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .abcd-navbar .nav-link { font-size: 0.8125rem; padding-left: 7px !important; padding-right: 7px !important; }
+      .abcd-navbar .navbar-brand img { height: 46px; }
+    }
+    .abcd-navbar .nav-link:hover { color: var(--abcd-magenta) !important; }
+    .abcd-navbar .nav-link.abcd-nav-highlight { color: var(--abcd-magenta) !important; }
+    .abcd-navbar .nav-link.abcd-nav-highlight::before,
+    .abcd-navbar .nav-link.abcd-nav-highlight::after { content: '\2726'; margin: 0 6px; font-size: 0.75rem; }
+    @media (max-width: 991px) {
+      .abcd-navbar .navbar-brand img { height: 44px; }
+      .abcd-navbar .nav-link { padding: 10px 0 !important; border-bottom: 1px solid #eee; }
+    }
+
+    /* ===== BLOC 1 : HEADER IMMERSIF =====
+       Contenu à gauche (logique page carte cadeau), cabane visible sur la droite */
+    .abcd-hero {
+      position: relative;
+      min-height: calc(100vh - 134px);
+      min-height: max(560px, calc(100svh - 134px));
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      overflow: hidden;
+      background: #1d1a17;
+    }
+    .abcd-hero__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 140%;
+      max-width: none;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 40%;
+    }
+    .abcd-hero__veil {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(12,10,8,0.82) 0%, rgba(12,10,8,0.55) 38%, rgba(12,10,8,0.10) 70%, rgba(12,10,8,0) 100%),
+        linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(12,10,8,0.75) 100%);
+    }
+    .abcd-hero__content {
+      position: relative;
+      z-index: 2;
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      padding-top: 64px;
+      padding-bottom: 32px;
+    }
+    .abcd-hero__box { max-width: 660px; }
+    .abcd-hero__title {
+      font-size: 3.75rem;
+      font-weight: 700;
+      line-height: 1.05;
+      margin: 0 0 12px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+    }
+    .abcd-hero__lead {
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .abcd-hero__lead span { color: var(--abcd-yellow); }
+    .abcd-hero__baseline {
+      font-size: 1.125rem;
+      font-weight: 400;
+      margin-bottom: 32px;
+      max-width: 540px;
+      opacity: 0.92;
+    }
+    .abcd-hero__link {
+      color: #fff;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .abcd-hero__link:hover { color: var(--abcd-yellow); }
+
+    /* Widget avis, une ligne */
+    .abcd-rating-wrap { position: relative; z-index: 2; }
+    .abcd-rating {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px 14px;
+      padding: 18px 0 28px;
+      color: #fff;
+      font-size: 0.9375rem;
+      text-decoration: none;
+    }
+    .abcd-rating:hover { color: #fff; text-decoration: none; }
+    .abcd-rating__stars { display: inline-flex; gap: 3px; }
+    .abcd-rating__star {
+      width: 24px;
+      height: 24px;
+      background: var(--abcd-yellow);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .abcd-rating__star svg { width: 16px; height: 16px; fill: #fff; }
+    .abcd-rating__count { text-decoration: underline; text-underline-offset: 3px; }
+    .abcd-rating__brand { font-weight: 700; display: inline-flex; align-items: center; gap: 6px; }
+    .abcd-rating__brand svg { width: 16px; height: 16px; fill: var(--abcd-yellow); }
+    .abcd-rating__afnor {
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 4px;
+      padding: 1px 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 768px) {
+      .abcd-hero { min-height: 92vh; }
+      .abcd-hero__img { width: 100%; object-position: 50% 50%; }
+      .abcd-hero__veil {
+        background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 30%, rgba(12,10,8,0.85) 75%, rgba(12,10,8,0.95) 100%);
+      }
+      .abcd-hero__content { align-items: flex-end; padding-top: 140px; }
+      .abcd-hero__title { font-size: 2.5rem; }
+      .abcd-hero__lead { font-size: 1.375rem; }
+      .abcd-hero__baseline { font-size: 1.0625rem; }
+      .abcd-hero .abcd-btn { width: 100%; }
+    }
+
+    /* ===== BLOC 2 : OFFRES ===== */
+    .abcd-offer-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .abcd-offer-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.10);
+    }
+    .abcd-offer-card__visual { height: 220px; }
+    .abcd-offer-card__title {
+      color: var(--abcd-title);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .abcd-offer-card__price {
+      color: var(--abcd-magenta);
+      font-weight: 700;
+      font-size: 1.0625rem;
+      margin-bottom: 20px;
+    }
+    .abcd-check-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 28px;
+    }
+    .abcd-check-list li {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 12px;
+      font-size: 1.0625rem;
+      line-height: 1.4;
+    }
+    .abcd-check-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--abcd-yellow-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8920c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/12px no-repeat;
+    }
+
+    /* ===== BLOC 3 : FORMATS ===== */
+    .abcd-format {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 28px;
+      height: 100%;
+      border: 1px solid #ececec;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .abcd-format:hover { border-color: var(--abcd-yellow); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .abcd-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--abcd-magenta-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .abcd-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: none;
+      stroke: var(--abcd-magenta);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .abcd-format__title {
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--abcd-title);
+      margin-bottom: 8px;
+    }
+    .abcd-format p { margin: 0; font-size: 1.0625rem; }
+
+    /* ===== BLOC 4 : ENTREPRISE ===== */
+    .abcd-b2b {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.08);
+    }
+    .abcd-b2b__img { width: 100%; height: 100%; min-height: 280px; object-fit: cover; display: block; }
+    .abcd-b2b__title { color: var(--abcd-title); font-size: 2rem; font-weight: 700; margin-bottom: 12px; }
+
+    /* ===== BLOC 5 : REASSURANCE ===== */
+    .abcd-reassurance .abcd-icon { margin: 0 auto 14px; background: var(--abcd-yellow-soft); }
+    .abcd-reassurance .abcd-icon svg { stroke: #b8920c; }
+    .abcd-reassurance__label {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--abcd-title);
+      line-height: 1.3;
+    }
+
+    /* ===== BLOC 6 : RECHERCHE ===== */
+    .abcd-search-select {
+      background: transparent;
+      font-size: 1rem;
+      font-family: inherit;
+      padding: 12px 0;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      color: var(--abcd-title);
+    }
+    .abcd-search-divider { width: 1px; height: 24px; background: #e8e8e8; }
+    @media (max-width: 768px) {
+      .abcd-search-bar {
+        flex-direction: column !important;
+        border-radius: 16px !important;
+        padding: 16px !important;
+      }
+      .abcd-search-select { width: 100%; border-bottom: 1px solid #e8e8e8; }
+      .abcd-search-divider { display: none; }
+      .abcd-search-bar .btn { width: 100%; margin-top: 12px; margin-left: 0 !important; }
+    }
+
+    /* ===== BLOC 7 : EXPERIENCES ===== */
+    .abcd-exp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .abcd-exp-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      transition: transform .3s ease;
+    }
+    .abcd-exp-card:hover { transform: scale(1.02); text-decoration: none; }
+    .abcd-exp-card--large { grid-row: span 2; min-height: 576px; }
+    .abcd-exp-card .abcd-placeholder { position: absolute; inset: 0; align-items: flex-start; padding-top: 24px; }
+    .abcd-exp-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+    }
+    .abcd-exp-card__content {
+      position: relative;
+      z-index: 2;
+      padding: 24px;
+      color: #fff;
+      width: 100%;
+    }
+    .abcd-exp-card__count {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 6px;
+    }
+    .abcd-exp-card__title { font-size: 1.375rem; font-weight: 700; margin: 0; }
+    .abcd-exp-card--large .abcd-exp-card__title { font-size: 1.75rem; }
+    .abcd-tag-check {
+      display: inline-block;
+      background: #fff;
+      color: var(--abcd-magenta);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+    @media (max-width: 768px) {
+      .abcd-exp-grid { grid-template-columns: 1fr 1fr; }
+      .abcd-exp-card--large { grid-column: span 2; grid-row: span 1; min-height: 260px; }
+      .abcd-exp-card { min-height: 200px; }
+    }
+    @media (max-width: 480px) {
+      .abcd-exp-grid { grid-template-columns: 1fr; }
+      .abcd-exp-card--large { grid-column: span 1; }
+    }
+
+    /* ===== BLOC 8 : 1000 RAISONS ===== */
+    .abcd-reasons-scroll {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 16px;
+    }
+    .abcd-reasons-scroll::-webkit-scrollbar { height: 6px; }
+    .abcd-reasons-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+    .abcd-reason-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      min-height: 280px;
+      display: flex;
+      align-items: flex-end;
+      text-decoration: none;
+      transition: transform .3s ease;
+    }
+    .abcd-reason-card:hover { transform: scale(1.03); text-decoration: none; }
+    .abcd-reason-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .abcd-reason-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 55%);
+    }
+    .abcd-reason-card__content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      color: #fff;
+      width: 100%;
+    }
+    .abcd-reason-card__title { font-size: 1.125rem; font-weight: 700; margin: 0; }
+
+    /* ===== BLOC 9 : COFFRETS EN MAGASIN ===== */
+    .abcd-coffrets {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    .abcd-coffrets__visual { min-height: 320px; height: 100%; }
+    .abcd-stores {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 575px) { .abcd-stores { grid-template-columns: repeat(3, 1fr); } }
+    .abcd-store-logo {
+      height: 64px;
+      padding: 4px;
+      border: 1px dashed #cfcfcf;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--abcd-title);
+      font-size: 0.9375rem;
+      line-height: 1.1;
+      text-align: center;
+      background: #fafafa;
+    }
+    .abcd-store-logo small {
+      font-size: 0.625rem;
+      font-weight: 600;
+      color: var(--abcd-text-muted);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ===== BLOC 10 : FAQ ===== */
+    .abcd-faq .card { border: 0; border-bottom: 1px solid #e3e3e3; border-radius: 0; background: transparent; }
+    .abcd-faq-btn {
+      width: 100%;
+      text-align: left;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--abcd-title);
+      padding: 20px 40px 20px 0;
+      border: none;
+      background: transparent;
+      position: relative;
+      white-space: normal;
+    }
+    .abcd-faq-btn:hover { color: var(--abcd-magenta); text-decoration: none; }
+    .abcd-faq-btn:focus { box-shadow: none; }
+    .abcd-faq-btn::after {
+      content: '+';
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--abcd-magenta);
+      transition: transform .3s ease;
+    }
+    .abcd-faq-btn:not(.collapsed)::after { transform: translateY(-50%) rotate(45deg); }
+    .abcd-faq-answer { padding: 0 40px 20px 0; font-size: 1.0625rem; line-height: 1.6; }
+
+    /* ===== BLOC 11 : SEO ===== */
+    .abcd-seo h2 { color: var(--abcd-title); font-size: 1.75rem; font-weight: 700; margin-bottom: 20px; }
+    .abcd-seo h3 { color: var(--abcd-magenta); font-size: 1.25rem; font-weight: 700; margin-top: 28px; }
+    .abcd-seo p { font-size: 1rem; line-height: 1.7; }
+
+    /* ===== BLOC 12 : FOOTER (repris de la prod) ===== */
+    .abcd-footer { background: var(--abcd-light); font-size: 0.9375rem; }
+    .abcd-footer .abcd-footer__title { font-weight: 700; color: var(--abcd-title); padding: 8px 0 16px; }
+    .abcd-footer ul li { margin-bottom: 10px; }
+    .abcd-footer a { color: var(--abcd-text); font-weight: 300; }
+    .abcd-footer a:hover { color: var(--abcd-magenta); }
+    .abcd-footer__logo img { height: 56px; width: auto; }
+    .abcd-footer__legal .nav-link { padding-left: 0; padding-right: 16px; font-weight: 400; }
+    .abcd-footer__payment img { height: 24px; width: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================== -->
+  <!-- BLOC 0&nbsp;: SUR-HEADER + MENU     -->
+  <!-- Repris à l'identique de la prod (boutique cadeau) -->
+  <!-- ============================== -->
+  <header class="abcd-topbar">
+    <div class="container">
+      <div class="py-2 row d-none d-sm-flex align-items-center">
+        <div class="col">
+          <a class="abcd-link-back" href="https://www.abracadaroom.com/fr/" target="_blank">Retour sur AbracadaRoom / Réservation d'hébergements insolites</a>
+        </div>
+        <div class="col-auto d-none d-md-block">
+          <a href="https://www.abracadaroom.com/fr/carte-cadeau-insolite/" class="btn abcd-btn-sm abcd-btn-outline-yellow" target="_blank">Offrir une carte cadeau</a>
+        </div>
+        <div class="col-auto d-none d-md-block">
+          <a href="https://faq.abracadaroom.com/fr/category/boutique-cadeau-1ng6hb8/" class="btn abcd-btn-sm abcd-btn-yellow" target="_blank">Vous avez déjà un bon cadeau</a>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg navbar-light px-0 abcd-navbar">
+        <a class="navbar-brand" href="https://www.abracadaroom.com/fr/idee-cadeau/">
+          <img src="https://www.abracadaroom.com/assets/img/box/logo.svg?v=1" alt="AbracadaRoom - Bon cadeau hébergement insolite">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainnavbar" aria-controls="mainnavbar" aria-expanded="false" aria-label="Ouvrir le menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainnavbar">
+          <ul class="ml-auto navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/idee-cadeau/inspirations/">Séjours à thèmes</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/idee-cadeau/nos-pepites/">Nos pépites</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/idee-cadeau/occasions/">Occasions</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/idee-cadeau/generateur-idees-cadeaux-noel/">Moteur à idées</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/idee-cadeau/destinations/">Destinations</a></li>
+            <li class="nav-item"><a class="nav-link abcd-nav-highlight" href="https://www.abracadaroom.com/fr/idee-cadeau/mariage/">Cadeaux de mariage</a></li>
+            <li class="pt-3 nav-item d-md-none">
+              <a href="https://faq.abracadaroom.com/fr/category/boutique-cadeau-1ng6hb8/" class="btn abcd-btn-sm abcd-btn-yellow btn-block" target="_blank">Vous avez déjà un bon cadeau</a>
+            </li>
+            <li class="py-3 nav-item d-md-none">
+              <a href="https://www.abracadaroom.com/fr/carte-cadeau-insolite/" class="btn abcd-btn-sm abcd-btn-outline-yellow btn-block" target="_blank">Offrir une carte cadeau</a>
+            </li>
+            <li class="pb-3 nav-item d-sm-none">
+              <a class="abcd-link-back" href="https://www.abracadaroom.com/fr/" target="_blank">Aller sur AbracadaRoom / Réservation d'hébergements insolites</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============================== -->
+  <!-- BLOC 1&nbsp;: HEADER IMMERSIF       -->
+  <!-- ============================== -->
+  <section class="abcd-hero">
+    <!-- Image LCP : pas de loading="lazy". En prod, prévoir une version mobile recadrée via <picture> -->
+    <img class="abcd-hero__img" src="img/header-cabane.webp" alt="Cabane perchée dans les arbres accessible par une passerelle suspendue" fetchpriority="high" width="1500" height="1000">
+    <div class="abcd-hero__veil"></div>
+
+    <div class="container abcd-hero__content">
+      <div class="abcd-hero__box">
+        <h1 class="abcd-hero__title">Idées cadeaux insolites</h1>
+        <p class="abcd-hero__lead">Offrez une nuit ou un week-end <span>hors du commun</span></p>
+        <p class="abcd-hero__baseline">Carte cadeau, bon cadeau ou coffret&nbsp;: plus de 3&nbsp;500 logements insolites à offrir, en France et en Europe</p>
+        <div class="d-flex flex-column flex-md-row align-items-md-center">
+          <a href="#recherche-simplifiee" class="btn abcd-btn abcd-btn-yellow btn-lg mb-3 mb-md-0 mr-md-4">Rechercher un cadeau</a>
+          <a href="https://faq.abracadaroom.com/fr/category/boutique-cadeau-1ng6hb8/" class="abcd-hero__link text-center" target="_blank">Comment utiliser mon cadeau&nbsp;?</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Widget avis : valeurs dynamiques en prod via le widget Avis Vérifiés. Pas de balisage AggregateRating. -->
+    <div class="container abcd-rating-wrap">
+    <a class="abcd-rating" href="https://www.avis-verifies.com/avis-clients/abracadaroom.com" target="_blank" rel="noopener">
+      <span class="abcd-rating__stars" aria-label="5 étoiles sur 5">
+        <span class="abcd-rating__star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="abcd-rating__star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="abcd-rating__star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="abcd-rating__star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="abcd-rating__star"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+      </span>
+      <span>4,7 sur 5 basé sur <span class="abcd-rating__count">20&nbsp;274 avis</span></span>
+      <span class="abcd-rating__brand"><svg viewBox="0 0 24 24"><path d="M12 1l3 3h5v5l3 3-3 3v5h-5l-3 3-3-3H4v-5l-3-3 3-3V4h5z"/></svg>Avis Vérifiés</span>
+      <span class="abcd-rating__afnor">Certifié AFNOR</span>
+    </a>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 2&nbsp;: NOS OFFRES CADEAUX    -->
+  <!-- ============================== -->
+  <section class="abcd-offers py-5 bg-abcd-light">
+    <div class="container py-md-4">
+      <div class="text-center mb-5">
+        <span class="abcd-eyebrow">Deux façons d'offrir</span>
+        <h2 class="abcd-section-title">Nos offres <span>cadeaux</span></h2>
+      </div>
+      <div class="row justify-content-center">
+
+        <!-- Carte Cadeau -->
+        <div class="col-md-6 col-lg-5 mb-4">
+          <div class="abcd-offer-card h-100 d-flex flex-column">
+            <div class="abcd-placeholder abcd-offer-card__visual">[VISUEL À FOURNIR]</div>
+            <div class="p-4 p-lg-5 d-flex flex-column flex-grow-1">
+              <h3 class="abcd-offer-card__title">La Carte Cadeau</h3>
+              <p class="abcd-offer-card__price">À partir de 20&nbsp;&euro;</p>
+              <ul class="abcd-check-list flex-grow-1">
+                <li>Utilisable en plusieurs fois</li>
+                <li>Valable sur tous les hébergements du site</li>
+                <li>Montant libre</li>
+                <li>Envoi postal possible</li>
+              </ul>
+              <a href="https://www.abracadaroom.com/fr/carte-cadeau-insolite/" class="btn abcd-btn abcd-btn-yellow btn-block">Offrir une carte cadeau</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bon Cadeau -->
+        <div class="col-md-6 col-lg-5 mb-4">
+          <div class="abcd-offer-card h-100 d-flex flex-column">
+            <div class="abcd-placeholder abcd-offer-card__visual">[VISUEL À FOURNIR]</div>
+            <div class="p-4 p-lg-5 d-flex flex-column flex-grow-1">
+              <h3 class="abcd-offer-card__title">Le Bon Cadeau</h3>
+              <p class="abcd-offer-card__price">Plus de 3&nbsp;500 séjours au choix</p>
+              <ul class="abcd-check-list flex-grow-1">
+                <li>Valable sur un hébergement spécifique</li>
+                <li>Valable pour toutes les dates, sans restriction</li>
+                <li>Options disponibles commandables en ligne</li>
+                <li>Réception immédiate par e&#8209;mail</li>
+              </ul>
+              <a href="https://www.abracadaroom.com/fr/recherche/" class="btn abcd-btn abcd-btn-magenta btn-block">Choisir un séjour à offrir</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 3&nbsp;: LES FORMATS CADEAUX   -->
+  <!-- ============================== -->
+  <section class="abcd-formats py-5">
+    <div class="container py-md-4">
+      <div class="text-center mb-5">
+        <span class="abcd-eyebrow">Comme vous voulez</span>
+        <h2 class="abcd-section-title">Les formats <span>cadeaux</span></h2>
+      </div>
+      <div class="row">
+        <!-- Par e-mail -->
+        <div class="col-md-4 mb-4">
+          <div class="abcd-format">
+            <div class="abcd-icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h3 class="abcd-format__title">Par e-mail</h3>
+            <p>Carte ou bon en PDF, réception immédiate après paiement.</p>
+          </div>
+        </div>
+        <!-- Par courrier -->
+        <div class="col-md-4 mb-4">
+          <div class="abcd-format">
+            <div class="abcd-icon">
+              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <h3 class="abcd-format__title">Par courrier</h3>
+            <p>Carte cadeau en enveloppe, 5 à 7&nbsp;jours ouvrés en France métropolitaine.</p>
+          </div>
+        </div>
+        <!-- En coffret -->
+        <div class="col-md-4 mb-4">
+          <div class="abcd-format">
+            <div class="abcd-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+            </div>
+            <h3 class="abcd-format__title">En coffret</h3>
+            <p>Box physique, disponible en ligne ou en magasin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 4&nbsp;: ENTREPRISE (inchangé) -->
+  <!-- ============================== -->
+  <section class="pb-5">
+    <div class="container">
+      <div class="abcd-b2b">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <!-- Visuel repris de la page carte cadeau en prod -->
+            <img class="abcd-b2b__img" src="https://www.abracadaroom.com/assets/img/ckdo/19-cadeau-collaborateur.jpg" alt="Collaborateurs réunis autour d'un cocktail d'entreprise" loading="lazy">
+          </div>
+          <div class="col-md-7 d-flex align-items-center">
+            <div class="p-4 p-md-5">
+              <span class="abcd-eyebrow">Cadeaux d'entreprise</span>
+              <h2 class="abcd-b2b__title">Vous êtes une entreprise&nbsp;?</h2>
+              <p class="mb-4" style="font-size:1.0625rem;">Offrez un cadeau original à vos collaborateurs avec nos solutions CSE et corporate.</p>
+              <a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos offres</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 5&nbsp;: REASSURANCE           -->
+  <!-- ============================== -->
+  <section class="abcd-reassurance py-5 bg-abcd-light">
+    <div class="container py-md-3">
+      <h2 class="abcd-section-title text-center mb-5">Les cadeaux AbracadaRoom, <span>c'est...</span></h2>
+      <div class="row text-center justify-content-center">
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+          <p class="abcd-reassurance__label">Jusqu'à 3&nbsp;ans pour en profiter</p>
+        </div>
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+          <p class="abcd-reassurance__label">100&nbsp;% insolite garanti</p>
+        </div>
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+          <p class="abcd-reassurance__label">Paiement sécurisé</p>
+        </div>
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <p class="abcd-reassurance__label">Réception immédiate par e&#8209;mail</p>
+        </div>
+        <div class="col-6 col-md mb-4">
+          <div class="abcd-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+          <p class="abcd-reassurance__label">À partir de 20&nbsp;&euro;</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 6&nbsp;: RECHERCHE SIMPLIFIEE (inchangée, ancre du CTA header) -->
+  <!-- ============================== -->
+  <section id="recherche-simplifiee" class="abcd-search py-5">
+    <div class="container py-md-3">
+      <div class="text-center mb-4">
+        <span class="abcd-eyebrow">Recherche simplifiée</span>
+        <h2 class="abcd-section-title">Rechercher une expérience <span>insolite à offrir</span></h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <form action="https://www.abracadaroom.com/fr/idee-cadeau/recherche/" method="get">
+            <div class="abcd-search-bar d-flex align-items-center bg-white rounded-pill p-2 pl-4" style="box-shadow:0 6px 28px rgba(0,0,0,0.10);">
+              <select class="abcd-search-select flex-fill border-0" name="region" aria-label="Région">
+                <option value="">Région</option>
+                <option value="auvergne-rhone-alpes">Auvergne-Rhône-Alpes</option>
+                <option value="bourgogne-franche-comte">Bourgogne-Franche-Comté</option>
+                <option value="bretagne">Bretagne</option>
+                <option value="centre-val-de-loire">Centre-Val de Loire</option>
+                <option value="corse">Corse</option>
+                <option value="grand-est">Grand Est</option>
+                <option value="hauts-de-france">Hauts-de-France</option>
+                <option value="ile-de-france">Île-de-France</option>
+                <option value="normandie">Normandie</option>
+                <option value="nouvelle-aquitaine">Nouvelle-Aquitaine</option>
+                <option value="occitanie">Occitanie</option>
+                <option value="pays-de-la-loire">Pays de la Loire</option>
+                <option value="provence-alpes-cote-d-azur">Provence-Alpes-Côte d'Azur</option>
+                <option value="belgique">Belgique</option>
+                <option value="suisse">Suisse</option>
+                <option value="espagne">Espagne</option>
+              </select>
+              <div class="abcd-search-divider mx-2"></div>
+              <select class="abcd-search-select flex-fill border-0" name="budget" aria-label="Budget">
+                <option value="">Budget</option>
+                <option value="0-100">- de 100&nbsp;&euro;</option>
+                <option value="100-250">100 à 250&nbsp;&euro;</option>
+                <option value="250-500">250 à 500&nbsp;&euro;</option>
+                <option value="500+">+ de 500&nbsp;&euro;</option>
+              </select>
+              <div class="abcd-search-divider mx-2"></div>
+              <select class="abcd-search-select flex-fill border-0" name="occupants" aria-label="Nombre de personnes">
+                <option value="">Nb de personnes</option>
+                <option value="2">2 personnes</option>
+                <option value="3+">3 personnes et +</option>
+              </select>
+              <button class="btn abcd-btn abcd-btn-yellow ml-2 text-nowrap" type="submit">Rechercher</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 7&nbsp;: NOS EXPERIENCES       -->
+  <!-- ============================== -->
+  <section class="abcd-experiences py-5 bg-abcd-light">
+    <div class="container py-md-4">
+      <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
+        <div>
+          <span class="abcd-eyebrow">Plus qu'un cadeau, un souvenir</span>
+          <h2 class="abcd-section-title mb-0">Nos expériences <span>à offrir</span></h2>
+        </div>
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/inspirations/" class="abcd-link-arrow mt-3 mt-md-0">Toutes nos expériences &rarr;</a>
+      </div>
+      <div class="abcd-exp-grid">
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-spa-et-bien-etre/" class="abcd-exp-card abcd-exp-card--large">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée séjour avec spa privatif</h3>
+          </div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-a-la-montagne/" class="abcd-exp-card">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau à la montagne</h3>
+          </div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-romantique/" class="abcd-exp-card">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau romantique</h3>
+          </div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/noel/" class="abcd-exp-card">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau Noël</h3>
+          </div>
+        </a>
+
+        <!-- Tuile famille&nbsp;: URL [À VÉRIFIER] -->
+        <a href="#a-verifier" class="abcd-exp-card">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Idée cadeau en famille <span class="abcd-tag-check">URL [À VÉRIFIER]</span></h3>
+          </div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/bulle/" class="abcd-exp-card">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Dormir dans une bulle</h3>
+          </div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/cabane-dans-les-arbres/" class="abcd-exp-card">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Dormir dans une cabane dans les arbres</h3>
+          </div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/cabane-sur-l-eau/" class="abcd-exp-card">
+          <div class="abcd-placeholder">[VISUEL À FOURNIR]</div>
+          <div class="abcd-exp-card__overlay"></div>
+          <div class="abcd-exp-card__content">
+            <!-- compteur dynamique en prod -->
+            <p class="abcd-exp-card__count">[DYNAMIQUE] bons cadeaux</p>
+            <h3 class="abcd-exp-card__title">Dormir dans une cabane sur l'eau</h3>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 8&nbsp;: 1000 RAISONS D'OFFRIR -->
+  <!-- ============================== -->
+  <section class="abcd-reasons py-5">
+    <div class="container py-md-4">
+      <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
+        <div>
+          <span class="abcd-eyebrow">Pour chaque occasion</span>
+          <h2 class="abcd-section-title mb-0">1000 raisons d'offrir <span>un bon cadeau</span></h2>
+        </div>
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/occasions/" class="abcd-link-arrow mt-3 mt-md-0">Voir toutes les occasions &rarr;</a>
+      </div>
+      <div class="abcd-reasons-scroll">
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/anniversaire/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=500&q=80" alt="Anniversaire" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Anniversaire</h3></div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/st-valentin/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=500&q=80" alt="Saint-Valentin" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Saint-Valentin</h3></div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/fete-des-meres/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1487530811176-3780de880c2d?w=500&q=80" alt="Fête des mères" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Fête des mères</h3></div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/mariage/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=500&q=80" alt="Mariage" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Mariage</h3></div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/noel/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1545622783-b3e021430fee?w=500&q=80" alt="Noël" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Noël</h3></div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/derniere-minute/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=500&q=80" alt="Dernière minute" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Dernière minute</h3></div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/anniversaire-mariage/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=500&q=80" alt="Anniversaire de mariage" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Anniversaire de mariage</h3></div>
+        </a>
+
+        <a href="https://www.abracadaroom.com/fr/idee-cadeau/depart-a-la-retraite/" class="abcd-reason-card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=500&q=80" alt="Départ à la retraite" loading="lazy">
+          <div class="abcd-reason-card__overlay"></div>
+          <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Départ à la retraite</h3></div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 9&nbsp;: NOS COFFRETS, AUSSI EN MAGASIN -->
+  <!-- ============================== -->
+  <section class="abcd-coffrets-section py-5 bg-abcd-light">
+    <div class="container py-md-4">
+      <div class="abcd-coffrets">
+        <div class="row no-gutters">
+          <div class="col-lg-5">
+            <div class="abcd-placeholder abcd-coffrets__visual">[VISUEL À FOURNIR]</div>
+          </div>
+          <div class="col-lg-7">
+            <div class="p-4 p-md-5">
+              <span class="abcd-eyebrow">À offrir en main propre</span>
+              <h2 class="abcd-section-title mb-3">Nos coffrets, <span>aussi en magasin</span></h2>
+              <p style="font-size:1.0625rem; line-height:1.6;" class="mb-4">
+                Les coffrets cadeaux physiques AbracadaRoom s'offrent en main propre. Ils sont valables 3&nbsp;ans et utilisables sur l'ensemble des hébergements du site.
+              </p>
+              <p class="font-weight-bold mb-3" style="color:var(--abcd-title);">Disponibles chez nos partenaires</p>
+              <!-- Logos magasins&nbsp;: placeholders, logos officiels à fournir -->
+              <div class="abcd-stores mb-4">
+                <div class="abcd-store-logo">Fnac<small>Logo à fournir</small></div>
+                <div class="abcd-store-logo">Cultura<small>Logo à fournir</small></div>
+                <div class="abcd-store-logo">Nature &amp; Découvertes<small>Logo à fournir</small></div>
+                <div class="abcd-store-logo">Amazon<small>Logo à fournir</small></div>
+                <div class="abcd-store-logo">Darty<small>Logo à fournir</small></div>
+              </div>
+              <a href="https://www.abracadaroom.com/fr/coffret-cadeau/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos coffrets</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 10&nbsp;: QUESTIONS FREQUENTES -->
+  <!-- ============================== -->
+  <section class="abcd-faq py-5">
+    <div class="container py-md-4">
+      <div class="text-center mb-5">
+        <span class="abcd-eyebrow">Avant d'offrir</span>
+        <h2 class="abcd-section-title">Questions <span>fréquentes</span></h2>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="accordion" id="faqAccordion">
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq1" aria-expanded="false" aria-controls="faq1">Quelle différence entre carte cadeau, bon cadeau et coffret&nbsp;?</button>
+              <div id="faq1" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">La carte cadeau est d'un montant libre, valable sur tous les hébergements et utilisable en plusieurs fois, pendant 18&nbsp;mois. Le bon cadeau est lié à un hébergement précis et le bénéficiaire choisit ses dates, pendant 18&nbsp;mois. Le coffret est une box physique qui laisse le choix parmi les hébergements du site, valable 3&nbsp;ans.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq2" aria-expanded="false" aria-controls="faq2">Quel cadeau choisir si je ne connais pas ses goûts ou ses disponibilités&nbsp;?</button>
+              <div id="faq2" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">Choisissez la carte cadeau. Elle laisse au bénéficiaire le choix de l'hébergement et des dates. <a href="https://www.abracadaroom.com/fr/carte-cadeau-insolite/">Offrir une carte cadeau</a></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq3" aria-expanded="false" aria-controls="faq3">Sous quels formats puis-je offrir un séjour&nbsp;?</button>
+              <div id="faq3" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">Par e-mail, en PDF reçu immédiatement. Par courrier, sous forme de carte, en 5 à 7&nbsp;jours ouvrés en France métropolitaine, avec des frais d'envoi. Ou en coffret physique, livré en 2 à 4&nbsp;jours, en version digitale immédiate, ou acheté en magasin.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq4" aria-expanded="false" aria-controls="faq4">Où acheter un coffret cadeau AbracadaRoom&nbsp;?</button>
+              <div id="faq4" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">En ligne sur <a href="https://www.abracadaroom.com/fr/coffret-cadeau/">notre boutique de coffrets</a>, et en magasin chez Fnac, Cultura, Nature &amp; Découvertes, Amazon et Darty.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq5" aria-expanded="false" aria-controls="faq5">Combien de temps mon cadeau est-il valable&nbsp;?</button>
+              <div id="faq5" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">La carte et le bon cadeau sont valables 18&nbsp;mois. La carte peut être prolongée de 6&nbsp;mois contre 25&nbsp;&euro;, avant son expiration. Le coffret est valable 3&nbsp;ans. Le séjour peut avoir lieu après la fin de validité si la réservation est faite avant.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq6" aria-expanded="false" aria-controls="faq6">Peut-on offrir un séjour à plusieurs&nbsp;?</button>
+              <div id="faq6" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">Oui, grâce à la cagnotte et au paiement groupé de la carte cadeau. <a href="https://faq.abracadaroom.com/fr/article/cadeau-commun-cagnotte-carte-cadeau-et-paiement-groupe-1dwm8r9/" target="_blank">Comment fonctionne la cagnotte</a></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq7" aria-expanded="false" aria-controls="faq7">Puis-je payer avec des chèques vacances&nbsp;?</button>
+              <div id="faq7" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">Oui, pour la carte cadeau. Ce mode de paiement n'est pas compatible avec l'envoi postal. <a href="https://www.abracadaroom.com/fr/cheque-vacances-ancv/">Payer en chèques vacances</a></div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq8" aria-expanded="false" aria-controls="faq8">Peut-on cumuler plusieurs cadeaux sur une même réservation&nbsp;?</button>
+              <div id="faq8" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">Oui. Plusieurs cartes cadeaux sont cumulables, et les coffrets sont cumulables avec les cartes. Les codes promo ne sont pas cumulables avec les coffrets.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq9" aria-expanded="false" aria-controls="faq9">Le cadeau est-il remboursable&nbsp;?</button>
+              <div id="faq9" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">Vous disposez d'un délai de rétractation de 14&nbsp;jours. Au-delà, le cadeau n'est pas remboursable, mais il est sécable et cessible&nbsp;: le solde reste utilisable ou peut être offert à un proche.</div>
+              </div>
+            </div>
+
+            <div class="card">
+              <button class="btn abcd-faq-btn collapsed" type="button" data-toggle="collapse" data-target="#faq10" aria-expanded="false" aria-controls="faq10">Comment utiliser mon cadeau&nbsp;?</button>
+              <div id="faq10" class="collapse" data-parent="#faqAccordion">
+                <div class="abcd-faq-answer">Choisissez l'hébergement et les dates sur AbracadaRoom, puis saisissez le code dans le tunnel de réservation. <a href="https://faq.abracadaroom.com/fr/category/boutique-cadeau-1ng6hb8/" target="_blank">Toutes les réponses sur la boutique cadeau</a></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 11&nbsp;: SEO EDITORIAL (texte repris de la prod) -->
+  <!-- ============================== -->
+  <section class="abcd-seo py-5 bg-abcd-light">
+    <div class="container">
+      <div class="row">
+        <div class="py-4 m-auto col-lg-10 tiny">
+          <h2>Quelle idée cadeau pour offrir un week-end insolite&nbsp;?</h2>
+
+          <p>Offrir un week-end ou une nuit insolite est une idée cadeau originale qui remplace l'objet par une expérience à vivre, sans le casse-tête des dates&nbsp;: le bénéficiaire choisit son moment. Anniversaire, Noël, mariage ou simple attention, plus de la moitié des séjours offerts sur AbracadaRoom le sont pour marquer une grande occasion, et le cadeau s'envoie par email immédiatement après le paiement.</p>
+
+          <p>Cabane perchée, bulle transparente, roulotte ou dôme&nbsp;: un cadeau week-end se choisit selon la personne, le budget et le temps dont vous disposez. Voici comment vous y retrouver.</p>
+
+          <h3>Bon cadeau ou carte cadeau&nbsp;: que choisir&nbsp;?</h3>
+
+          <p>Le bon cadeau, c'est offrir un lieu&nbsp;: vous avez repéré la cabane ou la bulle qui fera mouche, vous l'offrez, et la personne choisit sa date. C'est l'option la plus personnelle, et la plus choisie sur notre boutique. La carte cadeau, c'est offrir le choix&nbsp;: un montant, et le bénéficiaire décide de tout, lieu, date et formule. Nos ventes montrent qu'elle est préférée pour les cadeaux collectifs ou quand on ne connaît pas assez les goûts de la personne. <a href="https://www.abracadaroom.com/fr/carte-cadeau-insolite/">Tout savoir sur la carte cadeau insolite</a>. Une formule coffret, à remettre en main propre, complète ces deux options.</p>
+
+          <h3>Un cadeau qui s'offre même à la dernière minute</h3>
+
+          <p>C'est l'un des rares cadeaux qui se commande la veille sans que rien n'y paraisse. Le bon cadeau et l'e-coffret sont envoyés instantanément par email, avec un visuel à imprimer ou à transférer au bénéficiaire. Nos données de vente en témoignent&nbsp;: une commande sur cinq est passée entre 20h et 23h, les achats de Noël culminent le 24 décembre dans l'après-midi, et il s'en offre encore le 25 au matin, juste avant le déjeuner de famille. Seul l'envoi postal demande de l'anticipation, comptez une semaine.</p>
+
+          <h3>À qui offrir un week-end insolite&nbsp;?</h3>
+
+          <p>Le bon séjour n'est pas le même selon la personne. Une nuit en bulle avec spa ne vise pas le même profil qu'une cabane familiale de six couchages, et le premier critère reste la composition du séjour&nbsp;: à deux ou à plusieurs. Nos sélections par profil vous orientent en quelques clics&nbsp;: <a href="https://www.abracadaroom.com/fr/idee-cadeau/femme/">idée cadeau pour une femme</a>, <a href="https://www.abracadaroom.com/fr/idee-cadeau/homme/">cadeau original pour un homme</a>, <a href="https://www.abracadaroom.com/fr/idee-cadeau/en-couple/">week-end à offrir à un couple</a> ou <a href="https://www.abracadaroom.com/fr/idee-cadeau/en-famille/">séjour à vivre en famille</a>. Les caps d'âge appellent aussi leurs propres registres&nbsp;: voyez nos idées pour <a href="https://www.abracadaroom.com/fr/idee-cadeau/30-ans/">fêter ses 30&nbsp;ans</a> ou pour <a href="https://www.abracadaroom.com/fr/idee-cadeau/50-ans/">marquer ses 50&nbsp;ans</a>.</p>
+
+          <h3>Quel budget pour un séjour à offrir&nbsp;?</h3>
+
+          <p>Une nuit insolite pour deux se réserve généralement entre 90 et 350 euros selon la typologie et la saison, et il existe de vraies pépites en entrée de gamme&nbsp;: yourtes, roulottes et tentes lodge permettent d'offrir l'expérience sans casser votre tirelire. Les formats avec spa privatif ou les hébergements d'exception se situent en haut de la fourchette, parfois même financés à plusieurs. Explorez nos <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-pas-cher/">séjours insolites à petit prix</a> et nos <a href="https://www.abracadaroom.com/fr/idee-cadeau/sejour-moins-de-cent-euros/">nuits à moins de 100 euros</a>. Chaque hébergement est sélectionné par notre équipe, et la plateforme, régulièrement <a href="https://www.abracadaroom.com/fr/la-presse-en-parle/">citée par Le Monde, Le Parisien ou Les Echos</a>, couvre plus de 30 typologies dans plus de 1&nbsp;500 destinations françaises.</p>
+
+          <h3>Vos questions avant d'offrir</h3>
+
+          <p><strong>Combien prévoir pour un week-end à offrir&nbsp;?</strong><br>
+          La nuit pour deux se réserve entre 90 et 350 euros selon l'hébergement et la saison. Côté acheteurs, le budget cadeau le plus courant tourne autour de 200 euros, et grimpe quand on s'y met à plusieurs, pour un mariage ou un départ à la retraite notamment.</p>
+
+          <p><strong>Le cadeau est-il envoyé immédiatement&nbsp;?</strong><br>
+          Oui. Le bon cadeau et la carte cadeau sont envoyés par email dès le paiement validé, sous forme d'un visuel à imprimer ou à transférer. Vous pouvez donc offrir un séjour le jour même, y compris un 24 décembre au soir. Seul l'envoi postal, optionnel, demande environ une semaine.</p>
+
+          <p><strong>Comment offrir un séjour sans connaître les goûts de la personne&nbsp;?</strong><br>
+          Deux réponses selon ce que vous savez. Si vous connaissez au moins l'univers qui plaira, cabane, bulle ou séjour bien-être, le bon cadeau sur un hébergement précis reste le plus personnel. Si vous ne savez rien de ses envies, la carte cadeau lui laisse le choix parmi plus de 3&nbsp;500 hébergements notés en moyenne plus de 4,5 sur 5 sur Avis Vérifiés.</p>
+          <!-- Corrigé&nbsp;: la prod indique encore "plus de 3&nbsp;000 hébergements", à aligner sur 3&nbsp;500 -->
+
+          <p><strong>Le bénéficiaire est-il obligé de partir tout de suite&nbsp;?</strong><br>
+          Non, c'est même l'inverse&nbsp;: le bon cadeau se réserve à la date que le bénéficiaire choisit, dans sa période de validité. Un cadeau reçu à Noël se transforme souvent en séjour de printemps ou d'été, quand les cabanes et les bulles se vivent le mieux.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
+  <!-- BLOC 12&nbsp;: FOOTER (repris de la prod) -->
+  <!-- ============================== -->
+  <footer class="abcd-footer pt-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="abcd-footer__logo">
+            <a href="https://www.abracadaroom.com/fr/idee-cadeau/"><img src="https://www.abracadaroom.com/assets/img/box/logo.svg?v=1" alt="AbracadaRoom"></a>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-sm-4 mb-3">
+              <div class="abcd-footer__title">Top e-coffrets</div>
+              <ul class="list-unstyled">
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/cabane-dans-les-arbres/">Dormir dans une cabane dans les arbres</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/lov-nid/">Dormir dans un Lov'Nid</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/cabane-sur-l-eau/">Dormir dans une cabane sur l'eau</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/bulle/">Dormir dans une bulle</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb-3">
+              <div class="abcd-footer__title">Top recherches</div>
+              <ul class="list-unstyled">
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/derniere-minute-noel/">Cadeaux Noël de dernière minute</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/st-valentin/">Cadeaux de St-Valentin</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/noel/">Cadeaux de Noël 2026</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/anniversaire/">Cadeaux d'anniversaire</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/mariage/">Cadeaux de mariage</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/week-end-provence-alpes-cote-dazur/">Idées week end en Provence-Alpes-Côte d'Azur</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-4 mb-3">
+              <div class="abcd-footer__title">Découvrir</div>
+              <ul class="list-unstyled">
+                <li><a href="https://www.abracadaroom.com/fr/idee-cadeau/generateur-idees-cadeaux-noel/">Moteur à idées</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/">Cadeaux d'entreprise</a></li>
+                <li><a href="https://faq.abracadaroom.com/fr/article/cadeau-commun-cagnotte-carte-cadeau-et-paiement-groupe-1dwm8r9/" target="_blank">Cagnotte et paiement groupé</a></li>
+                <li><a href="https://www.abracadaroom.com/fr/commercialiser-location-insolite/" target="_blank">Rejoignez-nous</a></li>
+                <li><a href="https://faq.abracadaroom.com/fr/" target="_blank">FAQ</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="my-3">
+    <div class="container pb-3">
+      <div class="row align-items-center">
+        <div class="col-md">
+          <ul class="nav abcd-footer__legal">
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/mentions-legales/">Mentions légales</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/responsabilites/">Responsabilités</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/confidentialite/">Confidentialité</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.abracadaroom.com/fr/contact/">Contactez-nous</a></li>
+          </ul>
+        </div>
+        <div class="col-md-auto d-flex align-items-center abcd-footer__payment py-2">
+          <span class="mr-3">Paiement sécurisé</span>
+          <img class="mr-2" src="https://www.abracadaroom.com/assets/img/box/payment-mastercard.svg?v=1" alt="Mastercard">
+          <img src="https://www.abracadaroom.com/assets/img/box/payment-visa.svg?v=1" alt="Visa">
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JSON-LD FAQPage : strictement aligné sur le bloc 10 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quelle différence entre carte cadeau, bon cadeau et coffret ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La carte cadeau est d'un montant libre, valable sur tous les hébergements et utilisable en plusieurs fois, pendant 18 mois. Le bon cadeau est lié à un hébergement précis et le bénéficiaire choisit ses dates, pendant 18 mois. Le coffret est une box physique qui laisse le choix parmi les hébergements du site, valable 3 ans." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quel cadeau choisir si je ne connais pas ses goûts ou ses disponibilités ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Choisissez la carte cadeau. Elle laisse au bénéficiaire le choix de l'hébergement et des dates." }
+      },
+      {
+        "@type": "Question",
+        "name": "Sous quels formats puis-je offrir un séjour ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Par e-mail, en PDF reçu immédiatement. Par courrier, sous forme de carte, en 5 à 7 jours ouvrés en France métropolitaine, avec des frais d'envoi. Ou en coffret physique, livré en 2 à 4 jours, en version digitale immédiate, ou acheté en magasin." }
+      },
+      {
+        "@type": "Question",
+        "name": "Où acheter un coffret cadeau AbracadaRoom ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "En ligne sur https://www.abracadaroom.com/fr/coffret-cadeau/, et en magasin chez Fnac, Cultura, Nature & Découvertes, Amazon et Darty." }
+      },
+      {
+        "@type": "Question",
+        "name": "Combien de temps mon cadeau est-il valable ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "La carte et le bon cadeau sont valables 18 mois. La carte peut être prolongée de 6 mois contre 25 €, avant son expiration. Le coffret est valable 3 ans. Le séjour peut avoir lieu après la fin de validité si la réservation est faite avant." }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on offrir un séjour à plusieurs ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui, grâce à la cagnotte et au paiement groupé de la carte cadeau." }
+      },
+      {
+        "@type": "Question",
+        "name": "Puis-je payer avec des chèques vacances ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui, pour la carte cadeau. Ce mode de paiement n'est pas compatible avec l'envoi postal." }
+      },
+      {
+        "@type": "Question",
+        "name": "Peut-on cumuler plusieurs cadeaux sur une même réservation ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Oui. Plusieurs cartes cadeaux sont cumulables, et les coffrets sont cumulables avec les cartes. Les codes promo ne sont pas cumulables avec les coffrets." }
+      },
+      {
+        "@type": "Question",
+        "name": "Le cadeau est-il remboursable ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Vous disposez d'un délai de rétractation de 14 jours. Au-delà, le cadeau n'est pas remboursable, mais il est sécable et cessible : le solde reste utilisable ou peut être offert à un proche." }
+      },
+      {
+        "@type": "Question",
+        "name": "Comment utiliser mon cadeau ?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Choisissez l'hébergement et les dates sur AbracadaRoom, puis saisissez le code dans le tunnel de réservation." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- jQuery + Popper + Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
