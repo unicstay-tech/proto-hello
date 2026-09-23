@@ -178,14 +178,15 @@
       flex-direction: column;
       color: #fff;
       overflow: hidden;
-      background: #1d1a17;
+      background: #14110e;
     }
+    /* Photo calée à droite, jamais agrandie au-delà de sa taille native (1500 px) pour rester nette */
     .abcd-hero__img {
       position: absolute;
       top: 0;
-      left: 0;
-      width: 140%;
-      max-width: none;
+      right: 0;
+      width: 75%;
+      max-width: 1500px;
       height: 100%;
       object-fit: cover;
       object-position: 50% 40%;
@@ -194,7 +195,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(90deg, rgba(12,10,8,0.82) 0%, rgba(12,10,8,0.55) 38%, rgba(12,10,8,0.10) 70%, rgba(12,10,8,0) 100%),
+        linear-gradient(90deg, #14110e 0%, #14110e 25%, rgba(20,17,14,0.75) 40%, rgba(20,17,14,0.15) 62%, rgba(20,17,14,0) 80%),
         linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(12,10,8,0.75) 100%);
     }
     .abcd-hero__content {
@@ -274,7 +275,7 @@
 
     @media (max-width: 768px) {
       .abcd-hero { min-height: 92vh; }
-      .abcd-hero__img { width: 100%; object-position: 50% 50%; }
+      .abcd-hero__img { width: 100%; max-width: none; object-position: 50% 50%; }
       .abcd-hero__veil {
         background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.25) 30%, rgba(12,10,8,0.85) 75%, rgba(12,10,8,0.95) 100%);
       }
@@ -381,8 +382,8 @@
     .abcd-b2b__title { color: var(--abcd-title); font-size: 2rem; font-weight: 700; margin-bottom: 12px; }
 
     /* ===== BLOC 5 : REASSURANCE ===== */
-    .abcd-reassurance .abcd-icon { margin: 0 auto 14px; background: var(--abcd-yellow-soft); }
-    .abcd-reassurance .abcd-icon svg { stroke: #b8920c; }
+    .abcd-reassurance .abcd-icon { margin: 0 auto 14px; background: #fff; box-shadow: 0 4px 16px rgba(158,54,105,0.12); width: 64px; height: 64px; }
+    .abcd-reassurance .abcd-icon svg { stroke: var(--abcd-magenta); }
     .abcd-reassurance__label {
       font-weight: 600;
       font-size: 1rem;
@@ -519,6 +520,32 @@
       width: 100%;
     }
     .abcd-reason-card__title { font-size: 1.125rem; font-weight: 700; margin: 0; }
+
+    .abcd-carousel { position: relative; }
+    .abcd-carousel__btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-60%);
+      z-index: 3;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 0;
+      background: #fff;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: opacity .2s, transform .2s;
+    }
+    .abcd-carousel__btn:hover { transform: translateY(-60%) scale(1.06); }
+    .abcd-carousel__btn:focus { outline: 2px solid var(--abcd-magenta); }
+    .abcd-carousel__btn svg { width: 20px; height: 20px; fill: none; stroke: var(--abcd-magenta); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+    .abcd-carousel__btn--prev { left: -24px; }
+    .abcd-carousel__btn--next { right: -24px; }
+    .abcd-carousel__btn[disabled] { opacity: 0; pointer-events: none; }
+    @media (max-width: 767px) { .abcd-carousel__btn { display: none; } }
 
     /* ===== BLOC 9 : COFFRETS EN MAGASIN ===== */
     .abcd-coffrets {
@@ -1005,6 +1032,9 @@
         </div>
         <a href="https://www.abracadaroom.com/fr/idee-cadeau/occasions/" class="abcd-link-arrow mt-3 mt-md-0">Voir toutes les occasions &rarr;</a>
       </div>
+      <div class="abcd-carousel">
+      <button class="abcd-carousel__btn abcd-carousel__btn--prev" type="button" aria-label="Occasions précédentes" data-dir="-1" disabled><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="abcd-carousel__btn abcd-carousel__btn--next" type="button" aria-label="Occasions suivantes" data-dir="1"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
       <div class="abcd-reasons-scroll">
 
         <a href="https://www.abracadaroom.com/fr/idee-cadeau/anniversaire/" class="abcd-reason-card">
@@ -1055,6 +1085,7 @@
           <div class="abcd-reason-card__content"><h3 class="abcd-reason-card__title">Départ à la retraite</h3></div>
         </a>
 
+      </div>
       </div>
     </div>
   </section>
@@ -1361,5 +1392,25 @@
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <!-- Carrousel "1000 raisons" : flèches desktop (le swipe natif reste actif sur mobile) -->
+  <script>
+    document.querySelectorAll('.abcd-carousel').forEach(function (wrap) {
+      var track = wrap.querySelector('.abcd-reasons-scroll');
+      var prev = wrap.querySelector('[data-dir="-1"]');
+      var next = wrap.querySelector('[data-dir="1"]');
+      function update() {
+        prev.disabled = track.scrollLeft <= 4;
+        next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+      }
+      [prev, next].forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          track.scrollBy({ left: Number(btn.dataset.dir) * track.clientWidth * 0.8, behavior: 'smooth' });
+        });
+      });
+      track.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    });
+  </script>
 </body>
 </html>
