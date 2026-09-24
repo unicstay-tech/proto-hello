@@ -452,6 +452,27 @@
       .abcd-panel { padding: 32px 28px; }
     }
 
+    /* ===== POURQUOI ABRACADAROOM ===== */
+    .abcd-why { background: #14110e; color: rgba(255,255,255,0.88); padding: 48px 0; }
+    .abcd-why__grid { display: grid; gap: 28px; }
+    .abcd-why .abcd-eyebrow { color: var(--abcd-yellow); margin-bottom: 8px; }
+    .abcd-why__title { color: #fff; font-size: 1.75rem; font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
+    .abcd-why__intro { font-size: 1rem; }
+    .abcd-why__press { margin-top: 16px; font-size: 0.875rem; color: rgba(255,255,255,0.7); }
+    .abcd-why__press strong { color: #fff; }
+    .abcd-why__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+    .abcd-why__list li { display: flex; gap: 14px; align-items: flex-start; }
+    .abcd-why__list p { font-size: 0.9375rem; }
+    .abcd-why__list strong { color: #fff; }
+    .abcd-why .abcd-icon { background: rgba(234,193,45,0.14); }
+    .abcd-why .abcd-icon svg { stroke: var(--abcd-yellow); }
+    @media (min-width: 768px) {
+      .abcd-why { padding: 72px 0; }
+      .abcd-why__grid { grid-template-columns: 5fr 6fr; gap: 56px; align-items: center; }
+      .abcd-why__title { font-size: 2.25rem; }
+      .abcd-why__list { grid-template-columns: 1fr 1fr; gap: 24px; }
+    }
+
     /* ===== 6. AVIS ===== */
     .abcd-review {
       background: #fff;
@@ -910,6 +931,36 @@
       </div>
     </section>
 
+    <!-- ===== POURQUOI ABRACADAROOM : réassurance marque, sans lien sortant. Textes repris de la présentation AbracadaRoom. ===== -->
+    <section class="abcd-why" aria-labelledby="why-title">
+      <div class="abcd-container abcd-why__grid">
+        <div>
+          <p class="abcd-eyebrow">Puisqu'on vous le dit !</p>
+          <h2 class="abcd-why__title" id="why-title">Pourquoi choisir AbracadaRoom</h2>
+          <p class="abcd-why__intro">AbracadaRoom est une plateforme française de réservation en ligne d'hébergements insolites. Fondée en 2012, elle référence plus de 3&nbsp;500 logements atypiques en France et en Europe, répartis en une trentaine de typologies : cabanes dans les arbres, bulles, dômes, yourtes, roulottes, tiny houses.</p>
+          <p class="abcd-why__press">Vu dans <strong>L'Écho touristique</strong>, février 2026</p>
+        </div>
+        <ul class="abcd-why__list">
+          <li>
+            <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><polyline points="9 15 11 17 15 13"/></svg></span>
+            <p><strong>Sélectionnés et vérifiés.</strong> Chaque hébergement est sélectionné et vérifié par notre équipe avant sa mise en ligne.</p>
+          </li>
+          <li>
+            <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M2 17h20"/></svg></span>
+            <p><strong>Insolite ne veut pas dire inconfortable.</strong> La plupart de ces hébergements sont chauffés et équipés d'une vraie literie, et beaucoup disposent d'une salle de bain privative, d'un espace cuisine ou d'un spa.</p>
+          </li>
+          <li>
+            <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22c4-4 8-7.6 8-12a8 8 0 0 0-16 0c0 4.4 4 8 8 12z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <p><strong>Des propriétaires indépendants.</strong> La majorité de ces hébergements sont tenus par des propriétaires indépendants, souvent installés en zone rurale, en pleine nature.</p>
+          </li>
+          <li>
+            <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18"/><path d="M7 15h4"/></svg></span>
+            <p><strong>Sans frais de service.</strong> La réservation et le paiement s'effectuent directement en ligne, sans frais de service pour le voyageur.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- ===== 6. AVIS ===== -->
     <!-- Avis réels Avis Vérifiés, recopiés tels quels (seuls des extraits signalés par (…) et un emoji retiré).
          Type d'hébergement et note non fournis par l'export : non affichés plutôt qu'inventés. -->
@@ -960,7 +1011,7 @@
         <div class="abcd-faq">
           <details><summary>Combien de temps est-elle valable ?</summary><p>18 mois. Il suffit de réserver avant la fin de validité, le séjour peut avoir lieu après. Prolongation possible de 6 mois pour 25&nbsp;€.</p></details>
           <details><summary>Comment la reçoit-on ?</summary><p>Par email dès le paiement validé, à imprimer ou envoyée directement au bénéficiaire. Ou par courrier en France métropolitaine, sous 5 à 7 jours ouvrés.</p></details>
-          <details><summary>Où l'utiliser ?</summary><p>Sur tous les hébergements réservables en ligne sur AbracadaRoom et Unic Stay.</p></details>
+          <details><summary>Où l'utiliser ?</summary><p>Sur tous les hébergements réservables en ligne sur AbracadaRoom.com et UnicStay.com.</p></details>
           <details><summary>Et si le séjour coûte plus que la carte ?</summary><p>Le complément se règle en ligne par carte bancaire.</p></details>
           <details><summary>Et s'il coûte moins ?</summary><p>Le solde reste utilisable pour une autre réservation, ou peut être offert à un proche.</p></details>
           <details><summary>Peut-on cumuler plusieurs cartes ?</summary><p>Oui, sur une même réservation.</p></details>
