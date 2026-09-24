@@ -2,6 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <script>
+    // Sans "/" final, les chemins relatifs (img/, fonts/, lp.js) pointeraient vers le dossier parent : on corrige l'adresse
+    (function (l) {
+      if (!/\/$/.test(l.pathname) && !/\.[a-z0-9]+$/i.test(l.pathname)) l.replace(l.pathname + '/' + l.search + l.hash);
+    })(window.location);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Carte cadeau AbracadaRoom : offrez un souvenir, pas un objet</title>
   <meta name="description" content="Offrez la carte cadeau AbracadaRoom : plus de 3 500 logements insolites en France et en Europe. Reçue par email en quelques minutes, valable 18 mois.">
@@ -158,7 +164,7 @@
       background: #14110e;
       color: #fff;
     }
-    .abcd-hero__media { position: absolute; top: 0; left: 0; right: 0; aspect-ratio: 5504 / 3228; }
+    .abcd-hero__media { position: absolute; top: 0; left: 0; right: 0; height: 58.65vw; }
     .abcd-hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
     .abcd-hero__veil {
       position: absolute;
@@ -250,7 +256,7 @@
 
     @media (min-width: 768px) {
       .abcd-hero { min-height: 620px; display: flex; align-items: center; }
-      .abcd-hero__media { left: auto; width: 50%; height: 100%; aspect-ratio: auto; }
+      .abcd-hero__media { left: auto; width: 50%; height: 100%; }
       .abcd-hero__media img { object-position: 50% 85%; }
       .abcd-hero__veil { background: linear-gradient(90deg, #14110e 0%, rgba(20,17,14,0) 25%); }
       .abcd-hero__content { padding-top: 56px; padding-bottom: 56px; }
@@ -677,7 +683,7 @@
               }
             })();
           </script>
-          <p class="abcd-hero__sub">Cabane perchée, bulle sous les étoiles, spa privatif : plus de 3&nbsp;500 logements insolites en France et en Europe. Ils choisissent où, quand et avec qui.</p>
+          <p class="abcd-hero__sub">Cabane perchée, bulle sous les étoiles avec spa privatif, tiny house : plus de 3&nbsp;500 logements insolites en France et en Europe. Ils choisissent où, quand et avec qui.</p>
 
           <!-- Sélecteur de montant. Les 6 montants sont écrits en dur (vérification de prix Google). Le JS ne fait que présélectionner. -->
           <div class="abcd-amounts" data-amounts id="montant">
@@ -857,10 +863,14 @@
           </li>
           <li class="abcd-step">
             <span class="abcd-step__num" aria-hidden="true">2</span>
-            <p><strong>Recevez-la tout de suite par email</strong>, à imprimer ou envoyée directement au bénéficiaire. Version papier possible par courrier.</p>
+            <p><strong>Personnalisez-la</strong> avec votre message pour le bénéficiaire.</p>
           </li>
           <li class="abcd-step">
             <span class="abcd-step__num" aria-hidden="true">3</span>
+            <p><strong>Recevez-la tout de suite par email</strong>, à imprimer ou envoyée directement au bénéficiaire. Version papier possible par courrier.</p>
+          </li>
+          <li class="abcd-step">
+            <span class="abcd-step__num" aria-hidden="true">4</span>
             <p><strong>Ils choisissent leur nuit</strong> parmi plus de 3&nbsp;500 logements, à la date qui leur convient, pendant 18 mois.</p>
           </li>
         </ol>

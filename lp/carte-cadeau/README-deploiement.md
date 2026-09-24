@@ -35,6 +35,7 @@ Aucun framework, aucun build. Le dossier se dépose tel quel.
 
 3. **robots.txt : ne rien bloquer.** Le robot Google Shopping doit pouvoir visiter la page. La non-indexation passe uniquement par la balise `<meta name="robots" content="noindex, nofollow">`.
 4. Ne pas ajouter la page au sitemap.
+   **Adresse avec « / » final obligatoire** : les ressources sont en relatif. Un petit script en tête de page recharge l'adresse avec « / » si besoin (paramètres conservés), mais le mieux est une redirection 301 côté serveur vers l'URL avec « / », et d'utiliser cette URL exacte dans Google Ads et Merchant Center.
 5. Serveur : activer la compression (gzip ou brotli) pour HTML, CSS, JS et SVG, et un cache long (1 an) sur `img/` et `fonts/`. En local sans compression, le LCP mobile est à 2,6 s ; la compression doit le faire passer sous 2,5 s.
 
 ## 2. Bandeau cookies (obligatoire)
