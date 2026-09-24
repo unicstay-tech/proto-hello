@@ -66,9 +66,20 @@ Les 6 montants sont écrits en dur dans le HTML (vérification de prix Google Me
 | `click_secondary` | clic vers la mini-boutique bons cadeaux | aucun |
 | `faq_open` | ouverture d'une question de la FAQ | `question` (intitulé) |
 
-### Ce qu'il faut configurer dans GTM (GTM-WF3MVZ)
+`click_cta` avec `position: cagnotte` : clic sur « Créer une cagnotte » (bloc « Un cadeau à plusieurs ? »).
 
-Sans rien faire, la page est déjà mesurée comme le reste du site si la balise GA4 (G-L7BYJ657F6) se déclenche sur toutes les pages. Les achats restent suivis sur gift.abracadaroom.com, et le suivi inter-domaines existant rattache la vente à la campagne.
+### Ce qui est déjà en place (constaté le 24/09/2026)
+
+| Site | Conteneur GTM | GA4 | Google Ads |
+|---|---|---|---|
+| Landing (www.abracadaroom.com) | GTM-WF3MVZ | G-L7BYJ657F6 | AW-955531351 |
+| Tunnel gift.abracadaroom.com (CNAME mhi.bonkdo.com) | GTM-PL2WTCN + GTM-TD85XBF (Bonkdo) | G-NDQTTQ6S8F | conversion AW-955531351 présente dans GTM-PL2WTCN |
+
+- **Google Ads** : rien à faire. La conversion d'achat de votre compte est déclenchée dans le tunnel, la landing transmet `gclid` et `utm_*` au lien d'achat, et les deux sites partagent le domaine abracadaroom.com. À vérifier dans Google Ads : cette conversion est bien l'action « Achat » principale.
+- **GA4** : les visites de la landing sont dans G-L7BYJ657F6, les achats dans G-NDQTTQ6S8F. Pour voir le parcours complet dans une seule propriété, ajouter G-L7BYJ657F6 dans GTM-PL2WTCN.
+- **`src=lp-carte-cadeau`** : permet de distinguer, dans le GA4 du tunnel, les visites venues de la landing de celles venues de /fr/carte-cadeau-insolite/. À demander à Bonkdo : ce paramètre est-il conservé jusqu'à la confirmation d'achat ?
+
+### Optionnel : exploiter les événements de la landing dans GA4 (GTM-WF3MVZ)
 
 Pour exploiter les 5 événements ci-dessus dans GA4 :
 
@@ -82,7 +93,8 @@ Pour exploiter les 5 événements ci-dessus dans GA4 :
 
 - **Prix de la galerie** (« À partir de … € la nuit ») : ce sont ceux des hébergements en photo (nommés dans la légende). À vérifier régulièrement.
 - **Avis** : avis réels Avis Vérifiés, recopiés tels quels (extraits signalés par « (…) »). Ne jamais les modifier ni en inventer.
-- **Logo ANCV** : pictogramme générique en attendant le logo officiel « Chèque-Vacances » du kit partenaire ANCV (bande de confiance, commentaire `[LOGO ANCV À FOURNIR]`).
+- **Médias** (« Vu à la télé et dans la presse ») : noms en texte, remplaçables par les logos officiels.
+- **Cagnotte** : le bouton « Créer une cagnotte » pointe vers `https://gift.abracadaroom.com/fr/giftcards/#money_pot` (paramètres de campagne et `src` ajoutés par le script).
 - **Photos** : 4:3 pour la galerie (400 et 800 px de large), hero en deux recadrages (mobile 1,7:1 et desktop 1,25:1) avec le couple toujours entier. Garder les mêmes noms de fichiers ou mettre à jour les `srcset`.
 - **CGV** : le lien « CGV » du pied de page pointe vers les conditions générales d'utilisation (`/fr/conditions-generales-dutilisation/`), les CGV de la boutique cadeau n'ayant pas d'URL propre.
 
@@ -95,5 +107,6 @@ Pour exploiter les 5 événements ci-dessus dans GA4 :
 - Balise `noindex, nofollow` présente, robots.txt non bloquant.
 - En 375 × 667 : sélecteur de montant et bouton d'achat visibles sans scroller.
 - Bouton collant mobile : apparaît quand le bouton du hero sort de l'écran, disparaît au rappel final.
+- Bouton « Créer une cagnotte » : lien avec paramètres de campagne, `src` et `#money_pot`.
 - Popup Avis Vérifiés : s'ouvre sans quitter la page, se ferme avec la croix, Échap ou un clic à côté.
 - Lighthouse mobile en production : performance et accessibilité au-dessus de 90.
