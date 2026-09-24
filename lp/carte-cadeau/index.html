@@ -331,15 +331,18 @@
     }
 
     /* ===== 2. BANDE DE CONFIANCE ===== */
-    .abcd-trust { background: var(--abcd-light); padding: 20px 0; }
-    .abcd-trust ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-    .abcd-trust li { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--abcd-title); font-size: 0.9375rem; line-height: 1.3; }
+    /* Mobile : 3 blocs côte à côte, icône au-dessus du texte */
+    .abcd-trust { background: var(--abcd-light); padding: 16px 0; }
+    .abcd-trust ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .abcd-trust li { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; font-weight: 600; color: var(--abcd-title); font-size: 0.8125rem; line-height: 1.25; }
     .abcd-trust .abcd-icon { width: 40px; height: 40px; background: #fff; }
     .abcd-trust .abcd-icon svg { width: 20px; height: 20px; }
     .abcd-trust .abcd-icon--star svg { fill: var(--abcd-yellow); stroke: var(--abcd-yellow-dark); }
     @media (min-width: 768px) {
-      .abcd-trust { padding: 24px 0; }
-      .abcd-trust ul { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+      .abcd-trust { padding: 22px 0; }
+      .abcd-trust ul { gap: 32px; }
+      .abcd-trust li { flex-direction: row; justify-content: center; text-align: left; gap: 12px; font-size: 0.9375rem; }
+      .abcd-trust__sub { font-size: 0.8125rem; }
     }
 
     /* ===== 3. GALERIE ===== */
@@ -522,7 +525,7 @@
 
     .abcd-reviews-more { text-align: center; margin-top: 20px; }
     .abcd-reviews-more a { font-weight: 600; text-underline-offset: 3px; }
-    .abcd-trust__sub { display: block; margin-top: 2px; font-size: 0.8125rem; font-weight: 400; color: var(--abcd-text); text-underline-offset: 3px; }
+    .abcd-trust__sub { display: block; margin-top: 2px; font-size: 0.75rem; font-weight: 400; color: var(--abcd-text); text-underline-offset: 3px; }
     .abcd-trust__sub:hover { color: var(--abcd-magenta); }
 
     /* Popup Avis Vérifiés */
@@ -725,16 +728,16 @@
         <ul>
           <li>
             <span class="abcd-icon abcd-icon--star" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-            <span>Des séjours notés 4,7/5 par plus de 20&nbsp;000 voyageurs
-              <a class="abcd-trust__sub" href="https://www.avis-verifies.com/avis-clients/abracadaroom.com" target="_blank" rel="noopener" data-reviews-modal>Avis Vérifiés, certifié AFNOR</a></span>
+            <span>4,7/5 sur plus de 20&nbsp;000 avis
+              <a class="abcd-trust__sub" href="https://www.avis-verifies.com/avis-clients/abracadaroom.com" target="_blank" rel="noopener" data-reviews-modal>Avis Vérifiés, AFNOR</a></span>
           </li>
           <li>
             <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
-            <span>Plus de 300&nbsp;000 voyageurs depuis plus de 10 ans</span>
+            <span>300&nbsp;000 voyageurs depuis 10&nbsp;ans</span>
           </li>
           <li>
             <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><polyline points="9 15 11 17 15 13"/></svg></span>
-            <span>Chaque hébergement sélectionné et vérifié par notre équipe</span>
+            <span>Hébergements vérifiés par notre équipe</span>
           </li>
         </ul>
       </div>
