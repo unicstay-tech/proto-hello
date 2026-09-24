@@ -669,7 +669,8 @@
         <div class="abcd-hero__box">
           <p class="abcd-eyebrow">Carte cadeau AbracadaRoom</p>
           <h1 class="abcd-hero__title" id="hero-title">Offrez un souvenir, pas un objet</h1>
-          <!-- Titre selon ?occasion= : remplacé avant l'affichage pour éviter tout clignotement -->
+          <p class="abcd-hero__sub"><span id="hero-sub-lead">Cabane perchée, bulle sous les étoiles avec spa privatif, tiny house</span> : plus de 3&nbsp;500 logements insolites en France et en Europe. Ils choisissent où, quand et avec qui.</p>
+          <!-- Titre et début du sous-titre selon ?occasion= : remplacés avant l'affichage pour éviter tout clignotement -->
           <script>
             window.LP_OCCASIONS = {
               'noel': 'Pour Noël, offrez un souvenir, pas un objet',
@@ -679,14 +680,22 @@
               'spa': 'Offrez un souvenir tout en douceur, spa privatif et nuit insolite',
               'famille': 'Offrez-leur un souvenir à partager en famille'
             };
+            // Début du sous-titre : seulement pour les occasions où les exemples par défaut ne collent pas
+            window.LP_SUBTITLES = {
+              'famille': 'Cabane perchée, lodge ou cabane flottante jusqu\u2019à 6 personnes',
+              'amoureux': 'Bulle sous les étoiles, cabane perchée avec spa privatif, love room',
+              'spa': 'Jacuzzi ou bain nordique privatif, en cabane perchée ou en bulle sous les étoiles'
+            };
             (function () {
               var o = new URLSearchParams(location.search).get('occasion');
               if (o && Object.prototype.hasOwnProperty.call(window.LP_OCCASIONS, o)) {
                 document.getElementById('hero-title').textContent = window.LP_OCCASIONS[o];
               }
+              if (o && Object.prototype.hasOwnProperty.call(window.LP_SUBTITLES, o)) {
+                document.getElementById('hero-sub-lead').textContent = window.LP_SUBTITLES[o];
+              }
             })();
           </script>
-          <p class="abcd-hero__sub">Cabane perchée, bulle sous les étoiles avec spa privatif, tiny house : plus de 3&nbsp;500 logements insolites en France et en Europe. Ils choisissent où, quand et avec qui.</p>
 
           <!-- Sélecteur de montant. Les 6 montants sont écrits en dur (vérification de prix Google). Le JS ne fait que présélectionner. -->
           <div class="abcd-amounts" data-amounts id="montant">
