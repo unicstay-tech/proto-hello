@@ -206,6 +206,16 @@
     modal.addEventListener('click', function (e) { if (e.target === modal) modal.close(); });
   }
 
+  /* ----- Cagnotte : autre chemin d'achat de la carte cadeau ----- */
+  [].forEach.call(document.querySelectorAll('[data-cagnotte]'), function (link) {
+    var url = new URL(withTracking(link.href.split('#')[0].split('?')[0], {}));
+    url.hash = 'money_pot';
+    link.href = url.toString();
+    link.addEventListener('click', function () {
+      track('click_cta', { value: state.value, occasion: occasion, position: 'cagnotte' });
+    });
+  });
+
   /* ----- Sortie secondaire ----- */
   [].forEach.call(document.querySelectorAll('[data-secondary]'), function (link) {
     link.href = withTracking(CONFIG.secondaryUrl, {});

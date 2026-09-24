@@ -333,7 +333,7 @@
     .abcd-trust .abcd-icon--star svg { fill: var(--abcd-yellow); stroke: var(--abcd-yellow-dark); }
     @media (min-width: 768px) {
       .abcd-trust { padding: 24px 0; }
-      .abcd-trust ul { grid-template-columns: repeat(3, auto); justify-content: space-between; }
+      .abcd-trust ul { grid-template-columns: repeat(3, 1fr); gap: 32px; }
     }
 
     /* ===== 3. GALERIE ===== */
@@ -407,6 +407,20 @@
     .abcd-panel__head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
     .abcd-panel__title { color: var(--abcd-title); font-size: 1.3125rem; font-weight: 700; line-height: 1.2; }
     .abcd-panel .abcd-icon { background: #fff; }
+    .abcd-group { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 10px; }
+    .abcd-group li { position: relative; padding-left: 28px; font-size: 0.9375rem; }
+    .abcd-group li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239e3669' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E") center/11px no-repeat;
+    }
+    .abcd-group strong { color: var(--abcd-title); }
+    .abcd-group__tip { font-size: 0.875rem; color: var(--abcd-text-muted); margin-bottom: 16px; }
     .abcd-quotes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
     .abcd-quote {
       display: flex;
@@ -682,9 +696,8 @@
             <span>Plus de 300&nbsp;000 voyageurs depuis plus de 10 ans</span>
           </li>
           <li>
-            <!-- [LOGO ANCV À FOURNIR] logo officiel "Chèque-Vacances" du kit partenaire ANCV. En attendant : pictogramme générique. -->
-            <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h6M6 14h4"/><circle cx="17" cy="12" r="2"/></svg></span>
-            <span>Chèques-vacances ANCV acceptés</span>
+            <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><polyline points="9 15 11 17 15 13"/></svg></span>
+            <span>Chaque hébergement sélectionné et vérifié par notre équipe</span>
           </li>
         </ul>
       </div>
@@ -866,7 +879,14 @@
               <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
               <h3 class="abcd-panel__title">Un cadeau à plusieurs ?</h3>
             </div>
-            <p>Collègues, famille, parents d'élèves : chacun peut offrir sa carte, elles se cumulent sur une même réservation. Payable aussi en chèques-vacances ANCV. Glissez tous les prénoms dans le message personnalisé.</p>
+            <!-- [TEXTE À VALIDER] cagnotte : faits repris de gift.abracadaroom.com/fr/giftcards/ -->
+            <ul class="abcd-group">
+              <li><strong>Une cagnotte en ligne</strong> : chacun participe du montant de son choix, sans frais et sans créer de compte. Le total devient une carte cadeau.</li>
+              <li><strong>Ou chacun sa carte</strong> : elles se cumulent sur une même réservation.</li>
+              <li class="abcd-group__ancv"><strong>Payable aussi en chèques-vacances ANCV.</strong></li>
+            </ul>
+            <p class="abcd-group__tip">Glissez tous les prénoms dans le message personnalisé.</p>
+            <a class="abcd-btn abcd-btn-outline" href="https://gift.abracadaroom.com/fr/giftcards/?src=lp-carte-cadeau#money_pot" data-cagnotte>Créer une cagnotte</a>
           </div>
 
           <!-- Aide au mot personnel -->
