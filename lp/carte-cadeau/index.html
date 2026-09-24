@@ -458,6 +458,18 @@
     .abcd-why .abcd-eyebrow { color: var(--abcd-yellow); margin-bottom: 8px; }
     .abcd-why__title { color: #fff; font-size: 1.75rem; font-weight: 700; line-height: 1.15; margin-bottom: 14px; }
     .abcd-why__intro { font-size: 1rem; }
+    .abcd-press { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.14); }
+    .abcd-press__label { font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 10px; }
+    .abcd-press__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+    .abcd-press__list li {
+      padding: 4px 12px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+    }
     .abcd-why__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
     .abcd-why__list li { display: flex; gap: 14px; align-items: flex-start; }
     .abcd-why__list p { font-size: 0.9375rem; }
@@ -936,6 +948,19 @@
           <p class="abcd-eyebrow">Puisqu'on vous le dit !</p>
           <h2 class="abcd-why__title" id="why-title">Pourquoi choisir AbracadaRoom</h2>
           <p class="abcd-why__intro">AbracadaRoom est une plateforme française de réservation en ligne d'hébergements insolites. Fondée en 2012, elle référence plus de 3&nbsp;500 logements atypiques en France et en Europe, répartis en une trentaine de typologies : cabanes dans les arbres, bulles, dômes, yourtes, roulottes, tiny houses.</p>
+          <!-- Médias en texte (pas de logos tiers). Remplaçables par les logos officiels si disponibles. -->
+          <div class="abcd-press">
+            <p class="abcd-press__label">Vu à la télé et dans la presse</p>
+            <ul class="abcd-press__list">
+              <li>Capital (M6)</li>
+              <li>TF1</li>
+              <li>Télématin</li>
+              <li>franceinfo</li>
+              <li>Les Echos</li>
+              <li>La Provence</li>
+              <li>L'Écho touristique</li>
+            </ul>
+          </div>
         </div>
         <ul class="abcd-why__list">
           <li>
