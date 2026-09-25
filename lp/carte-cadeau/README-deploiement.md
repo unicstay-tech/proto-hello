@@ -29,6 +29,7 @@ Aucun framework, aucun build. Le dossier se dépose tel quel.
    | `pageUrl` | URL définitive de la page : `https://www.abracadaroom.com/fr/offrir-carte-cadeau/` |
    | `checkoutUrl` | tunnel d'achat de la carte cadeau |
    | `secondaryUrl` | mini-boutique bons cadeaux (sortie secondaire) |
+   | `b2bUrl` | page cadeaux d'entreprise (sortie entreprises) |
    | `src` | valeur du paramètre `src` ajouté aux liens sortants (`lp-carte-cadeau`) |
    | `gtmId` | conteneur GTM (`GTM-WF3MVZ`). Si l'ID change, le modifier aussi dans la balise `<noscript>` juste après `<body>` |
    | `gtmDomain` | GTM ne se charge que sur ce domaine (`abracadaroom.com`), pour que les tests et la maquette ne polluent pas GA4 et Google Ads |
@@ -58,8 +59,8 @@ Note : ces balises alourdissent la page. Les scores Lighthouse mesurés sur la m
 | Paramètre | Effet |
 |---|---|
 | `value` | 50, 100, 150, 200, 250 ou 300 : le bouton est sélectionné. Autre nombre supérieur ou égal à 20 : « Autre montant » s'ouvre pré-rempli (arrondi à l'euro). Absent, inférieur à 20 ou non numérique : 150. |
-| `occasion` | `noel`, `anniversaire`, `amoureux`, `derniere-minute`, `spa`, `famille` : change le titre du hero. Absent ou inconnu : titre par défaut. Les messages de Noël de « Besoin d'inspiration pour votre mot ? » ne s'affichent que sans occasion ou avec `noel`. |
-| `utm_*`, `gclid`, `gbraid`, `wbraid`, `fbclid` | conservés et transmis au lien d'achat et au lien de la mini-boutique, avec `src=lp-carte-cadeau` |
+| `occasion` | `noel`, `anniversaire`, `amoureux`, `derniere-minute`, `spa`, `famille` : change le titre du hero (et le début du sous-titre pour `famille`, `amoureux`, `spa`). Absent ou inconnu : titre par défaut. « Besoin d'inspiration pour votre mot ? » s'adapte aussi : messages de Noël sans occasion ou avec `noel`, un message dédié en tête pour `amoureux`, `famille`, `spa`, « Pour passer le cap » en tête pour `anniversaire`. |
+| `utm_*`, `gclid`, `gbraid`, `wbraid`, `fbclid` | conservés et transmis à tous les liens de sortie (achat, cagnotte, mini-boutique, entreprises), avec `src=lp-carte-cadeau` |
 
 Exemple de lien d'achat produit :
 `https://gift.abracadaroom.com/fr/giftcards/customization/?value=100&utm_source=google&gclid=XXX&src=lp-carte-cadeau`
@@ -74,6 +75,7 @@ Les 6 montants sont écrits en dur dans le HTML (vérification de prix Google Me
 | `select_amount` | à chaque changement de montant | `value` |
 | `click_cta` | clic sur un bouton d'achat, ou sur un bouton « Offrir pour… » des occasions | `value`, `occasion`, `position` (`hero`, `sticky`, `occasion`, `final`) |
 | `click_secondary` | clic vers la mini-boutique bons cadeaux | aucun |
+| `click_b2b` | clic vers la page cadeaux d'entreprise | aucun |
 | `faq_open` | ouverture d'une question de la FAQ | `question` (intitulé) |
 
 `click_cta` avec `position: cagnotte` : clic sur « Créer une cagnotte » (bloc « Un cadeau à plusieurs ? »).

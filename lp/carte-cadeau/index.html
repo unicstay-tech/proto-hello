@@ -25,6 +25,8 @@
       checkoutUrl: 'https://gift.abracadaroom.com/fr/giftcards/customization/',
       // Sortie secondaire : mini-boutique bons cadeaux
       secondaryUrl: 'https://www.abracadaroom.com/fr/idee-cadeau/recherche/',
+      // Sortie entreprises : cadeaux d'entreprise et CSE
+      b2bUrl: 'https://www.abracadaroom.com/fr/cadeaux-entreprise/',
       // Valeur du paramètre src ajouté aux liens sortants
       src: 'lp-carte-cadeau',
       // Conteneur Google Tag Manager du site AbracadaRoom (vide = GTM non chargé)
@@ -570,6 +572,11 @@
     .abcd-secondary__title { color: var(--abcd-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 4px; }
     .abcd-secondary p { font-size: 0.9375rem; margin-bottom: 8px; }
     .abcd-secondary a { font-weight: 600; text-underline-offset: 3px; }
+    .abcd-secondary__grid { display: grid; gap: 28px; }
+    @media (min-width: 768px) {
+      .abcd-secondary__grid { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .abcd-secondary__grid > div + div { border-left: 1px solid #ececec; padding-left: 48px; }
+    }
 
     /* ===== 8. FAQ ===== */
     .abcd-faq { max-width: 800px; margin: 0 auto; }
@@ -955,11 +962,15 @@
               <h3 class="abcd-panel__title">Besoin d'inspiration pour votre mot ?</h3>
             </div>
             <ul class="abcd-quotes">
-              <!-- Messages de Noël : visibles sans occasion ou avec ?occasion=noel, masqués pour les autres occasions -->
-              <li class="abcd-quote" data-only-occasion="noel"><p>Joyeux Noël ! Cette année, pas de paquet à ouvrir : une nuit insolite à vivre, où tu veux et quand tu veux.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
-              <li class="abcd-quote" data-only-occasion="noel"><p>Le père Noël a pensé à vous : il ne reste plus qu'à choisir la date de votre escapade.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
-              <li class="abcd-quote"><p>Pour passer le cap : une nuit où tu veux, quand tu veux, avec qui tu veux.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
-              <li class="abcd-quote"><p>Plus qu'un cadeau, un souvenir à vivre à deux, ou à quatre.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
+              <!-- data-only-occasion : visible seulement pour cette occasion (et sans occasion si data-show-default).
+                   data-first-for : remonté en tête pour cette occasion. Voir lp.js. -->
+              <li class="abcd-quote" data-only-occasion="amoureux"><p>Rien que nous deux, une nuit hors du temps, où tu veux et quand tu veux.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
+              <li class="abcd-quote" data-only-occasion="famille"><p>Une aventure à vivre tous ensemble, petits et grands. À vous de choisir où !</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
+              <li class="abcd-quote" data-only-occasion="spa"><p>Pour souffler un peu : une nuit insolite et un spa rien que pour vous.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
+              <li class="abcd-quote" data-only-occasion="noel" data-show-default><p>Joyeux Noël ! Cette année, pas de paquet à ouvrir : une nuit insolite à vivre, où tu veux et quand tu veux.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
+              <li class="abcd-quote" data-only-occasion="noel" data-show-default><p>Le père Noël a pensé à vous : il ne reste plus qu'à choisir la date de votre escapade.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
+              <li class="abcd-quote" data-first-for="anniversaire"><p>Pour passer le cap : une nuit où tu veux, quand tu veux, avec qui tu veux.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
+              <li class="abcd-quote" data-first-for="famille"><p>Plus qu'un cadeau, un souvenir à vivre à deux, ou à quatre.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
               <li class="abcd-quote"><p>Merci pour tout. À votre tour de vous offrir une parenthèse.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
               <li class="abcd-quote"><p>Bonne retraite ! Il ne reste plus qu'à choisir la première escapade.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
             </ul>
@@ -1044,11 +1055,18 @@
     </section>
 
     <!-- ===== 7. SORTIE SECONDAIRE (discrète, jamais au niveau du bouton d'achat) ===== -->
-    <section class="abcd-secondary" aria-labelledby="secondaire-title">
-      <div class="abcd-container">
-        <h2 class="abcd-secondary__title" id="secondaire-title">Vous savez déjà où l'envoyer ?</h2>
-        <p>Offrez directement une nuit dans un hébergement précis, à prix fixe.</p>
-        <a href="https://www.abracadaroom.com/fr/idee-cadeau/recherche/?src=lp-carte-cadeau" data-secondary>Choisir un hébergement à offrir</a>
+    <section class="abcd-secondary" aria-label="D'autres façons d'offrir">
+      <div class="abcd-container abcd-secondary__grid">
+        <div>
+          <h2 class="abcd-secondary__title">Vous savez déjà où l'envoyer ?</h2>
+          <p>Offrez directement une nuit dans un hébergement précis, à prix fixe.</p>
+          <a href="https://www.abracadaroom.com/fr/idee-cadeau/recherche/?src=lp-carte-cadeau" data-secondary>Choisir un hébergement à offrir</a>
+        </div>
+        <div>
+          <h2 class="abcd-secondary__title">Pour vos salariés, vos clients ou votre CSE ?</h2>
+          <p>Entreprises, CSE, agences événementielles : carte cadeau dématérialisée, envoi instantané à vos bénéficiaires, devis gratuit.</p>
+          <a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/?src=lp-carte-cadeau" data-b2b>Découvrir nos offres entreprises</a>
+        </div>
       </div>
     </section>
 

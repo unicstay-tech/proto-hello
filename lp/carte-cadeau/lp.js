@@ -184,11 +184,21 @@
     });
   });
 
-  // Messages de Noël : visibles sans occasion ou avec ?occasion=noel uniquement
+  // Messages d'inspiration selon l'occasion :
+  // data-only-occasion = visible seulement pour cette occasion (et sans occasion si data-show-default),
+  // data-first-for = remonté en tête pour cette occasion
   [].forEach.call(document.querySelectorAll('[data-only-occasion]'), function (item) {
     var only = item.getAttribute('data-only-occasion');
-    if (occasion !== 'default' && occasion !== only) item.hidden = true;
+    var showDefault = item.hasAttribute('data-show-default');
+    item.hidden = !(occasion === only || (occasion === 'default' && showDefault));
   });
+  var quoteList = document.querySelector('.abcd-quotes');
+  if (quoteList) {
+    var firsts = [].filter.call(quoteList.children, function (item) {
+      return item.getAttribute('data-only-occasion') === occasion || item.getAttribute('data-first-for') === occasion;
+    });
+    for (var i = firsts.length - 1; i >= 0; i--) quoteList.insertBefore(firsts[i], quoteList.firstChild);
+  }
 
   /* ----- Popup Avis Vérifiés : l'attestation s'ouvre sans quitter la page ----- */
   var modal = document.getElementById('avis-modal');
@@ -216,10 +226,14 @@
     });
   });
 
-  /* ----- Sortie secondaire ----- */
+  /* ----- Sorties secondaires : hébergement précis, entreprises ----- */
   [].forEach.call(document.querySelectorAll('[data-secondary]'), function (link) {
     link.href = withTracking(CONFIG.secondaryUrl, {});
     link.addEventListener('click', function () { track('click_secondary', {}); });
+  });
+  [].forEach.call(document.querySelectorAll('[data-b2b]'), function (link) {
+    link.href = withTracking(CONFIG.b2bUrl, {});
+    link.addEventListener('click', function () { track('click_b2b', {}); });
   });
 
   /* ----- FAQ ----- */
