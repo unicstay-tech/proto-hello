@@ -19,8 +19,8 @@
   <!-- ===== CONFIGURATION : seul endroit à modifier au déploiement ===== -->
   <script>
     window.LP_CONFIG = {
-      // URL définitive de la page [À FOURNIR : URL encore à arbitrer]
-      pageUrl: 'https://www.abracadaroom.com/fr/lp/carte-cadeau/',
+      // URL définitive de la page
+      pageUrl: 'https://www.abracadaroom.com/fr/offrir-carte-cadeau/',
       // Tunnel d'achat de la carte cadeau (le paramètre value est ajouté par le script)
       checkoutUrl: 'https://gift.abracadaroom.com/fr/giftcards/customization/',
       // Sortie secondaire : mini-boutique bons cadeaux
@@ -178,6 +178,11 @@
     .abcd-hero__box { max-width: 560px; display: flex; flex-direction: column; }
     .abcd-hero__box > .abcd-eyebrow { align-self: flex-start; }
     .abcd-hero__box > .abcd-hero__sub { order: 10; margin: 18px 0 0; }
+    @media (max-width: 767px) and (max-height: 700px) {
+      .abcd-hero__content { padding-top: calc(58.6vw + 10px); padding-bottom: 20px; }
+      .abcd-hero__title { font-size: 1.5625rem; margin-bottom: 12px; }
+      .abcd-hero .abcd-cta { margin-top: 10px; }
+    }
     @media (max-width: 767px) {
       .abcd-hero .abcd-amounts__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
     }
@@ -323,6 +328,7 @@
       scroll-padding: 0 var(--abcd-gutter);
     }
     .abcd-scroller > * { flex: 0 0 78%; scroll-snap-align: start; }
+    .abcd-scroller:focus-visible { border-radius: var(--abcd-radius); }
     @media (min-width: 768px) {
       .abcd-section { padding: 72px 0; }
       .abcd-section__head { margin-bottom: 40px; }
@@ -759,7 +765,7 @@
         <div class="abcd-section__head">
           <h2 class="abcd-section-title" id="galerie-title">Ce que votre carte peut devenir</h2>
         </div>
-        <div class="abcd-scroller">
+        <div class="abcd-scroller" tabindex="0" role="region" aria-label="Exemples d'hébergements">
           <article class="abcd-idea">
             <figure class="abcd-idea__figure">
             <picture>
@@ -932,7 +938,7 @@
               <span class="abcd-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
               <h3 class="abcd-panel__title">Un cadeau à plusieurs ?</h3>
             </div>
-            <!-- [TEXTE À VALIDER] cagnotte : faits repris de gift.abracadaroom.com/fr/giftcards/ -->
+            <!-- Cagnotte : faits repris de gift.abracadaroom.com/fr/giftcards/ -->
             <ul class="abcd-group">
               <li><strong>Une cagnotte en ligne</strong> : chacun participe du montant de son choix, sans frais et sans créer de compte. Le total devient une carte cadeau.</li>
               <li><strong>Ou chacun sa carte</strong> : elles se cumulent sur une même réservation.</li>
@@ -949,7 +955,7 @@
               <h3 class="abcd-panel__title">Besoin d'inspiration pour votre mot ?</h3>
             </div>
             <ul class="abcd-quotes">
-              <!-- [TEXTES NOËL À VALIDER] visibles sans occasion ou avec ?occasion=noel, masqués pour les autres occasions -->
+              <!-- Messages de Noël : visibles sans occasion ou avec ?occasion=noel, masqués pour les autres occasions -->
               <li class="abcd-quote" data-only-occasion="noel"><p>Joyeux Noël ! Cette année, pas de paquet à ouvrir : une nuit insolite à vivre, où tu veux et quand tu veux.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
               <li class="abcd-quote" data-only-occasion="noel"><p>Le père Noël a pensé à vous : il ne reste plus qu'à choisir la date de votre escapade.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
               <li class="abcd-quote"><p>Pour passer le cap : une nuit où tu veux, quand tu veux, avec qui tu veux.</p><button type="button" class="abcd-copy" data-copy>Copier</button></li>
@@ -1013,7 +1019,7 @@
         <div class="abcd-section__head">
           <h2 class="abcd-section-title" id="avis-title">Ce qu'en disent les voyageurs</h2>
         </div>
-        <div class="abcd-scroller abcd-reviews">
+        <div class="abcd-scroller abcd-reviews" tabindex="0" role="region" aria-label="Avis de voyageurs">
           <figure class="abcd-review">
             <blockquote class="abcd-review__text">«&nbsp;Ce n’est pas simplement un lieu atypique, c’est une véritable immersion dans un univers. (…) On repart avec des étoiles plein les yeux et une seule envie : revenir !&nbsp;»</blockquote>
             <figcaption class="abcd-review__author"><strong>Marie-Claude K.</strong><br><span class="abcd-review__badge">Avis vérifié</span> · Expérience du 26&nbsp;août&nbsp;2026</figcaption>
@@ -1060,7 +1066,7 @@
           <details><summary>Et s'il coûte moins ?</summary><p>Le solde reste utilisable pour une autre réservation, ou peut être offert à un proche.</p></details>
           <details><summary>Peut-on cumuler plusieurs cartes ?</summary><p>Oui, sur une même réservation.</p></details>
           <details><summary>Peut-on payer en chèques-vacances ?</summary><p>Oui. Dans ce cas, la carte est envoyée par email à l'acheteur uniquement.</p>
-            <!-- [PRÉCISION À VALIDER] process repris de abracadaroom.com/fr/cheque-vacances-ancv/ -->
+            <!-- Process repris de abracadaroom.com/fr/cheque-vacances-ancv/ -->
             <p>Réglez d'abord la carte par carte bancaire, puis envoyez vos chèques-vacances avec le formulaire dédié : par courrier recommandé pour les chèques papier, ou via ANCV Connect pour les chèques dématérialisés. Le montant vous est remboursé sous 15 jours.</p></details>
           <details><summary>Jusqu'à quand réserver ?</summary><p>Au plus tard la veille du séjour, idéalement 48&nbsp;h avant.</p></details>
         </div>
@@ -1068,7 +1074,7 @@
     </section>
 
     <!-- ===== 9. RAPPEL FINAL (sélecteur synchronisé avec celui du hero) ===== -->
-    <section class="abcd-final" id="rappel" aria-labelledby="final-title">
+    <section class="abcd-final" id="rappel" aria-label="Offrir la carte cadeau">
       <div class="abcd-container">
         <h2 class="abcd-final__title" id="final-title">Offrez un souvenir, pas un objet</h2>
         <div class="abcd-amounts" data-amounts>

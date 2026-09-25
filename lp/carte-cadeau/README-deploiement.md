@@ -19,14 +19,14 @@ Aucun framework, aucun build. Le dossier se dépose tel quel.
 
 ## 1. Mise en ligne
 
-1. Copier le dossier entier sur abracadaroom.com, à l'URL retenue (par exemple `/fr/lp/carte-cadeau/`).
+1. Copier le dossier entier sur abracadaroom.com, à l'URL retenue : **https://www.abracadaroom.com/fr/offrir-carte-cadeau/** (avec « / » final).
    Les images, polices et `lp.js` sont appelés **en relatif** depuis `index.html` : garder la structure du dossier.
    Tous les **liens** (href) sont en URL absolue.
 2. Dans `index.html`, bloc `window.LP_CONFIG` en tête de page : c'est le **seul endroit à modifier**.
 
    | Clé | Rôle |
    |---|---|
-   | `pageUrl` | URL définitive de la page **(à renseigner)** |
+   | `pageUrl` | URL définitive de la page : `https://www.abracadaroom.com/fr/offrir-carte-cadeau/` |
    | `checkoutUrl` | tunnel d'achat de la carte cadeau |
    | `secondaryUrl` | mini-boutique bons cadeaux (sortie secondaire) |
    | `src` | valeur du paramètre `src` ajouté aux liens sortants (`lp-carte-cadeau`) |
