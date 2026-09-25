@@ -38,11 +38,20 @@ Aucun framework, aucun build. Le dossier se dépose tel quel.
    **Adresse avec « / » final obligatoire** : les ressources sont en relatif. Un petit script en tête de page recharge l'adresse avec « / » si besoin (paramètres conservés), mais le mieux est une redirection 301 côté serveur vers l'URL avec « / », et d'utiliser cette URL exacte dans Google Ads et Merchant Center.
 5. Serveur : activer la compression (gzip ou brotli) pour HTML, CSS, JS et SVG, et un cache long (1 an) sur `img/` et `fonts/`. En local sans compression, le LCP mobile est à 2,6 s ; la compression doit le faire passer sous 2,5 s.
 
-## 2. Bandeau cookies (obligatoire)
+## 2. Bandeau cookies et outils du site (via GTM)
 
-La page charge GTM, donc GA4, Google Ads et les autres balises du conteneur.
-Le bandeau cookies du site (cookieconsent) est chargé par le site lui-même, **pas par GTM** : la landing n'en a donc pas.
-**Il faut y intégrer le même bandeau et le même paramétrage de consentement que sur le reste du site** avant la mise en ligne.
+Constaté dans le conteneur GTM-WF3MVZ (25/09/2026) : les balises ci-dessous se déclenchent sur toute page dont l'URL contient `www.abracadaroom.com/fr/`. Elles se chargeront donc **automatiquement** sur la landing, sans rien ajouter au code :
+
+| Balise GTM | Sur la landing | Recommandation |
+|---|---|---|
+| Bandeau cookies (cookieconsent) | oui | garder |
+| GA4 G-L7BYJ657F6, Google Ads, pixel Facebook, Affilae, Brevo, Hotjar | oui | garder (mesure) |
+| OptinMonster (popups marketing) | oui | **exclure** : une popup sur une page de conversion payante fait perdre des ventes |
+| Crisp (chat) | oui | **exclure au lancement** : la bulle recouvre le bouton d'achat collant sur mobile. À réactiver plus tard en test si besoin |
+
+Exclusion dans GTM : créer un déclencheur d'exception « Page Path contient `/fr/offrir-carte-cadeau/` » et l'ajouter en exception aux balises OptinMonster et Crisp.
+
+Note : ces balises alourdissent la page. Les scores Lighthouse mesurés sur la maquette (100/100) sont sans GTM ; ils baisseront un peu en production.
 
 ## 3. Paramètres d'URL de la page
 
