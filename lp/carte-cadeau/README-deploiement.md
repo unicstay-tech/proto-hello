@@ -17,6 +17,8 @@ img/         photos en AVIF + WebP, plusieurs largeurs, et logo SVG
 
 Aucun framework, aucun build. Le dossier se dépose tel quel.
 
+**À chaque modification de `lp.js`**, changer le numéro de version dans `index.html` (`<script src="lp.js?v=AAAA-MM-JJ">`) pour que les navigateurs et le cache serveur ne servent pas l'ancien script avec la nouvelle page.
+
 ## 1. Mise en ligne
 
 1. Copier le dossier entier sur abracadaroom.com, à l'URL retenue : **https://www.abracadaroom.com/fr/offrir-carte-cadeau/** (avec « / » final).
