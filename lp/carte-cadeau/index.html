@@ -54,13 +54,14 @@
   <!-- Image du hero (LCP) selon ?occasion= : une seule définition, utilisée pour le préchargement et pour l'affichage.
        Pas d'alcool à l'image (loi Évin). Recadrages : mobile 1,7:1 (img/NOM-mobile-*), desktop 1,25:1 (img/NOM-*). -->
   <script>
+    // pos (optionnel) : cadrage de la photo dans son emplacement sur ordinateur (par défaut 50% 85%)
     window.LP_HEROES = {
       'default': { file: 'hero-couple-dome', desk: [800, 1200, 1600], alt: 'Un couple assis sur un lit rond sous un dôme de bois et de verre, le regard tourné vers le ciel' },
       'amoureux': { file: 'hero-couple-cabane-lit', desk: [800, 1200, 1600], alt: 'Un couple en peignoir au lit dans une cabane aux parois de verre, au milieu des arbres' },
       'spa': { file: 'hero-couple-jacuzzi', desk: [800, 1200, 1600], alt: 'Un couple dans un jacuzzi privatif, face à une cabane de verre dans la verdure' },
       'famille': { file: 'hero-famille-barque', desk: [800, 1200, 1600], alt: 'Une famille avec deux enfants rejoint en barque une cabane flottante sur un lac' },
       'noel': { file: 'hero-chalet-neige', desk: [800, 1200, 1280], alt: 'Chalet vitré sous la neige au coucher du soleil, avec un bain nordique en bois sur la terrasse' },
-      'derniere-minute': { file: 'hero-carte-cadeau', desk: [800, 1200, 1600], alt: 'Une main tient une carte cadeau AbracadaRoom illustrée et son enveloppe, devant un chalet au bord de l\u2019eau' }
+      'derniere-minute': { file: 'hero-carte-cadeau', desk: [800, 1200, 1600], pos: '15% 85%', alt: 'Une main tient une carte cadeau AbracadaRoom illustrée et son enveloppe, devant un chalet au bord de l\u2019eau' }
     };
     (function (d) {
       var o = new URLSearchParams(location.search).get('occasion');
@@ -285,7 +286,7 @@
     @media (min-width: 768px) {
       .abcd-hero { min-height: 620px; display: flex; align-items: center; }
       .abcd-hero__media { left: auto; width: 50%; height: 100%; }
-      .abcd-hero__media img { object-position: 50% 85%; }
+      .abcd-hero__media img { object-position: var(--hero-pos, 50% 85%); }
       .abcd-hero__veil { background: linear-gradient(90deg, #14110e 0%, rgba(20,17,14,0) 25%); }
       .abcd-hero__content { padding-top: 56px; padding-bottom: 56px; }
       .abcd-hero__title { font-size: 3rem; margin-bottom: 14px; }
@@ -697,7 +698,7 @@
               '<source media="(min-width: 768px)" type="image/webp" srcset="' + h.desktop('webp') + '" sizes="50vw">' +
               '<source type="image/avif" srcset="' + h.mobile('avif') + '" sizes="100vw">' +
               '<source type="image/webp" srcset="' + h.mobile('webp') + '" sizes="100vw">' +
-              '<img src="img/' + h.file + '-mobile-828.webp" alt="' + h.alt + '" width="828" height="486" fetchpriority="high" decoding="async">' +
+              '<img src="img/' + h.file + '-mobile-828.webp" alt="' + h.alt + '" width="828" height="486" fetchpriority="high" decoding="async"' + (h.pos ? ' style="--hero-pos:' + h.pos + '"' : '') + '>' +
               '</picture>');
           })(window.LP_HERO);
         </script>
