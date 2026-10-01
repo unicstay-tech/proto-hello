@@ -51,14 +51,34 @@
     })(window, document, window.LP_CONFIG.gtmId, window.LP_CONFIG.gtmDomain);
   </script>
 
-  <!-- Image du hero (LCP) préchargée, recadrage mobile ou desktop selon l'écran.
-       Les navigateurs sans AVIF ignorent ce preload et prennent le WebP du <picture>. -->
-  <link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(max-width: 767px)"
-        imagesrcset="img/couple-cabane-verre-mobile-480.avif 480w, img/couple-cabane-verre-mobile-828.avif 828w, img/couple-cabane-verre-mobile-1200.avif 1200w"
-        imagesizes="100vw">
-  <link rel="preload" as="image" type="image/avif" fetchpriority="high" media="(min-width: 768px)"
-        imagesrcset="img/couple-cabane-verre-800.avif 800w, img/couple-cabane-verre-1200.avif 1200w, img/couple-cabane-verre-1600.avif 1600w"
-        imagesizes="50vw">
+  <!-- Image du hero (LCP) selon ?occasion= : une seule définition, utilisée pour le préchargement et pour l'affichage.
+       Pas d'alcool à l'image (loi Évin). Recadrages : mobile 1,7:1 (img/NOM-mobile-*), desktop 1,25:1 (img/NOM-*). -->
+  <script>
+    window.LP_HEROES = {
+      'default': { file: 'hero-couple-dome', desk: [800, 1200, 1600], alt: 'Un couple assis sur un lit rond sous un dôme de bois et de verre, le regard tourné vers le ciel' },
+      'amoureux': { file: 'hero-couple-plaid', desk: [800, 1200, 1600], alt: 'Un couple blotti sous un plaid sur la terrasse en bois d\u2019une cabane de verre, en forêt' },
+      'spa': { file: 'hero-couple-jacuzzi', desk: [800, 1200, 1600], alt: 'Un couple dans un jacuzzi privatif, face à une cabane de verre dans la verdure' },
+      'famille': { file: 'hero-famille-barque', desk: [800, 1200, 1600], alt: 'Une famille avec deux enfants rejoint en barque une cabane flottante sur un lac' },
+      'noel': { file: 'hero-chalet-neige', desk: [800, 1200, 1280], alt: 'Chalet vitré sous la neige au coucher du soleil, avec un bain nordique en bois sur la terrasse' },
+      'derniere-minute': { file: 'hero-carte-cadeau', desk: [800, 1200, 1600], alt: 'Une main tient la carte cadeau AbracadaRoom et son enveloppe verte, devant une cabane au coucher du soleil' }
+    };
+    (function (d) {
+      var o = new URLSearchParams(location.search).get('occasion');
+      var h = Object.prototype.hasOwnProperty.call(window.LP_HEROES, o) ? window.LP_HEROES[o] : window.LP_HEROES['default'];
+      function srcset(suffix, widths, ext) {
+        return widths.map(function (w) { return 'img/' + h.file + suffix + '-' + w + '.' + ext + ' ' + w + 'w'; }).join(', ');
+      }
+      h.mobile = function (ext) { return srcset('-mobile', [480, 828, 1200], ext); };
+      h.desktop = function (ext) { return srcset('', h.desk, ext); };
+      window.LP_HERO = h;
+      [['(max-width: 767px)', h.mobile('avif'), '100vw'], ['(min-width: 768px)', h.desktop('avif'), '50vw']].forEach(function (p) {
+        var l = d.createElement('link');
+        l.rel = 'preload'; l.as = 'image'; l.type = 'image/avif'; l.setAttribute('fetchpriority', 'high');
+        l.media = p[0]; l.setAttribute('imagesrcset', p[1]); l.setAttribute('imagesizes', p[2]);
+        d.head.appendChild(l);
+      });
+    })(document);
+  </script>
 
   <!-- Polices : Barlow auto-hébergée, jeu latin, 3 graisses utilisées seulement -->
   <link rel="preload" href="fonts/barlow-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -668,15 +688,20 @@
   <main>
     <!-- ===== 1. HERO ===== -->
     <section class="abcd-hero" aria-labelledby="hero-title">
-      <!-- Photo : DSC_0886. Recadrage mobile (bandeau 1,7:1) et desktop (colonne droite 1,25:1), couple toujours entier. -->
       <div class="abcd-hero__media">
-        <picture>
-          <source media="(min-width: 768px)" type="image/avif" srcset="img/couple-cabane-verre-800.avif 800w, img/couple-cabane-verre-1200.avif 1200w, img/couple-cabane-verre-1600.avif 1600w" sizes="50vw">
-          <source media="(min-width: 768px)" type="image/webp" srcset="img/couple-cabane-verre-800.webp 800w, img/couple-cabane-verre-1200.webp 1200w, img/couple-cabane-verre-1600.webp 1600w" sizes="50vw">
-          <source type="image/avif" srcset="img/couple-cabane-verre-mobile-480.avif 480w, img/couple-cabane-verre-mobile-828.avif 828w, img/couple-cabane-verre-mobile-1200.avif 1200w" sizes="100vw">
-          <source type="image/webp" srcset="img/couple-cabane-verre-mobile-480.webp 480w, img/couple-cabane-verre-mobile-828.webp 828w, img/couple-cabane-verre-mobile-1200.webp 1200w" sizes="100vw">
-          <img src="img/couple-cabane-verre-mobile-828.webp" alt="Un couple trinque au champagne, assis sur la terrasse en bois d'une cabane aux parois de verre, au milieu des arbres" width="828" height="486" fetchpriority="high" decoding="async">
-        </picture>
+        <script>
+          (function (h) {
+            document.currentScript.insertAdjacentHTML('afterend',
+              '<picture>' +
+              '<source media="(min-width: 768px)" type="image/avif" srcset="' + h.desktop('avif') + '" sizes="50vw">' +
+              '<source media="(min-width: 768px)" type="image/webp" srcset="' + h.desktop('webp') + '" sizes="50vw">' +
+              '<source type="image/avif" srcset="' + h.mobile('avif') + '" sizes="100vw">' +
+              '<source type="image/webp" srcset="' + h.mobile('webp') + '" sizes="100vw">' +
+              '<img src="img/' + h.file + '-mobile-828.webp" alt="' + h.alt + '" width="828" height="486" fetchpriority="high" decoding="async">' +
+              '</picture>');
+          })(window.LP_HERO);
+        </script>
+        <noscript><img src="img/hero-couple-dome-mobile-828.webp" alt="Un couple assis sur un lit rond sous un dôme de bois et de verre, le regard tourné vers le ciel" width="828" height="486"></noscript>
         <div class="abcd-hero__veil"></div>
       </div>
 
@@ -1166,6 +1191,6 @@
        href="https://gift.abracadaroom.com/fr/giftcards/customization/?value=150&amp;src=lp-carte-cadeau">Offrir la carte de 150&nbsp;€</a>
   </div>
 
-  <script src="lp.js?v=2026-09-25" defer></script>
+  <script src="lp.js?v=2026-10-01" defer></script>
 </body>
 </html>

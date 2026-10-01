@@ -29,7 +29,7 @@ Note : ces balises alourdissent la page. Les scores Lighthouse mesurés sur la m
 | Paramètre | Effet |
 |---|---|
 | `value` | 50, 100, 150, 200, 250 ou 300 : le bouton est sélectionné. Autre nombre supérieur ou égal à 20 : « Autre montant » s'ouvre pré-rempli (arrondi à l'euro). Absent, inférieur à 20 ou non numérique : 150. |
-| `occasion` | `noel`, `anniversaire`, `amoureux`, `derniere-minute`, `spa`, `famille` : change le titre du hero (et le début du sous-titre pour `famille`, `amoureux`, `spa`). Absent ou inconnu : titre par défaut. « Besoin d'inspiration pour votre mot ? » s'adapte aussi : messages de Noël sans occasion ou avec `noel`, un message dédié en tête pour `amoureux`, `famille`, `spa`, « Pour passer le cap » en tête pour `anniversaire`. |
+| `occasion` | `noel`, `anniversaire`, `amoureux`, `derniere-minute`, `spa`, `famille` : change le titre du hero (et le début du sous-titre pour `famille`, `amoureux`, `spa`). Absent ou inconnu : titre par défaut. **L'image du hero change aussi** : défaut et `anniversaire` = couple sous le dôme ; `amoureux` = couple sous un plaid ; `spa` = couple dans le jacuzzi ; `famille` = famille en barque ; `noel` = chalet sous la neige ; `derniere-minute` = carte cadeau en main. « Besoin d'inspiration pour votre mot ? » s'adapte aussi : messages de Noël sans occasion ou avec `noel`, un message dédié en tête pour `amoureux`, `famille`, `spa`, « Pour passer le cap » en tête pour `anniversaire`. |
 | `utm_*`, `gclid`, `gbraid`, `wbraid`, `fbclid` | conservés et transmis à tous les liens de sortie (achat, cagnotte, mini-boutique, entreprises), avec `src=lp-carte-cadeau` |
 
 Lien à mettre dans Merchant Center pour un produit à 100 € : `https://www.abracadaroom.com/fr/offrir-carte-cadeau/?value=100` (ajouter `&occasion=noel` pendant la période de Noël).
@@ -77,7 +77,7 @@ Pour exploiter les 6 événements ci-dessus dans GA4 :
 - **Avis** : avis réels Avis Vérifiés, recopiés tels quels (extraits signalés par « (…) »). Ne jamais les modifier ni en inventer.
 - **Médias** (« Vu à la télé et dans la presse ») : noms en texte, remplaçables par les logos officiels.
 - **Cagnotte** : le bouton « Créer une cagnotte » pointe vers `https://gift.abracadaroom.com/fr/giftcards/#money_pot` (paramètres de campagne et `src` ajoutés par le script).
-- **Photos** : 4:3 pour la galerie (400 et 800 px de large), hero en deux recadrages (mobile 1,7:1 et desktop 1,25:1) avec le couple toujours entier. Garder les mêmes noms de fichiers ou mettre à jour les `srcset`.
+- **Photos** : aucune image avec de l'alcool (prudence loi Évin et règles Google Ads). Images du hero par occasion dans `LP_HEROES` (en tête de `index.html`), fichiers `img/hero-*` en deux recadrages. Autres photos : 4:3 pour la galerie (400 et 800 px de large), hero en deux recadrages (mobile 1,7:1 et desktop 1,25:1) avec le couple toujours entier. Garder les mêmes noms de fichiers ou mettre à jour les `srcset`.
 - **CGV** : le lien « CGV » du pied de page pointe vers les conditions générales d'utilisation (`/fr/conditions-generales-dutilisation/`), les CGV de la boutique cadeau n'ayant pas d'URL propre.
 
 ## 6. Recette
