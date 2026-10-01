@@ -220,6 +220,12 @@
     }
     .abcd-hero__sub { font-size: 0.9375rem; line-height: 1.45; opacity: 0.92; margin-bottom: 18px; }
 
+    /* Tablette et petit ordinateur (768 à 1199 px) : hero un peu plus compact, le texte n'ayant que la moitié de la largeur */
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .abcd-hero .abcd-hero__content { padding-top: 40px; padding-bottom: 40px; }
+      .abcd-hero .abcd-hero__title { font-size: 2.375rem; }
+    }
+
     /* Sélecteur de montant (hero et rappel final) */
     .abcd-amounts__label { display: block; font-weight: 600; font-size: 0.9375rem; margin-bottom: 8px; }
     .abcd-amounts__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
@@ -1192,6 +1198,6 @@
        href="https://gift.abracadaroom.com/fr/giftcards/customization/?value=150&amp;src=lp-carte-cadeau">Offrir la carte de 150&nbsp;€</a>
   </div>
 
-  <script src="lp.js?v=2026-10-01" defer></script>
+  <script src="lp.js?v=2026-10-02" defer></script>
 </body>
 </html>

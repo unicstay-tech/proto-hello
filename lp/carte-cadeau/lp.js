@@ -239,7 +239,7 @@
   /* ----- FAQ ----- */
   [].forEach.call(document.querySelectorAll('.abcd-faq details'), function (item) {
     item.addEventListener('toggle', function () {
-      if (item.open) track('faq_open', { question: item.querySelector('summary').textContent.trim() });
+      if (item.open) track('faq_open', { question: item.querySelector('summary').textContent.replace(/\s+/g, ' ').trim() });
     });
   });
 
