@@ -14,7 +14,12 @@
   <!-- Landing page réservée au trafic payant : jamais indexée. Ne rien bloquer dans robots.txt (le robot Google Shopping doit pouvoir la visiter). -->
   <meta name="robots" content="noindex, nofollow">
   <meta name="theme-color" content="#9e3669">
-  <link rel="icon" href="https://www.abracadaroom.com/favicon.ico">
+  <!-- Favicon : mêmes icônes que le site (le /favicon.ico du serveur est vide) -->
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.abracadaroom.com/assets/favicon/favicon-32x32.png?v=1">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.abracadaroom.com/assets/favicon/favicon-16x16.png?v=1">
+  <link rel="icon" type="image/png" sizes="96x96" href="https://www.abracadaroom.com/assets/favicon/favicon-96x96.png?v=1">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://www.abracadaroom.com/assets/favicon/android-icon-192x192.png?v=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.abracadaroom.com/assets/favicon/apple-icon-180x180.png?v=1">
 
   <!-- ===== CONFIGURATION : seul endroit à modifier au déploiement ===== -->
   <script>
@@ -680,6 +685,8 @@
     @media (min-width: 768px) {
       .cc-window.cc-floating.cc-left { left: auto !important; right: 1em !important; }
     }
+    /* Lien « En savoir plus » du bandeau : contraste suffisant sur le fond turquoise */
+    .cc-window .cc-link { color: #fff !important; opacity: 1 !important; text-decoration: underline !important; }
     @media (max-width: 767px) {
       .cc-window.cc-floating {
         top: 0 !important;
