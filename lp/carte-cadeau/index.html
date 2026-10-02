@@ -674,6 +674,29 @@
     @media (min-width: 768px) { .abcd-sticky { display: none; } }
     @media (prefers-reduced-motion: reduce) { .abcd-sticky, .abcd-sticky.is-visible { transition: none; } }
 
+    /* ===== BANDEAU COOKIES DU SITE (cookieconsent, chargé par GTM) =====
+       Déplacé pour ne jamais masquer le sélecteur de montant ni le bouton d'achat :
+       en haut et compact sur mobile (par-dessus le logo et la photo), en bas à droite sur ordinateur (sur la photo). */
+    @media (min-width: 768px) {
+      .cc-window.cc-floating.cc-left { left: auto !important; right: 1em !important; }
+    }
+    @media (max-width: 767px) {
+      .cc-window.cc-floating {
+        top: 0 !important;
+        bottom: auto !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 12px;
+        max-width: none !important;
+        padding: calc(10px + env(safe-area-inset-top)) 14px 10px !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+      }
+      .cc-window.cc-floating .cc-message { flex: 1 1 auto; margin: 0 !important; }
+      .cc-window.cc-floating .cc-compliance { flex: 0 0 auto; }
+      .cc-window.cc-floating .cc-btn { padding: 8px 14px !important; font-size: 12px !important; min-width: 0 !important; }
+    }
+
     /* ===== PIED DE PAGE MINIMAL ===== */
     .abcd-footer { background: var(--abcd-light); padding: 20px 0; font-size: 0.8125rem; }
     .abcd-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 20px; }
