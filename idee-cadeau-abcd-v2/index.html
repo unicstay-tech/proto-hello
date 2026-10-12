@@ -303,6 +303,7 @@
       box-shadow: 0 12px 36px rgba(0,0,0,0.10);
     }
     .abcd-offer-card__visual { height: 220px; }
+    .abcd-offer-card__img { width: 100%; object-fit: cover; display: block; }
     .abcd-offer-card__title {
       color: var(--abcd-title);
       font-size: 1.75rem;
@@ -559,6 +560,7 @@
       overflow: hidden;
     }
     .abcd-coffrets__visual { min-height: 320px; height: 100%; }
+    .abcd-coffrets__img { width: 100%; object-fit: cover; object-position: 55% 60%; display: block; }
     .abcd-stores {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -735,7 +737,7 @@
         <!-- Carte Cadeau -->
         <div class="col-md-6 col-lg-5 mb-4">
           <div class="abcd-offer-card h-100 d-flex flex-column">
-            <div class="abcd-placeholder abcd-offer-card__visual">[VISUEL À FOURNIR]</div>
+            <img class="abcd-offer-card__visual abcd-offer-card__img" src="img/carte-cadeau-enveloppe.jpg" alt="Carte cadeau AbracadaRoom tenue en main devant un hébergement insolite au bord de l'eau" loading="lazy" style="object-position: 40% 55%;">
             <div class="p-4 p-lg-5 d-flex flex-column flex-grow-1">
               <h3 class="abcd-offer-card__title">La Carte Cadeau</h3>
               <p class="abcd-offer-card__price">À partir de 20&nbsp;&euro;</p>
@@ -1092,7 +1094,7 @@
       <div class="abcd-coffrets">
         <div class="row no-gutters">
           <div class="col-lg-5">
-            <div class="abcd-placeholder abcd-coffrets__visual">[VISUEL À FOURNIR]</div>
+            <img class="abcd-coffrets__visual abcd-coffrets__img" src="img/coffret-cadeau.jpg" alt="Coffret cadeau AbracadaRoom posé sur la terrasse d'un hébergement avec bain nordique" loading="lazy">
           </div>
           <div class="col-lg-7">
             <div class="p-4 p-md-5">
