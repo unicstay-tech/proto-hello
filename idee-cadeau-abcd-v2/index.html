@@ -552,6 +552,21 @@
     .abcd-carousel__btn[disabled] { opacity: 0; pointer-events: none; }
     @media (max-width: 767px) { .abcd-carousel__btn { display: none; } }
 
+    /* ===== BLOCS 4 + 9 : ENTREPRISE ET COFFRETS ===== */
+    .abcd-more-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 32px rgba(0,0,0,0.08);
+    }
+    .abcd-more-card__img { width: 100%; height: 240px; object-fit: cover; display: block; }
+    .abcd-more-card__title { color: var(--abcd-title); font-size: 1.75rem; font-weight: 700; margin-bottom: 12px; }
+    .abcd-more-card p { font-size: 1.0625rem; line-height: 1.6; }
+    .abcd-more-card .abcd-stores { align-content: start; }
+    .abcd-more-card .abcd-store-logo { height: 56px; font-size: 0.8125rem; }
+    .abcd-btn-outline-magenta { background: transparent; border: 2px solid var(--abcd-magenta); color: var(--abcd-magenta); }
+    .abcd-btn-outline-magenta:hover { background: var(--abcd-magenta); color: #fff; }
+
     /* ===== BLOC 9 : COFFRETS EN MAGASIN ===== */
     .abcd-coffrets {
       background: #fff;
@@ -560,7 +575,7 @@
       overflow: hidden;
     }
     .abcd-coffrets__visual { min-height: 320px; height: 100%; }
-    .abcd-coffrets__img { width: 100%; object-fit: cover; object-position: 55% 60%; display: block; }
+    .abcd-coffrets__img { width: 100%; object-fit: cover; object-position: 30% 60%; display: block; }
     .abcd-stores {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
@@ -592,7 +607,19 @@
     }
 
     /* ===== BLOC 10 : FAQ ===== */
-    .abcd-faq .card { border: 0; border-bottom: 1px solid #e3e3e3; border-radius: 0; background: transparent; }
+    .abcd-faq .card {
+      border: 0;
+      border-radius: 12px;
+      background: #fff;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+      overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .abcd-faq .card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+    .abcd-faq .abcd-faq-btn { padding-left: 24px; padding-right: 56px; }
+    .abcd-faq .abcd-faq-btn::after { right: 24px; }
+    .abcd-faq .abcd-faq-answer { padding: 0 56px 22px 24px; }
     .abcd-faq-btn {
       width: 100%;
       text-align: left;
@@ -622,9 +649,21 @@
     .abcd-faq-answer { padding: 0 40px 20px 0; font-size: 1.0625rem; line-height: 1.6; }
 
     /* ===== BLOC 11 : SEO ===== */
-    .abcd-seo h2 { color: var(--abcd-title); font-size: 1.75rem; font-weight: 700; margin-bottom: 20px; }
-    .abcd-seo h3 { color: var(--abcd-magenta); font-size: 1.25rem; font-weight: 700; margin-top: 28px; }
-    .abcd-seo p { font-size: 1rem; line-height: 1.7; }
+    .abcd-seo .tiny { max-width: 780px; }
+    .abcd-seo h2 {
+      color: var(--abcd-title);
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--abcd-yellow);
+      display: inline-block;
+    }
+    .abcd-seo h3 { color: var(--abcd-title); font-size: 1.3125rem; font-weight: 700; margin: 40px 0 12px; }
+    .abcd-seo p { font-size: 1.0625rem; line-height: 1.8; color: #555; margin-bottom: 18px; }
+    .abcd-seo a { color: var(--abcd-magenta); text-decoration: underline; text-underline-offset: 3px; }
+    .abcd-seo strong { color: var(--abcd-title); }
 
     /* ===== BLOC 12 : FOOTER (repris de la prod) ===== */
     .abcd-footer { background: var(--abcd-light); font-size: 0.9375rem; }
@@ -755,7 +794,7 @@
         <!-- Bon Cadeau -->
         <div class="col-md-6 col-lg-5 mb-4">
           <div class="abcd-offer-card h-100 d-flex flex-column">
-            <div class="abcd-placeholder abcd-offer-card__visual">[VISUEL À FOURNIR]</div>
+            <img class="abcd-offer-card__visual abcd-offer-card__img" src="img/bon-cadeau.jpg" alt="Cabane vitrée avec bain nordique sous la neige au coucher du soleil" loading="lazy" style="object-position: 50% 62%;">
             <div class="p-4 p-lg-5 d-flex flex-column flex-grow-1">
               <h3 class="abcd-offer-card__title">Le Bon Cadeau</h3>
               <p class="abcd-offer-card__price">Plus de 3&nbsp;500 séjours au choix</p>
@@ -993,9 +1032,33 @@
   </section>
 
   <!-- ============================== -->
+  <!-- BLOC 4&nbsp;: ENTREPRISE (inchangé) -->
+  <!-- ============================== -->
+  <section class="py-5 bg-abcd-light">
+    <div class="container">
+      <div class="abcd-b2b">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            <!-- Visuel repris de la page carte cadeau en prod -->
+            <img class="abcd-b2b__img" src="https://www.abracadaroom.com/assets/img/ckdo/19-cadeau-collaborateur.jpg" alt="Collaborateurs réunis autour d'un cocktail d'entreprise" loading="lazy">
+          </div>
+          <div class="col-md-7 d-flex align-items-center">
+            <div class="p-4 p-md-5">
+              <span class="abcd-eyebrow">Cadeaux d'entreprise</span>
+              <h2 class="abcd-b2b__title">Vous êtes une entreprise&nbsp;?</h2>
+              <p class="mb-4" style="font-size:1.0625rem;">Offrez un cadeau original à vos collaborateurs avec nos solutions CSE et corporate.</p>
+              <a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos offres</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== -->
   <!-- BLOC 8&nbsp;: 1000 RAISONS D'OFFRIR -->
   <!-- ============================== -->
-  <section class="abcd-reasons py-5 bg-abcd-light">
+  <section class="abcd-reasons py-5">
     <div class="container py-md-4">
       <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-5">
         <div>
@@ -1063,33 +1126,9 @@
   </section>
 
   <!-- ============================== -->
-  <!-- BLOC 4&nbsp;: ENTREPRISE (inchangé) -->
-  <!-- ============================== -->
-  <section class="pt-5 pb-3">
-    <div class="container">
-      <div class="abcd-b2b">
-        <div class="row no-gutters">
-          <div class="col-md-5">
-            <!-- Visuel repris de la page carte cadeau en prod -->
-            <img class="abcd-b2b__img" src="https://www.abracadaroom.com/assets/img/ckdo/19-cadeau-collaborateur.jpg" alt="Collaborateurs réunis autour d'un cocktail d'entreprise" loading="lazy">
-          </div>
-          <div class="col-md-7 d-flex align-items-center">
-            <div class="p-4 p-md-5">
-              <span class="abcd-eyebrow">Cadeaux d'entreprise</span>
-              <h2 class="abcd-b2b__title">Vous êtes une entreprise&nbsp;?</h2>
-              <p class="mb-4" style="font-size:1.0625rem;">Offrez un cadeau original à vos collaborateurs avec nos solutions CSE et corporate.</p>
-              <a href="https://www.abracadaroom.com/fr/cadeaux-entreprise/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos offres</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================== -->
   <!-- BLOC 9&nbsp;: NOS COFFRETS, AUSSI EN MAGASIN -->
   <!-- ============================== -->
-  <section class="abcd-coffrets-section py-5 bg-abcd-light">
+  <section class="abcd-coffrets-section pt-3 pb-5">
     <div class="container py-md-4">
       <div class="abcd-coffrets">
         <div class="row no-gutters">
@@ -1106,11 +1145,11 @@
               <p class="font-weight-bold mb-3" style="color:var(--abcd-title);">Disponibles chez nos partenaires</p>
               <!-- Logos magasins&nbsp;: placeholders, logos officiels à fournir -->
               <div class="abcd-stores mb-4">
-                <div class="abcd-store-logo">Fnac<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Cultura<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Nature &amp; Découvertes<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Amazon<small>Logo à fournir</small></div>
-                <div class="abcd-store-logo">Darty<small>Logo à fournir</small></div>
+                <div class="abcd-store-logo">Fnac<small>Logo</small></div>
+                <div class="abcd-store-logo">Cultura<small>Logo</small></div>
+                <div class="abcd-store-logo">Nature &amp; Découvertes<small>Logo</small></div>
+                <div class="abcd-store-logo">Amazon<small>Logo</small></div>
+                <div class="abcd-store-logo">Darty<small>Logo</small></div>
               </div>
               <a href="https://www.abracadaroom.com/fr/coffret-cadeau/" class="btn abcd-btn abcd-btn-magenta">Découvrir nos coffrets</a>
             </div>
@@ -1123,7 +1162,7 @@
   <!-- ============================== -->
   <!-- BLOC 10&nbsp;: QUESTIONS FREQUENTES -->
   <!-- ============================== -->
-  <section class="abcd-faq py-5">
+  <section class="abcd-faq py-5 bg-abcd-light">
     <div class="container py-md-4">
       <div class="text-center mb-5">
         <span class="abcd-eyebrow">Avant d'offrir</span>
@@ -1212,7 +1251,7 @@
   <!-- ============================== -->
   <!-- BLOC 11&nbsp;: SEO EDITORIAL (texte repris de la prod) -->
   <!-- ============================== -->
-  <section class="abcd-seo py-5 bg-abcd-light">
+  <section class="abcd-seo py-5">
     <div class="container">
       <div class="row">
         <div class="py-4 m-auto col-lg-10 tiny">
